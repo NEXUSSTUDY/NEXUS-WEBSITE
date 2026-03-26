@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS STUDY | Foundation for Excellence</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #003366; --accent: #f39200; --bg: #ffffff;
+      --text: #1a1c1e; --silver: #f8fafc; --border: #e2e8f0;
+    }
+    .teacher-mode { --primary: #1a1c1e; --accent: #00d1b2; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: 0.4s ease; }
+    body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    /* --- MINIMALIST PREMIUM HEADER --- */
+    header {
+      height: 85px; background: rgba(255,255,255,0.9); backdrop-filter: blur(20px);
+      display: flex; justify-content: space-between; align-items: center; padding: 0 8%;
+      position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #eee;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+    .logo-mark { 
+      font-size: 28px; font-weight: 800; color: var(--primary); 
+      border-left: 5px solid var(--accent); padding-left: 10px; line-height: 1;
+    }
+    .logo-text h1 { font-size: 20px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+    .logo-text p { font-size: 8px; text-transform: uppercase; letter-spacing: 2px; color: #64748b; font-weight: 700; }
+
+    .nav { display: flex; gap: 40px; align-items: center; }
+    .nav a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 14px; cursor: pointer; opacity: 0.6; text-transform: uppercase; }
+    .nav a:hover, .nav a.active { opacity: 1; color: var(--primary); }
+
+    /* --- FLOATING ELEMENTS --- */
+    .social-dock { position: fixed; left: 25px; top: 50%; transform: translateY(-50%); z-index: 2000; display: flex; flex-direction: column; gap: 25px; }
+    .social-dock a { font-size: 20px; color: var(--text); opacity: 0.4; text-decoration: none; }
+    .social-dock a:hover { opacity: 1; color: var(--primary); transform: scale(1.2); }
+    .mail-btn { position: fixed; bottom: 35px; right: 35px; z-index: 2000; width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+    /* --- PAGE WRAPPERS --- */
+    .page-section { display: none; padding-top: 85px; min-height: 100vh; animation: fadeInUp 0.8s ease; }
+    .active { display: block; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* --- BENTO LAYOUT (35% FORM) --- */
+    .flex-container { padding: 40px 8%; display: flex; align-items: stretch; gap: 40px; max-width: 1500px; margin: 0 auto; }
+    .visual-pane { flex: 0.65; border-radius: 35px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+    .visual-pane img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .form-pane { flex: 0.35; background: var(--silver); padding: 50px; border-radius: 35px; border: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+    .form-pane h2 { font-size: 2rem; margin-bottom: 30px; font-weight: 800; letter-spacing: -1px; }
+
+    /* --- PREMIUM FORM FIELDS --- */
+    .field { margin-bottom: 25px; text-align: left; }
+    .field label { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; display: block; letter-spacing: 1.5px; }
+    .field input, .field select { width: 100%; padding: 18px; border-radius: 12px; border: 1.5px solid #d1d5db; background: white; outline: none; font-size: 15px; }
+    .field input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0,51,102,0.05); }
+
+    .btn-submit { width: 100%; padding: 20px; background: var(--primary); color: white; border: none; border-radius: 12px; font-weight: 800; font-size: 16px; cursor: pointer; transition: 0.3s; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+    /* --- REVIEW TICKER --- */
+    .ticker { background: #111; padding: 40px 0; overflow: hidden; margin-top: 40px; }
+    .track { display: flex; gap: 50px; animation: scroll 50s linear infinite; width: max-content; }
+    .card { min-width: 350px; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; color: white; border: 1px solid rgba(255,255,255,0.08); }
+    .stars { color: var(--accent); margin-bottom: 10px; font-size: 12px; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    @media (max-width: 1024px) { 
+      .flex-container { flex-direction: column; padding: 20px; } 
+      .visual-pane, .form-pane { flex: none; width: 100%; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="social-dock">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+  <a href="mailto:contact@nexusstudy.com" class="mail-btn"><i class="fas fa-envelope"></i></a>
+
+  <header>
+    <div class="logo" onclick="showView('home')">
+      <div class="logo-mark">N</div>
+      <div class="logo-text">
+        <h1>NEXUS STUDY</h1>
+        <p>Foundation for Excellence</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a onclick="showView('home')" id="l-home" class="active">Home</a>
+      <a onclick="showView('student')" id="l-student">Student Portal</a>
+      <a onclick="showView('teacher')" id="l-teacher">Tutor Join</a>
+    </nav>
+  </header>
+
+  <main id="home-v" class="page-section active">
+    <div class="flex-container">
+      <div class="visual-pane">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200" alt="Students Studying">
+      </div>
+      <div class="form-pane">
+        <h1 style="font-size: 3rem; line-height: 1; margin-bottom: 20px; font-weight: 800;">Modern <br><span style="color:var(--primary)">Learning.</span></h1>
+        <p style="color: #64748b; margin-bottom: 30px; line-height: 1.6;">A premier foundation for JEE, NEET and Board excellence. We craft future leaders.</p>
+        <button class="btn-submit" onclick="showView('student')">Get Started</button>
+      </div>
+    </div>
+  </main>
+
+  <main id="student-v" class="page-section">
+    <div class="flex-container">
+      <div class="visual-pane">
+        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200" alt="Student Life">
+      </div>
+      <div class="form-pane">
+        <h2>Student Login</h2>
+        <div class="field"><label>Full Name</label><input type="text" placeholder="Rahul Sharma"></div>
+        <div class="field"><label>Course</label><select><option>JEE Main+Adv</option><option>NEET Medical</option><option>Board 12th</option></select></div>
+        <div class="field"><label>Contact</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        <button class="btn-submit">Enter Portal</button>
+      </div>
+    </div>
+  </main>
+
+  <main id="teacher-v" class="page-section">
+    <div class="flex-container" style="flex-direction: row-reverse;">
+      <div class="visual-pane">
+        <img src="https://images.unsplash.com/photo-1544717297-fa95b3ee51f3?auto=format&fit=crop&w=1200" alt="Expert Teacher">
+      </div>
+      <div class="form-pane">
+        <h2>Tutor Hiring</h2>
+        <div class="field"><label>Expertise</label><input type="text" placeholder="e.g. Mathematics"></div>
+        <div class="field"><label>Experience</label><input type="number" placeholder="Years"></div>
+        <div class="field"><label>Demo URL</label><input type="url" placeholder="YouTube or Drive"></div>
+        <button class="btn-submit" style="background:#111">Submit Application</button>
+      </div>
+    </div>
+  </main>
+
+  <section class="ticker">
+    <div class="track">
+      <div class="card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Nexus Study has the most structured courses. I scored 98% in Boards because of their expert faculty."</p>
+        <div style="margin-top:15px; font-weight:800; font-size:12px;">- Anjali V.</div>
+      </div>
+      <div class="card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"The 1-on-1 doubt solving is amazing. The teachers are very patient and professional."</p>
+        <div style="margin-top:15px; font-weight:800; font-size:12px;">- Rohan K.</div>
+      </div>
+      <div class="card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Highly professional platform. Highly recommended for JEE Advanced aspirants."</p>
+        <div style="margin-top:15px; font-weight:800; font-size:12px;">- Simran S.</div>
+      </div>
+      <div class="card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>"Nexus Study has the most structured courses. I scored 98% in Boards because of their expert faculty."</p>
+        <div style="margin-top:15px; font-weight:800; font-size:12px;">- Anjali V.</div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function showView(id) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+      
+      const target = document.getElementById(id + '-v');
+      if(target) target.classList.add('active');
+      
+      const link = document.getElementById('l-' + id);
+      if(link) link.classList.add('active');
+      
+      if(id === 'teacher') document.body.classList.add('teacher-mode');
+      else document.body.classList.remove('teacher-mode');
+      
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  </script>
+
+</body>
+</html>
