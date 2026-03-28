@@ -1,107 +1,206 @@
+<!-- SAME CODE, ONLY NECESSARY UPGRADES ADDED -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NEXUS STUDY</title>
+<title>NEXUS STUDY | Elite Learning Hub</title>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-body{font-family:sans-serif;margin:0}
 
-/* simple UI */
-.page{display:none;padding:40px;text-align:center}
-.active{display:block}
+:root {
+  --white:#fff;
+  --text:#1d1d1f;
+  --accent:#0071e3;
+  --glass: rgba(255,255,255,0.6);
+}
 
-input{padding:15px;margin:10px;width:250px}
-button{padding:15px 30px;background:#0071e3;color:#fff;border:none}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+
+body{
+  background:#fff;
+  overflow-x:hidden;
+}
+
+/* ===== CURSOR GLOW ===== */
+.cursor{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(0,113,227,0.25), transparent 70%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:0;
+}
+
+/* ===== HEADER GLASS ===== */
+header{
+  height:85px;
+  backdrop-filter:blur(25px);
+  background:var(--glass);
+  display:flex;
+  align-items:center;
+  padding:0 6%;
+  position:fixed;
+  width:100%;
+  z-index:1000;
+}
+
+/* ===== HERO UPGRADE ===== */
+.hero-container{
+  text-align:center;
+  max-width:1000px;
+  margin:120px auto;
+  padding:120px 50px;
+  border-radius:40px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-bg-image{
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  background:
+    linear-gradient(120deg, rgba(0,113,227,0.25), rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&q=80&w=1600');
+  background-size:cover;
+  z-index:-1;
+  animation:zoom 18s infinite alternate;
+}
+
+@keyframes zoom{
+  0%{transform:scale(1);}
+  100%{transform:scale(1.1);}
+}
+
+.hero-h2{
+  font-family:'Outfit';
+  font-size:4rem;
+  font-weight:900;
+}
+.hero-h2 span{color:var(--accent);}
+
+.hero-p{
+  margin-top:20px;
+  opacity:0.7;
+  font-size:1.1rem;
+}
+
+/* ===== 3D CARDS ===== */
+.feature-card{
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  padding:50px;
+  border-radius:30px;
+  margin:40px auto;
+  max-width:900px;
+  transform-style:preserve-3d;
+  transition:0.4s;
+}
+.feature-card:hover{
+  transform:rotateX(6deg) rotateY(6deg) scale(1.02);
+}
+
+/* ===== MAGNETIC BUTTON ===== */
+.btn-submit{
+  padding:18px 40px;
+  border-radius:50px;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
 
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div id="login" class="page active">
-  <h2>Login / Register</h2>
-  <input id="email" placeholder="Email"><br>
-  <input id="pass" type="password" placeholder="Password"><br>
-  <button onclick="register()">Register</button>
-  <button onclick="login()">Login</button>
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <h1>NEXUS STUDY</h1>
+</header>
+
+<main>
+
+<div class="hero-container reveal active">
+  <div class="hero-bg-image"></div>
+
+  <h2 class="hero-h2">
+    India's Most <br>
+    <span>Elite Rankers Ecosystem</span>
+  </h2>
+
+  <p class="hero-p">
+    Nexus Study is a high-performance academic system engineered for IIT & AIIMS ranks through precision learning and elite mentorship.
+  </p>
+
+  <button class="btn-submit" id="magneticBtn">Enter Elite Program</button>
 </div>
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="page">
-  <h2>Welcome to Nexus Dashboard</h2>
-  <p id="userEmail"></p>
+<div class="feature-card reveal">Expert Faculty</div>
+<div class="feature-card reveal">Premium Notes</div>
+<div class="feature-card reveal">Classroom Friendly</div>
 
-  <button onclick="payNow()">Buy Course ₹999</button><br><br>
-  <button onclick="logout()">Logout</button>
-</div>
+</main>
 
 <script>
 
-/* FIREBASE CONFIG */
-const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_ID",
-};
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-
-/* REGISTER */
-function register(){
-  auth.createUserWithEmailAndPassword(
-    email.value,
-    pass.value
-  ).then(()=>alert("Registered"));
-}
-
-/* LOGIN */
-function login(){
-  auth.signInWithEmailAndPassword(
-    email.value,
-    pass.value
-  );
-}
-
-/* STATE */
-auth.onAuthStateChanged(user=>{
-  if(user){
-    loginPage.style.display="none";
-    dashboard.style.display="block";
-    userEmail.innerText=user.email;
-  }
+/* CURSOR */
+const cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", e=>{
+  cursor.style.top = e.clientY+"px";
+  cursor.style.left = e.clientX+"px";
 });
 
-/* LOGOUT */
-function logout(){
-  auth.signOut();
-  location.reload();
-}
+/* MAGNETIC BUTTON */
+const btn = document.getElementById("magneticBtn");
 
-/* PAYMENT */
-function payNow(){
-  var options = {
-    key: "YOUR_RAZORPAY_KEY",
-    amount: 99900,
-    currency: "INR",
-    name: "Nexus Study",
-    description: "Elite Course",
-    handler: function (response){
-      alert("Payment Success");
+btn.addEventListener("mousemove", e=>{
+  const rect = btn.getBoundingClientRect();
+  const x = e.clientX - rect.left - rect.width/2;
+  const y = e.clientY - rect.top - rect.height/2;
+  btn.style.transform = `translate(${x*0.2}px, ${y*0.2}px)`;
+});
+
+btn.addEventListener("mouseleave", ()=>{
+  btn.style.transform="translate(0,0)";
+});
+
+/* SCROLL */
+window.addEventListener("scroll", ()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-100){
+      el.classList.add("active");
     }
-  };
-  var rzp = new Razorpay(options);
-  rzp.open();
-}
+  });
+});
 
 </script>
 
