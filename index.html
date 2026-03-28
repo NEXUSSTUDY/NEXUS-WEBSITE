@@ -42,7 +42,7 @@
 
     /* --- PREMIUM HEADER --- */
     header {
-      height: 85px; background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(180%) blur(25px);
+      height: 85px; background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) blur(25px);
       display: flex; align-items: center; padding: 0 6%;
       position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
     }
@@ -78,7 +78,7 @@
     }
     .float-word {
       position: absolute; font-family: 'Outfit'; font-weight: 900; font-size: 8vw;
-      color: rgba(0, 113, 227, 0.03); white-space: nowrap; animation: moveText 25s linear infinite;
+      color: rgba(255, 255, 255, 0.1); white-space: nowrap; animation: moveText 25s linear infinite;
     }
     @keyframes moveText { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
 
@@ -88,10 +88,10 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
 
     /* --- HERO --- */
-    .hero-container { text-align: center; max-width: 1000px; margin: 0 auto 100px; position: relative; z-index: 10; }
+    .hero-container { text-align: center; max-width: 1000px; margin: 0 auto 100px; position: relative; z-index: 10; color: var(--white); }
     .hero-h2 { font-family: 'Outfit'; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 0.95; font-weight: 900; letter-spacing: -3px; margin-bottom: 30px; }
     .hero-h2 span { color: var(--accent); }
-    .hero-p { opacity: 0.8; max-width: 700px; font-size: 1.1rem; line-height: 1.6; margin: 0 auto 40px; font-weight: 600; }
+    .hero-p { opacity: 0.9; max-width: 700px; font-size: 1.1rem; line-height: 1.6; margin: 0 auto 40px; font-weight: 600; color: var(--white); }
 
     /* --- IMAGE PANE --- */
     .img-pane { 
@@ -176,71 +176,73 @@
     </div>
   </header>
 
-  <main id="home-v" class="view-section active-view" style="overflow: hidden;">
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-                background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.95)), 
-                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000') no-repeat center top; 
-                background-size: cover; z-index: -2;"></div>
+  <main id="home-v" class="view-section active-view" style="overflow: hidden; padding-top: 0;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; 
+                background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                url('https://images.unsplash.com/photo-1501290791791-72da892c5750?auto=format&fit=crop&q=80&w=2000') no-repeat center center; 
+                background-size: cover; z-index: -2; opacity: 0.9;"></div>
 
     <div class="floating-text-bg">
-      <div class="float-word" style="top: 15%;">PRECISION • EXCELLENCE • RANKERS</div>
+      <div class="float-word" style="top: 20%;">PRECISION • EXCELLENCE • RANKERS</div>
     </div>
 
-    <div class="hero-container reveal active">
-      <h2 class="hero-h2">Architecting <br><span>Global Ranks.</span></h2>
-      <p class="hero-p">Bharat's elite ecosystem for JEE, NEET and Competitive Foundations. Where vision meets surgical precision.</p>
+    <div class="hero-container reveal active" style="padding-top: 180px;">
+      <h2 class="hero-h2">Bharat's Elite Hub <br><span>For Competitive Excellence.</span></h2>
+      <p class="hero-p">The premier digital nexus for JEE, NEET, and Competitive Foundations under the direction of Dr. Lalit Kumar. Precision learning for world-class results.</p>
       <button class="btn-submit" style="width:auto; padding:18px 40px; background:var(--accent);" onclick="switchView('student')">Enroll Elite Batch</button>
     </div>
     
-    <div class="img-pane reveal">
-      <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&q=80&w=1600" alt="Nexus Study Elite Learning Hub">
-      <div class="image-overlay"></div>
+    <div style="background: var(--white); padding: 50px 8% 100px; margin-top: 50px; border-top-left-radius: 50px; border-top-right-radius: 50px;">
+      <div class="img-pane reveal">
+        <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&q=80&w=1600" alt="Nexus Study Elite Learning Hub">
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon-pane">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600" alt="Expert Faculty">
+          </div>
+          <div class="feature-content">
+            <h3>Expert Faculty</h3>
+            <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Mentorship by masters with global track records. Our tutors are architects of ranks, guiding you through the toughest concepts with surgical precision.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon-pane">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=600" alt="Premium Notes">
+          </div>
+          <div class="feature-content">
+            <h3>Premium Notes</h3>
+            <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Curated smart notes designed for deep conceptual depth. Structured for competitive mastery and rank-optimization.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon-pane">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=600" alt="Classroom Friendly">
+          </div>
+          <div class="feature-content">
+            <h3>Classroom Friendly</h3>
+            <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">A 100% student-centric interactive environment. Bridging the gap between effort and rank, making complex learning result-oriented.</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="ceo-home-section reveal">
+        <p style="font-size: 1.4rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. Our goal is not just limited to rote learning, but to create a digital nexus where every student can achieve their full potential. We transform your effort into ranks through conceptual clarity."</p>
+        <div class="ceo-info">
+          <h3>Dr. Lalit Kumar</h3>
+          <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>
+        </div>
+        <div class="social-links-home">
+          <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="li"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </section>
     </div>
-
-    <div class="feature-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600" alt="Expert Faculty">
-        </div>
-        <div class="feature-content">
-          <h3>Expert Faculty</h3>
-          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Mentorship by masters with global track records. Our tutors are architects of ranks, guiding you with surgical precision.</p>
-        </div>
-      </div>
-
-      <div class="feature-card reveal">
-        <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=600" alt="Premium Notes">
-        </div>
-        <div class="feature-content">
-          <h3>Premium Notes</h3>
-          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Curated smart notes for deep conceptual depth. Structured for competitive mastery and rank-optimization.</p>
-        </div>
-      </div>
-
-      <div class="feature-card reveal">
-        <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=600" alt="Classroom Friendly">
-        </div>
-        <div class="feature-content">
-          <h3>Classroom Friendly</h3>
-          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">A 100% student-centric interactive environment. Bridging the gap between effort and rank.</p>
-        </div>
-      </div>
-    </div>
-
-    <section class="ceo-home-section reveal">
-      <p style="font-size: 1.4rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. We transform your effort into ranks through conceptual clarity."</p>
-      <div class="ceo-info">
-        <h3>Dr. Lalit Kumar</h3>
-        <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>
-      </div>
-      <div class="social-links-home">
-        <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="li"><i class="fab fa-linkedin"></i></a>
-      </div>
-    </section>
 
     <footer style="padding: 40px; text-align: center; opacity: 0.3; font-size: 11px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
   </main>
