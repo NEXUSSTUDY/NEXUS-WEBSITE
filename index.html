@@ -31,40 +31,38 @@
       --apple-gray: #f5f5f7;      
       --text: #1d1d1f;      
       --accent: #0071e3;      
-      --border: rgba(0,0,0,0.06);      
-      --shadow-light: 0 8px 24px rgba(0, 0, 0, 0.05);      
-      --shadow-deep: 0 30px 70px rgba(0, 0, 0, 0.12);      
-      --glass: rgba(255,255,255,0.85);      
+      --border: rgba(0,0,0,0.08);      
+      --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.06);      
+      --shadow-deep: 0 40px 100px rgba(0, 0, 0, 0.15);      
+      --glass: rgba(255, 255, 255, 0.75);      
     }      
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }      
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1); }      
     body { background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }      
   
-    /* --- ULTRA PREMIUM HEADER (Better than Apple — thinner, deeper blur, micro-shadow) --- */      
+    /* --- ULTRA PREMIUM HEADER (Apple 2025 level) --- */      
     header {      
-      height: 64px; background: var(--glass); backdrop-filter: saturate(200%) blur(50px);      
+      height: 72px; background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(200%) blur(60px);      
       display: flex; align-items: center; padding: 0 5%;      
       position: fixed; width: 100%; top: 0; z-index: 10000; border-bottom: 1px solid var(--border);      
-      box-shadow: var(--shadow-light);      
     }      
-    .menu-btn { font-size: 26px; cursor: pointer; padding: 6px; z-index: 2001; }      
-    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 10px; }      
+    .menu-btn { font-size: 26px; cursor: pointer; padding: 10px; z-index: 2001; }      
+    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 14px; }      
     .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; color: var(--text); }      
-    .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, #0071e3, #003d80); border-radius: 12px; position: relative; box-shadow: 0 6px 16px rgba(0,113,227,0.4); }      
+    .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, #0071e3, #0051b3); border-radius: 12px; position: relative; box-shadow: 0 6px 20px rgba(0,113,227,0.4); }      
     .logo-mark::after { content: 'N'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; }      
   
-    /* TOP LOGIN ACTIONS — Apple navigation elegance */      
     .header-actions { display: flex; gap: 32px; align-items: center; }      
     .login-nav {       
       text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px;       
-      text-transform: uppercase; cursor: pointer; letter-spacing: 1.4px; opacity: 0.7;      
+      text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8;      
     }      
     .login-nav:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }      
   
-    /* --- SIDEBAR — Ultra glassmorphic premium */      
+    /* --- SIDEBAR --- */      
     #sidebar {      
-      position: fixed; top: 0; left: -360px; width: 340px; height: 100%;      
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(60px);      
-      z-index: 20000; padding: 80px 40px; box-shadow: 40px 0 90px rgba(0,0,0,0.15);      
+      position: fixed; top: 0; left: -380px; width: 360px; height: 100%;      
+      background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px);      
+      z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15);      
       display: flex; flex-direction: column;      
     }      
     #sidebar.open { left: 0; }      
@@ -72,7 +70,7 @@
     .sidebar-menu li { margin-bottom: 28px; font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 14px; }      
     .sidebar-menu li:hover { color: var(--accent); padding-left: 14px; }      
   
-    /* --- FLOATING TEXT — Subtle & premium */      
+    /* --- FLOATING TEXT --- */      
     .floating-text-bg {      
       position: absolute; width: 100%; height: 100%; top: 0; left: 0;      
       z-index: -1; pointer-events: none; overflow: hidden;      
@@ -83,73 +81,147 @@
     }      
     @keyframes moveText { from { transform: translateX(120%); } to { transform: translateX(-120%); } }      
   
-    /* --- VIEW SECTIONS */      
-    .view-section { display: none; padding: 120px 6% 110px; min-height: 100vh; animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }      
+    /* --- VIEW SECTIONS --- */      
+    .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }      
     .active-view { display: block; }      
     @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; } }      
   
-    /* --- HERO — Cinematic Apple-level premium (bigger, deeper, cleaner) */      
+    /* --- HERO - Ultra Cinematic --- */      
     .hero-container {      
       text-align: center; max-width: 1180px; margin: 0 auto 120px;      
-      padding: 160px 70px 130px; border-radius: 56px; position: relative; overflow: hidden;      
+      padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden;      
       box-shadow: var(--shadow-deep); border: 1px solid var(--border);      
     }      
     .hero-bg-image {      
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;      
-      background: url('https://images.unsplash.com/photo-1582213782179-2c2b4f6b7e6f?auto=format&fit=crop&q=95&w=2400') no-repeat center center;      
+      background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=95&w=2400') no-repeat center center;      
       background-size: cover; z-index: -1; opacity: 0.11;      
     }      
     .hero-h2 { font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.9; font-weight: 900; letter-spacing: -4.5px; margin-bottom: 36px; position: relative; }      
     .hero-h2 span { color: var(--accent); }      
-    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.3rem; line-height: 1.7; margin: 0 auto 52px; position: relative; }      
-    .hero-container .btn-submit { position: relative; font-size: 1.15rem; padding: 24px 56px; border-radius: 9999px; box-shadow: 0 10px 30px rgba(0,113,227,0.3); }      
-    .hero-container .btn-submit:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 25px 50px rgba(0,113,227,0.4); }      
+    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }      
+    .hero-container .btn-submit { position: relative; font-size: 1.15rem; padding: 24px 56px; border-radius: 9999px; box-shadow: 0 12px 35px rgba(0,113,227,0.3); }      
+    .hero-container .btn-submit:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 25px 50px rgba(0,113,227,0.4); }      
   
-    /* --- FEATURE CARDS — Apple product-card level (ultra clean hover) */      
+    /* --- FEATURE CARDS - Apple Product Level --- */      
     .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }      
     .feature-card {       
-      background: var(--apple-gray); padding: 78px; border-radius: 56px; border: 1px solid var(--border);       
-      display: grid; grid-template-columns: 1fr 1.65fr; gap: 56px; align-items: center;      
+      background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border);       
+      display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center;      
       transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-light);      
     }      
-    .feature-card:hover { transform: translateY(-16px) scale(1.02); background: #fff; box-shadow: var(--shadow-deep); }      
-    .feature-icon-pane { height: 100%; width: 100%; border-radius: 42px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.12); }      
+    .feature-card:hover { transform: translateY(-15px) scale(1.02); background: #fff; box-shadow: var(--shadow-deep); }      
+    .feature-icon-pane { height: 100%; width: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }      
     .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }      
-    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 26px; letter-spacing: -1.6px; }      
-    .feature-content p { opacity: 0.68; font-size: 1.18rem; line-height: 1.75; }      
+    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }      
+    .feature-content p { opacity: 0.67; font-size: 1.18rem; line-height: 1.75; }      
   
-    /* --- CEO SECTION — Premium & elegant */      
-    .ceo-home-section { margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); color: var(--text); border-radius: 56px; text-align: center; border: 1px solid var(--border); box-shadow: var(--shadow-light); }      
+    /* --- CEO SECTION --- */      
+    .ceo-home-section { margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); color: var(--text); border-radius: 52px; text-align: center; border: 1px solid var(--border); box-shadow: var(--shadow-light); }      
     .ceo-info h3 { font-family: 'Outfit'; font-size: 2.1rem; font-weight: 900; color: var(--accent); margin-top: 32px; }      
   
     /* SOCIALS */      
     .social-links-home { display: flex; justify-content: center; gap: 40px; margin-top: 52px; font-size: 34px; }      
-    .social-links-home .insta { color: #E4405F; }      
-    .social-links-home .yt { color: #FF0000; }      
-    .social-links-home .li { color: #0077B5; }      
-    .social-links-home a:hover { transform: scale(1.2); }      
+    .social-links-home a:hover { transform: scale(1.2) rotate(8deg); }      
   
-    /* --- INFINITE TICKER — Ultra smooth */      
-    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; box-shadow: 0 -6px 24px rgba(0,0,0,0.06); }      
+    /* --- TICKER --- */      
+    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; }      
     .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }      
-    .ticker-item { width: 400px; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }      
+    .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }      
     .ticker-item i { color: #facc15; }      
     @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }      
   
-    /* FORMS — Glassmorphic premium */      
-    .glass-card { background: var(--apple-gray); border-radius: 56px; padding: 68px; border: 1px solid var(--border); max-width: 540px; margin: 0 auto; box-shadow: var(--shadow-deep); }      
-    input, select { width: 100%; padding: 24px; border-radius: 28px; border: 1px solid var(--border); margin-bottom: 26px; outline: none; font-size: 1.1rem; }      
-    .btn-submit { width: 100%; padding: 26px; border-radius: 9999px; border: none; background: var(--text); color: #fff; font-weight: 800; cursor: pointer; font-size: 1.15rem; box-shadow: 0 10px 30px rgba(0,0,0,0.18); }      
-    .btn-submit:hover { background: #000; transform: translateY(-3px); }      
+    /* ====================== ULTRA PREMIUM 3D LOGIN FORMS ====================== */      
+    .glass-card { 
+      background: var(--glass); 
+      border-radius: 52px; 
+      padding: 70px 60px; 
+      border: 1px solid rgba(255,255,255,0.6); 
+      max-width: 540px; 
+      margin: 80px auto; 
+      box-shadow: 0 40px 120px rgba(0,0,0,0.25),
+                  inset 0 0 60px rgba(255,255,255,0.6); 
+      backdrop-filter: blur(40px); 
+      position: relative; 
+      overflow: hidden; 
+    }      
+    .glass-card::before { 
+      content: ''; 
+      position: absolute; 
+      top: -50%; left: -50%; 
+      width: 200%; height: 200%; 
+      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%); 
+      pointer-events: none; 
+      animation: shine 8s linear infinite; 
+    }      
+    @keyframes shine { 0% { transform: translateX(-30%) translateY(-30%); } 100% { transform: translateX(30%) translateY(30%); } }      
+    
+    .glass-card h2 { 
+      font-family: 'Outfit'; 
+      font-size: 2.4rem; 
+      font-weight: 900; 
+      text-align: center; 
+      margin-bottom: 50px; 
+      letter-spacing: -1.2px; 
+      background: linear-gradient(90deg, #1d1d1f, #0071e3); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }      
+    
+    .input-group { position: relative; margin-bottom: 28px; }      
+    .input-group input { 
+      width: 100%; 
+      padding: 24px 28px; 
+      border-radius: 28px; 
+      border: 1.5px solid rgba(0,0,0,0.12); 
+      background: rgba(255,255,255,0.85); 
+      font-size: 1.1rem; 
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+      outline: none; 
+    }      
+    .input-group input:focus { 
+      border-color: var(--accent); 
+      box-shadow: 0 0 0 4px rgba(0,113,227,0.15); 
+      transform: translateY(-2px); 
+    }      
+    
+    .btn-submit { 
+      width: 100%; 
+      padding: 26px; 
+      border-radius: 9999px; 
+      border: none; 
+      background: linear-gradient(90deg, var(--text), #111); 
+      color: #fff; 
+      font-weight: 800; 
+      font-size: 1.15rem; 
+      cursor: pointer; 
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25); 
+      position: relative; 
+      overflow: hidden; 
+    }      
+    .btn-submit:hover { 
+      transform: translateY(-4px) scale(1.03); 
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35); 
+    }      
+    .btn-submit::after { 
+      content: ''; 
+      position: absolute; 
+      top: -50%; left: -50%; 
+      width: 40%; height: 300%; 
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent); 
+      transform: skewX(-25deg); 
+      animation: btnShine 4s infinite; 
+    }      
+    @keyframes btnShine { 0% { transform: translateX(-150%) skewX(-25deg); } 100% { transform: translateX(400%) skewX(-25deg); } }      
   
-    /* --- APPLE STYLE SCROLL REVEAL — buttery smooth */      
+    /* --- APPLE STYLE SCROLL REVEAL --- */      
     .reveal { opacity: 0; transform: translateY(80px); transition: all 1.4s cubic-bezier(0.4, 0, 0.2, 1); }      
     .reveal.active { opacity: 1; transform: translateY(0); }      
   
     @media (max-width: 1024px) {       
-      .feature-card { grid-template-columns: 1fr; padding: 55px; text-align: center; }       
+      .feature-card { grid-template-columns: 1fr; padding: 60px; text-align: center; }       
       .feature-icon-pane { height: 280px; }      
-      .hero-container { padding: 110px 40px; }      
+      .hero-container, .glass-card { padding: 100px 30px; }      
     }
 
   </style>      
@@ -164,7 +236,7 @@
       <li>CUET / NDA</li>      
       <li>BOARD PYQ</li>      
     </ul>      
-    <div class="social-links-home" style="font-size: 20px; border-top: 1px solid var(--border); padding-top: 20px; margin-top: auto;">      
+    <div class="social-links-home" style="font-size: 22px; border-top: 1px solid var(--border); padding-top: 30px; margin-top: auto;">      
       <a href="#" class="insta"><i class="fab fa-instagram"></i></a>      
       <a href="#" class="yt"><i class="fab fa-youtube"></i></a>      
       <a href="#" class="li"><i class="fab fa-linkedin"></i></a>      
@@ -191,13 +263,13 @@
       <div class="hero-bg-image"></div>      
       <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>      
       <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Welcome to world-class academic rigour where every student's potential is realized through conceptual clarity and expert mentorship.</p>      
-      <button class="btn-submit" style="width:auto; padding:18px 40px; background:var(--accent);" onclick="switchView('student')">Enroll Elite Batch</button>      
+      <button class="btn-submit" style="width:auto; padding:24px 60px; background:var(--accent);" onclick="switchView('student')">Enroll Elite Batch</button>      
     </div>      
       
     <div class="feature-grid">      
       <div class="feature-card reveal">      
         <div class="feature-icon-pane">      
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=95&w=900" alt="Expert Faculty">      
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=95&w=900" alt="Expert Faculty">      
         </div>      
         <div class="feature-content">      
           <h3>Expert Faculty</h3>      
@@ -207,7 +279,7 @@
   
       <div class="feature-card reveal">      
         <div class="feature-icon-pane">      
-          <img src="https://images.unsplash.com/photo-1582213782179-2c2b4f6b7e6f?auto=format&fit=crop&q=95&w=900" alt="Premium Notes">      
+          <img src="https://images.unsplash.com/photo-1454165200801-081b6c4c6c3d?auto=format&fit=crop&q=95&w=900" alt="Premium Notes">      
         </div>      
         <div class="feature-content">      
           <h3>Premium Notes</h3>      
@@ -217,7 +289,7 @@
   
       <div class="feature-card reveal">      
         <div class="feature-icon-pane">      
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=95&w=900" alt="Classroom Friendly">      
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=95&w=900" alt="Classroom Friendly">      
         </div>      
         <div class="feature-content">      
           <h3>Classroom Friendly</h3>      
@@ -227,7 +299,7 @@
     </div>      
   
     <section class="ceo-home-section reveal">      
-      <p style="font-size: 1.4rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. Our goal is not just limited to rote learning, but to create a digital nexus where every student can achieve their full potential. We transform your effort into ranks through conceptual clarity and personalized mentorship. This is my promise."</p>      
+      <p style="font-size: 1.45rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. Our goal is not just limited to rote learning, but to create a digital nexus where every student can achieve their full potential. We transform your effort into ranks through conceptual clarity and personalized mentorship. This is my promise."</p>      
       <div class="ceo-info">      
         <h3>Dr. Lalit Kumar</h3>      
         <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>      
@@ -239,25 +311,35 @@
       </div>      
     </section>      
   
-    <footer style="padding: 40px; text-align: center; opacity: 0.3; font-size: 11px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
+    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
 
   </main>        
 
+  <!-- ==================== ULTRA PREMIUM 3D STUDENT LOGIN ==================== -->
   <main id="student-v" class="view-section">      
     <div class="glass-card">      
-      <h2 style="font-family:'Outfit'; margin-bottom:30px; font-weight:900;">Student Login</h2>      
-      <input type="text" placeholder="Username / Email" style="width:100%; padding:18px; border-radius:15px; border:1.5px solid var(--border); margin-bottom:15px; outline:none;">      
-      <input type="password" placeholder="Password" style="width:100%; padding:18px; border-radius:15px; border:1.5px solid var(--border); margin-bottom:20px; outline:none;">      
-      <button style="width:100%; padding:20px; border-radius:50px; border:none; background:var(--text); color:#fff; font-weight:800; cursor:pointer;">Access Portal</button>      
+      <h2>Student Login</h2>      
+      <div class="input-group">
+        <input type="text" placeholder="Username / Email">
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password">
+      </div>
+      <button class="btn-submit">Access Elite Portal</button>
     </div>      
   </main>        
 
+  <!-- ==================== ULTRA PREMIUM 3D TUTOR LOGIN ==================== -->
   <main id="teacher-v" class="view-section">      
     <div class="glass-card">      
-      <h2 style="font-family:'Outfit'; margin-bottom:30px; font-weight:900;">Tutor Access</h2>      
-      <input type="text" placeholder="Faculty ID" style="width:100%; padding:18px; border-radius:15px; border:1.5px solid var(--border); margin-bottom:15px; outline:none;">      
-      <input type="password" placeholder="Password" style="width:100%; padding:18px; border-radius:15px; border:1.5px solid var(--border); margin-bottom:20px; outline:none;">      
-      <button style="width:100%; padding:20px; border-radius:50px; border:none; background:#000; color:#fff; font-weight:800; cursor:pointer;">Faculty Login</button>      
+      <h2>Tutor Access</h2>      
+      <div class="input-group">
+        <input type="text" placeholder="Faculty ID">
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password">
+      </div>
+      <button class="btn-submit">Faculty Login</button>
     </div>      
   </main>        
 
@@ -279,14 +361,13 @@
       if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();      
     }      
       
-    /* --- APPLE STYLE SCROLL REVEAL SCRIPT --- */      
     window.addEventListener('scroll', reveal);      
     function reveal() {      
       var reveals = document.querySelectorAll('.reveal');      
       for (var i = 0; i < reveals.length; i++) {      
         var windowHeight = window.innerHeight;      
         var elementTop = reveals[i].getBoundingClientRect().top;      
-        var elementVisible = 150;      
+        var elementVisible = 160;      
         if (elementTop < windowHeight - elementVisible) {      
           reveals[i].classList.add('active');      
         }      
