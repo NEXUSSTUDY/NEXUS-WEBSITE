@@ -17,9 +17,6 @@
       --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.06);
       --shadow-deep: 0 40px 100px rgba(0, 0, 0, 0.15);
       --glass: rgba(255, 255, 255, 0.75);
-      --instagram: #E1306C;
-      --youtube: #FF0000;
-      --linkedin: #0A66C2;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -28,172 +25,188 @@
     .reveal-scroll { opacity: 0; transform: translateY(50px) scale(0.95); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
     .reveal-scroll.visible { opacity: 1; transform: translateY(0) scale(1); }
 
+    /* --- HEADER --- */
     header { height: 72px; background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(200%) blur(60px); display: flex; align-items: center; padding: 0 5%; position: fixed; width: 100%; top: 0; z-index: 10000; border-bottom: 1px solid var(--border); }
-    .menu-btn { font-size: 26px; cursor: pointer; padding: 10px; z-index: 2001; }
-    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 14px; }
-    .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; color: var(--text); }
-    .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, #0071e3, #0051b3); border-radius: 12px; position: relative; box-shadow: 0 6px 20px rgba(0,113,227,0.4); }
+    .logo { flex: 1; display: flex; align-items: center; gap: 14px; cursor: pointer; }
+    .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; }
+    .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, #0071e3, #0051b3); border-radius: 12px; position: relative; }
     .logo-mark::after { content: 'N'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; }
 
-    .header-actions { display: flex; gap: 32px; align-items: center; }
-    .login-nav { text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px; text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8; }
-    .login-nav:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }
+    /* --- 3D LOGIN BUTTON --- */
+    .btn-login-3d {
+      background: linear-gradient(145deg, #0071e3, #0051b3);
+      color: white;
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #00448a, 0 8px 15px rgba(0, 113, 227, 0.3);
+      transform: translateY(0);
+      transition: all 0.1s ease;
+    }
+    .btn-login-3d:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #00448a, 0 12px 20px rgba(0, 113, 227, 0.4); }
+    .btn-login-3d:active { transform: translateY(2px); box-shadow: 0 1px 0 #00448a; }
 
-    #sidebar { position: fixed; top: 0; left: -380px; width: 360px; height: 100%; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px); z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15); display: flex; flex-direction: column; }
-    #sidebar.open { left: 0; }
-    .sidebar-menu { list-style: none; flex: 1; margin-top: 40px; overflow-y: auto; }
-    .sidebar-menu li { margin-bottom: 20px; font-family: 'Outfit'; font-size: 1.2rem; font-weight: 800; cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
-    .sidebar-menu li:hover { color: var(--accent); padding-left: 10px; border-bottom-color: var(--accent); }
+    /* --- PORTAL MENU --- */
+    #portalMenu {
+      position: fixed; top: 80px; right: 5%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 15px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: var(--shadow-deep);
+      border: 1px solid var(--border);
+      z-index: 10001;
+      transform-origin: top right;
+      animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    .portal-item {
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .portal-item:hover { background: var(--accent); color: white; }
 
-    .scroll-indicator { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 9999; opacity: 0; transition: opacity 0.5s ease; }
-    .scroll-indicator.show { opacity: 1; }
-    .line { width: 45px; height: 6px; background: #e0e0e0; border-radius: 10px; position: relative; overflow: hidden; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1); }
-    .line::before { content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: lineFlow 2s infinite cubic-bezier(0.4, 0, 0.2, 1); }
-    @keyframes lineFlow { 0% { left: -100%; } 100% { left: 100%; } }
-
+    /* --- SECTIONS --- */
     .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; position: relative; }
     .active-view { display: block; }
 
-    .hero-container { text-align: center; max-width: 1180px; margin: 0 auto 120px; padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden; box-shadow: var(--shadow-deep); border: 1px solid var(--border); }
-    .hero-bg-image { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000') no-repeat center center; background-size: cover; z-index: -1; opacity: 0.12; }
-    .hero-h2 { font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.9; font-weight: 900; letter-spacing: -4.5px; margin-bottom: 36px; }
+    .hero-container { text-align: center; padding: 160px 70px; border-radius: 60px; background: var(--apple-gray); position: relative; overflow: hidden; margin-bottom: 120px; box-shadow: var(--shadow-deep); }
+    .hero-h2 { font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); font-weight: 900; line-height: 0.9; margin-bottom: 36px; }
     .hero-h2 span { color: var(--accent); }
-    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }
-
-    .btn-3d { position: relative; font-size: 1.18rem; padding: 24px 60px; border-radius: 9999px; background: linear-gradient(145deg, #0071e3, #0051b3); color: white; font-weight: 800; border: none; box-shadow: 0 10px 30px rgba(0,113,227,0.4); cursor: pointer; }
 
     .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }
-    .feature-card { background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center; box-shadow: var(--shadow-light); }
-    .feature-icon-pane { height: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
+    .feature-card { background: var(--apple-gray); padding: 80px; border-radius: 52px; display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center; border: 1px solid var(--border); }
+    .feature-icon-pane { border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
     .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }
-    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }
 
-    .ceo-home-section { margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); color: var(--text); border-radius: 52px; text-align: center; border: 1px solid var(--border); }
+    .ceo-home-section { padding: 100px 10%; background: var(--apple-gray); border-radius: 52px; text-align: center; border: 1px solid var(--border); }
+    
     .social-links-home { display: flex; justify-content: center; gap: 30px; margin-top: 52px; }
-    .social-btn { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .social-btn { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; text-decoration: none; transition: 0.3s; }
     .s-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-    .s-yt { background: var(--youtube); }
-    .s-li { background: var(--linkedin); }
+    .s-yt { background: #FF0000; }
+    .s-li { background: #0A66C2; }
 
-    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; }
+    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; padding: 18px 0; border-top: 1px solid var(--border); z-index: 9000; overflow: hidden; }
     .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }
-    .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-    @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker-item { width: 400px; font-weight: 700; display: flex; align-items: center; gap: 14px; }
 
-    .glass-card { background: var(--glass); border-radius: 52px; padding: 70px 60px; border: 1px solid rgba(255,255,255,0.6); max-width: 540px; margin: 80px auto; box-shadow: 0 40px 120px rgba(0,0,0,0.25); backdrop-filter: blur(40px); }
-    .btn-submit { width: 100%; padding: 26px; border-radius: 9999px; border: none; background: #111; color: #fff; font-weight: 800; font-size: 1.15rem; cursor: pointer; }
+    #sidebar { position: fixed; top: 0; left: -380px; width: 360px; height: 100%; background: #fff; z-index: 20000; padding: 80px 45px; transition: 0.5s; box-shadow: 40px 0 100px rgba(0,0,0,0.1); }
+    #sidebar.open { left: 0; }
   </style>
 </head>
 <body>
 
+  <div id="portalMenu">
+    <div class="portal-item" onclick="switchView('student')"><i class="fas fa-user-graduate"></i> Student Login</div>
+    <div class="portal-item" onclick="switchView('teacher')"><i class="fas fa-chalkboard-teacher"></i> Tutor Login</div>
+  </div>
+
   <div id="sidebar">
     <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
-    <ul class="sidebar-menu">
-      <li onclick="switchView('home')">HOME</li>
-      <li>NCERT BOOKS</li><li>JEE PREP</li><li>NEET PREP</li><li>CUET</li><li>NDA</li><li>BOARD PYQ</li>
+    <ul style="list-style: none; margin-top: 40px;">
+      <li onclick="switchView('home')" style="font-weight: 800; margin-bottom: 20px; cursor: pointer;">HOME</li>
+      <li style="font-weight: 800; margin-bottom: 20px; cursor: pointer;">NCERT BOOKS</li>
+      <li style="font-weight: 800; margin-bottom: 20px; cursor: pointer;">JEE PREP</li>
+      <li style="font-weight: 800; margin-bottom: 20px; cursor: pointer;">NEET PREP</li>
     </ul>
-    <div class="social-links-home" style="margin-top: auto; padding-bottom: 20px; gap: 15px;">
-      <a href="#" class="social-btn s-ig" style="width:45px; height:45px; font-size: 20px;"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="social-btn s-yt" style="width:45px; height:45px; font-size: 20px;"><i class="fab fa-youtube"></i></a>
-      <a href="#" class="social-btn s-li" style="width:45px; height:45px; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
-    </div>
   </div>
 
   <header>
     <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>
     <div class="logo" onclick="switchView('home')"><div class="logo-mark"></div><h1>NEXUS STUDY</h1></div>
     <div class="header-actions">
-      <div class="login-nav" onclick="switchView('student')">Student Login</div>
-      <div class="login-nav" onclick="switchView('teacher')">Tutor Login</div>
+      <button class="btn-login-3d" onclick="togglePortal()">Login / Register</button>
     </div>
   </header>
 
   <main id="home-v" class="view-section active-view">
     <div class="hero-container reveal-scroll">
-      <div class="hero-bg-image"></div>
       <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>
-      <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Precision meets excellence.</p>
       <button class="btn-3d" onclick="switchView('student')">Enroll Elite Batch</button>
     </div>
 
     <div class="feature-grid">
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"></div>
-        <div class="feature-content"><h3>Expert Faculty</h3><p>Mentorship by masters with global track records. Our tutors are architects of ranks, guiding you with surgical precision.</p></div>
+        <div class="feature-content"><h3>Expert Faculty</h3><p>Mentorship by masters with surgical precision.</p></div>
       </div>
-
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000"></div>
-        <div class="feature-content"><h3>Premium Notes</h3><p>Handcrafted concise notes for deep conceptual mastery. Designed specifically for elite competitive excellence.</p></div>
+        <div class="feature-content"><h3>Premium Notes</h3><p>Curated smart notes for deep conceptual depth.</p></div>
       </div>
-
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000"></div>
-        <div class="feature-content"><h3>Classroom Friendly</h3><p>A 100% student-centric interactive environment. Making complex learning intuitive and result-oriented.</p></div>
+        <div class="feature-content"><h3>Classroom Friendly</h3><p>100% student-centric interactive environment.</p></div>
       </div>
-
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000"></div>
-        <div class="feature-content"><h3>Elite & Affordable</h3><p>World-class education made accessible. We focus on results, not on heavy fee structures.</p></div>
+        <div class="feature-content"><h3>Elite & Affordable</h3><p>Democratizing elite education for all aspirants.</p></div>
       </div>
     </div>
 
     <section class="ceo-home-section reveal-scroll">
-      <p style="font-size: 1.45rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. We transform effort into ranks through conceptual clarity."</p>
-      <div class="ceo-info"><h3>Dr. Lalit Kumar</h3><span>CEO & Director | Ph.D, M.Sc, B.Ed</span></div>
+      <p style="font-size: 1.45rem; font-style: italic;">"Education at Nexus Study is a journey towards world-class excellence."</p>
+      <div style="margin-top: 32px;"><h3>Dr. Lalit Kumar</h3><span>CEO & Director</span></div>
       <div class="social-links-home">
         <a href="#" class="social-btn s-ig"><i class="fab fa-instagram"></i></a>
         <a href="#" class="social-btn s-yt"><i class="fab fa-youtube"></i></a>
         <a href="#" class="social-btn s-li"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </section>
-    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px; margin-bottom: 60px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
   </main>
 
   <main id="student-v" class="view-section">
-    <div class="glass-card reveal-scroll">
+    <div style="max-width: 400px; margin: 0 auto; background: var(--apple-gray); padding: 50px; border-radius: 30px;">
       <h2>Student Login</h2>
-      <div class="input-group"><input type="text" placeholder="Username"></div>
-      <div class="input-group"><input type="password" placeholder="Password"></div>
-      <button class="btn-submit">Access Elite Portal</button>
+      <input type="text" placeholder="Username" style="width:100%; padding:15px; margin:10px 0; border-radius:10px; border:1px solid #ddd;">
+      <button style="width:100%; padding:15px; background:#111; color:#fff; border-radius:10px; cursor:pointer;">Sign In</button>
     </div>
   </main>
 
   <main id="teacher-v" class="view-section">
-    <div class="glass-card reveal-scroll">
+    <div style="max-width: 400px; margin: 0 auto; background: var(--apple-gray); padding: 50px; border-radius: 30px;">
       <h2>Tutor Access</h2>
-      <div class="input-group"><input type="text" placeholder="Faculty ID"></div>
-      <div class="input-group"><input type="password" placeholder="Password"></div>
-      <button class="btn-submit">Faculty Login</button>
+      <input type="text" placeholder="Faculty ID" style="width:100%; padding:15px; margin:10px 0; border-radius:10px; border:1px solid #ddd;">
+      <button style="width:100%; padding:15px; background:#111; color:#fff; border-radius:10px; cursor:pointer;">Login</button>
     </div>
   </main>
 
-  <div class="ticker-bar"><div class="ticker-track">
-    <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
-    <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
-  </div></div>
-
-  <div class="scroll-indicator" id="scrollIndicator"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="ticker-bar"><div class="ticker-track"><div class="ticker-item">IIT Delhi: 5.0 ★</div><div class="ticker-item">AIIMS: 5.0 ★</div></div></div>
 
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
+    function togglePortal() { 
+      const menu = document.getElementById('portalMenu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex'; 
+    }
     function switchView(id) {
-      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
+      document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active-view'));
       document.getElementById(id + '-v').classList.add('active-view');
+      document.getElementById('portalMenu').style.display = 'none';
       window.scrollTo(0,0);
-      if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();
       triggerScrollReveal();
     }
     function triggerScrollReveal() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal-scroll').forEach(el => observer.observe(el));
+      const o = new IntersectionObserver((es) => {
+        es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, {threshold: 0.15});
+      document.querySelectorAll('.reveal-scroll').forEach(el => o.observe(el));
     }
-    window.addEventListener('scroll', () => {
-      const indicator = document.getElementById('scrollIndicator');
-      window.scrollY > 150 ? indicator.classList.add('show') : indicator.classList.remove('show');
-    });
     document.addEventListener('DOMContentLoaded', triggerScrollReveal);
   </script>
 </body>
