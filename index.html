@@ -1,324 +1,394 @@
-<!DOCTYPE html>      
-<html lang="en">      
-<head>      
-  <meta charset="UTF-8">      
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">        
-  <title>NEXUS STUDY | Elite Learning Hub</title>      
-  <meta name="description" content="NEXUS STUDY - Bharat's elite digital ecosystem for JEE, NEET and Competitive Foundations. Precision learning under the direction of Dr. Lalit Kumar.">      
-  <meta name="robots" content="index, follow">      
-  <link rel="canonical" href="https://www.nexusstudy.global/">        
-  <script type="application/ld+json">      
-  {      
-    "@context": "https://schema.org",      
-    "@type": "EducationalOrganization",      
-    "name": "NEXUS STUDY",      
-    "url": "https://www.nexusstudy.global/",      
-    "logo": "https://www.nexusstudy.global/logo.png",      
-    "description": "Elite digital ecosystem for JEE, NEET and Competitive Foundations.",      
-    "founder": {      
-      "@type": "Person",      
-      "name": "Dr. Lalit Kumar",      
-      "jobTitle": "CEO & Director",      
-      "honorificSuffix": "Ph.D, M.Sc, B.Ed"      
-    }      
-  }      
-  </script>        
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">      
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">      
-  <style>      
-    :root {      
-      --white: #ffffff;      
-      --apple-gray: #f5f5f7;      
-      --text: #1d1d1f;      
-      --accent: #0071e3;      
-      --border: rgba(0,0,0,0.08);      
-      --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.06);      
-      --shadow-deep: 0 40px 100px rgba(0, 0, 0, 0.15);      
-      --glass: rgba(255, 255, 255, 0.75);      
-    }      
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1); }      
-    body { background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>NEXUS STUDY | Elite Learning Hub</title>
+  <meta name="description" content="NEXUS STUDY - Bharat's elite digital ecosystem for JEE, NEET and Competitive Foundations. Precision learning under the direction of Dr. Lalit Kumar.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.nexusstudy.global/">
   
-    /* --- ULTRA PREMIUM HEADER (Apple 2025 level) --- */      
-    header {      
-      height: 72px; background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(200%) blur(60px);      
-      display: flex; align-items: center; padding: 0 5%;      
-      position: fixed; width: 100%; top: 0; z-index: 10000; border-bottom: 1px solid var(--border);      
-    }      
-    .menu-btn { font-size: 26px; cursor: pointer; padding: 10px; z-index: 2001; }      
-    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 14px; }      
-    .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; color: var(--text); }      
-    .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, #0071e3, #0051b3); border-radius: 12px; position: relative; box-shadow: 0 6px 20px rgba(0,113,227,0.4); }      
-    .logo-mark::after { content: 'N'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; }      
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "NEXUS STUDY",
+    "url": "https://www.nexusstudy.global/",
+    "logo": "https://www.nexusstudy.global/logo.png",
+    "description": "Elite digital ecosystem for JEE, NEET and Competitive Foundations.",
+    "founder": {
+      "@type": "Person",
+      "name": "Dr. Lalit Kumar",
+      "jobTitle": "CEO & Director",
+      "honorificSuffix": "Ph.D, M.Sc, B.Ed"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
   
-    .header-actions { display: flex; gap: 32px; align-items: center; }      
-    .login-nav {       
-      text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px;       
-      text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8;      
-    }      
-    .login-nav:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }      
-  
-    /* --- SIDEBAR --- */      
-    #sidebar {      
-      position: fixed; top: 0; left: -380px; width: 360px; height: 100%;      
-      background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px);      
-      z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15);      
-      display: flex; flex-direction: column;      
-    }      
-    #sidebar.open { left: 0; }      
-    .sidebar-menu { list-style: none; flex: 1; margin-top: 60px; }      
-    .sidebar-menu li { margin-bottom: 28px; font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 14px; }      
-    .sidebar-menu li:hover { color: var(--accent); padding-left: 14px; }      
-  
-    /* --- FLOATING TEXT --- */      
-    .floating-text-bg {      
-      position: absolute; width: 100%; height: 100%; top: 0; left: 0;      
-      z-index: -1; pointer-events: none; overflow: hidden;      
-    }      
-    .float-word {      
-      position: absolute; font-family: 'Outfit'; font-weight: 900; font-size: 7vw;      
-      color: rgba(0, 113, 227, 0.035); white-space: nowrap; animation: moveText 32s linear infinite;      
-    }      
-    @keyframes moveText { from { transform: translateX(120%); } to { transform: translateX(-120%); } }      
-  
-    /* --- VIEW SECTIONS --- */      
-    .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }      
-    .active-view { display: block; }      
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; } }      
-  
-    /* --- HERO - Ultra Cinematic --- */      
-    .hero-container {      
-      text-align: center; max-width: 1180px; margin: 0 auto 120px;      
-      padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden;      
-      box-shadow: var(--shadow-deep); border: 1px solid var(--border);      
-    }      
-    .hero-bg-image {      
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;      
-      background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=95&w=2400') no-repeat center center;      
-      background-size: cover; z-index: -1; opacity: 0.11;      
-    }      
-    .hero-h2 { font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.9; font-weight: 900; letter-spacing: -4.5px; margin-bottom: 36px; position: relative; }      
-    .hero-h2 span { color: var(--accent); }      
-    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }      
-    .hero-container .btn-submit { position: relative; font-size: 1.15rem; padding: 24px 56px; border-radius: 9999px; box-shadow: 0 12px 35px rgba(0,113,227,0.3); }      
-    .hero-container .btn-submit:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 25px 50px rgba(0,113,227,0.4); }      
-  
-    /* --- FEATURE CARDS - Apple Product Level --- */      
-    .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }      
-    .feature-card {       
-      background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border);       
-      display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center;      
-      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-light);      
-    }      
-    .feature-card:hover { transform: translateY(-15px) scale(1.02); background: #fff; box-shadow: var(--shadow-deep); }      
-    .feature-icon-pane { height: 100%; width: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }      
-    .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }      
-    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }      
-    .feature-content p { opacity: 0.67; font-size: 1.18rem; line-height: 1.75; }      
-  
-    /* --- CEO SECTION --- */      
-    .ceo-home-section { margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); color: var(--text); border-radius: 52px; text-align: center; border: 1px solid var(--border); box-shadow: var(--shadow-light); }      
-    .ceo-info h3 { font-family: 'Outfit'; font-size: 2.1rem; font-weight: 900; color: var(--accent); margin-top: 32px; }      
-  
-    /* SOCIALS */      
-    .social-links-home { display: flex; justify-content: center; gap: 40px; margin-top: 52px; font-size: 34px; }      
-    .social-links-home a:hover { transform: scale(1.2) rotate(8deg); }      
-  
-    /* --- TICKER --- */      
-    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; }      
-    .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }      
-    .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }      
-    .ticker-item i { color: #facc15; }      
-    @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }      
-  
-    /* ====================== ULTRA PREMIUM 3D LOGIN FORMS ====================== */      
-    .glass-card { 
-      background: var(--glass); 
-      border-radius: 52px; 
-      padding: 70px 60px; 
-      border: 1px solid rgba(255,255,255,0.6); 
-      max-width: 540px; 
-      margin: 80px auto; 
-      box-shadow: 0 40px 120px rgba(0,0,0,0.25),
-                  inset 0 0 60px rgba(255,255,255,0.6); 
-      backdrop-filter: blur(40px); 
-      position: relative; 
-      overflow: hidden; 
-    }      
-    .glass-card::before { 
-      content: ''; 
-      position: absolute; 
-      top: -50%; left: -50%; 
-      width: 200%; height: 200%; 
-      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%); 
-      pointer-events: none; 
-      animation: shine 8s linear infinite; 
-    }      
-    @keyframes shine { 0% { transform: translateX(-30%) translateY(-30%); } 100% { transform: translateX(30%) translateY(30%); } }      
-    
-    .glass-card h2 { 
-      font-family: 'Outfit'; 
-      font-size: 2.4rem; 
-      font-weight: 900; 
-      text-align: center; 
-      margin-bottom: 50px; 
-      letter-spacing: -1.2px; 
-      background: linear-gradient(90deg, #1d1d1f, #0071e3); 
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent; 
-    }      
-    
-    .input-group { position: relative; margin-bottom: 28px; }      
-    .input-group input { 
+  <style>
+    :root {
+      --white: #ffffff;
+      --apple-gray: #f5f5f7;
+      --text: #1d1d1f;
+      --accent: #0071e3;
+      --border: rgba(0,0,0,0.08);
+      --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.06);
+      --shadow-deep: 0 40px 100px rgba(0, 0, 0, 0.15);
+      --glass: rgba(255, 255, 255, 0.75);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); }
+
+    body { 
+      background: var(--white); 
+      color: var(--text); 
+      overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased; 
+    }
+
+    /* --- HEADER --- */
+    header {
+      height: 72px; 
+      background: rgba(255, 255, 255, 0.94); 
+      backdrop-filter: saturate(200%) blur(60px);
+      display: flex; 
+      align-items: center; 
+      padding: 0 5%; 
+      position: fixed; 
       width: 100%; 
-      padding: 24px 28px; 
-      border-radius: 28px; 
-      border: 1.5px solid rgba(0,0,0,0.12); 
-      background: rgba(255,255,255,0.85); 
-      font-size: 1.1rem; 
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
-      outline: none; 
-    }      
+      top: 0; 
+      z-index: 10000; 
+      border-bottom: 1px solid var(--border);
+    }
+
+    .menu-btn { font-size: 26px; cursor: pointer; padding: 10px; z-index: 2001; }
+    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 14px; }
+    .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; color: var(--text); }
+    .logo-mark { 
+      width: 42px; height: 42px; 
+      background: linear-gradient(135deg, #0071e3, #0051b3); 
+      border-radius: 12px; 
+      position: relative; 
+      box-shadow: 0 6px 20px rgba(0,113,227,0.4); 
+    }
+    .logo-mark::after { 
+      content: 'N'; 
+      position: absolute; top: 50%; left: 50%; 
+      transform: translate(-50%, -50%); 
+      color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; 
+    }
+
+    .header-actions { display: flex; gap: 32px; align-items: center; }
+    .login-nav { 
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px; 
+      text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8; 
+    }
+    .login-nav:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }
+
+    /* --- SIDEBAR --- */
+    #sidebar {
+      position: fixed; top: 0; left: -380px; width: 360px; height: 100%;
+      background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px);
+      z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15);
+      display: flex; flex-direction: column;
+    }
+    #sidebar.open { left: 0; }
+    .sidebar-menu { list-style: none; flex: 1; margin-top: 60px; }
+    .sidebar-menu li { 
+      margin-bottom: 28px; font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; 
+      cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); 
+      padding-bottom: 14px; 
+    }
+    .sidebar-menu li:hover { color: var(--accent); padding-left: 14px; }
+
+    /* --- SCROLL INDICATOR LINES (Apple Style) --- */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .scroll-indicator.show { opacity: 1; }
+    .line {
+      width: 28px;
+      height: 3px;
+      background: rgba(0, 113, 227, 0.3);
+      border-radius: 999px;
+      transition: all 0.4s ease;
+    }
+    .line.active {
+      background: var(--accent);
+      width: 42px;
+      box-shadow: 0 0 8px rgba(0, 113, 227, 0.6);
+    }
+
+    /* --- FLOATING TEXT --- */
+    .floating-text-bg {
+      position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+      z-index: -1; pointer-events: none; overflow: hidden;
+    }
+    .float-word {
+      position: absolute; font-family: 'Outfit'; font-weight: 900; font-size: 7vw;
+      color: rgba(0, 113, 227, 0.035); white-space: nowrap; 
+      animation: moveText 32s linear infinite;
+    }
+    @keyframes moveText { from { transform: translateX(120%); } to { transform: translateX(-120%); } }
+
+    /* --- VIEW SECTIONS --- */
+    .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+    .active-view { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; } }
+
+    /* --- HERO --- */
+    .hero-container {
+      text-align: center; max-width: 1180px; margin: 0 auto 120px;
+      padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-deep); border: 1px solid var(--border);
+    }
+    .hero-bg-image {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=95&w=2400') no-repeat center center;
+      background-size: cover; z-index: -1; opacity: 0.09;
+    }
+    .hero-h2 { 
+      font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.9; 
+      font-weight: 900; letter-spacing: -4.5px; margin-bottom: 36px; position: relative; 
+    }
+    .hero-h2 span { color: var(--accent); }
+    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }
+
+    /* --- 3D BUTTON --- */
+    .btn-3d {
+      position: relative;
+      font-size: 1.18rem;
+      padding: 24px 60px;
+      border-radius: 9999px;
+      background: linear-gradient(145deg, #0071e3, #0051b3);
+      color: white;
+      font-weight: 800;
+      border: none;
+      box-shadow: 
+        0 10px 30px rgba(0,113,227,0.4),
+        inset 0 -6px 12px rgba(0,0,0,0.2),
+        inset 0 6px 12px rgba(255,255,255,0.3);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .btn-3d:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 
+        0 20px 50px rgba(0,113,227,0.5),
+        inset 0 -8px 15px rgba(0,0,0,0.25);
+    }
+    .btn-3d:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+
+    /* General Smooth Buttons */
+    .btn-submit {
+      width: 100%;
+      padding: 26px;
+      border-radius: 9999px;
+      border: none;
+      background: linear-gradient(90deg, var(--text), #111);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      cursor: pointer;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    }
+
+    /* --- FEATURE CARDS --- */
+    .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }
+    .feature-card { 
+      background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center;
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-light);
+    }
+    .feature-card:hover { transform: translateY(-15px) scale(1.02); background: #fff; box-shadow: var(--shadow-deep); }
+    .feature-icon-pane { height: 100%; width: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
+    .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }
+    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }
+    .feature-content p { opacity: 0.67; font-size: 1.18rem; line-height: 1.75; }
+
+    /* --- CEO SECTION --- */
+    .ceo-home-section { 
+      margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); 
+      color: var(--text); border-radius: 52px; text-align: center; 
+      border: 1px solid var(--border); box-shadow: var(--shadow-light); 
+    }
+    .ceo-info h3 { font-family: 'Outfit'; font-size: 2.1rem; font-weight: 900; color: var(--accent); margin-top: 32px; }
+
+    /* --- SOCIAL LINKS WITH ORIGINAL COLORS --- */
+    .social-links-home { 
+      display: flex; justify-content: center; gap: 40px; margin-top: 52px; font-size: 34px; 
+    }
+    .social-links-home a { transition: all 0.3s ease; }
+    .social-links-home a:hover { transform: scale(1.25) rotate(8deg); }
+
+    .insta { color: #E1306C; }
+    .yt { color: #FF0000; }
+    .li { color: #0A66C2; }
+
+    /* --- TICKER --- */
+    .ticker-bar { 
+      position: fixed; bottom: 0; width: 100%; background: #fff; 
+      border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; 
+    }
+    .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }
+    .ticker-item { 
+      width: 400px; font-size: 13.8px; font-weight: 700; 
+      display: flex; align-items: center; gap: 14px; flex-shrink: 0; 
+    }
+    .ticker-item i { color: #facc15; }
+    @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Glass Card */
+    .glass-card { 
+      background: var(--glass); border-radius: 52px; padding: 70px 60px; 
+      border: 1px solid rgba(255,255,255,0.6); max-width: 540px; margin: 80px auto; 
+      box-shadow: 0 40px 120px rgba(0,0,0,0.25), inset 0 0 60px rgba(255,255,255,0.6); 
+      backdrop-filter: blur(40px); position: relative; overflow: hidden; 
+    }
+
+    .glass-card h2 { 
+      font-family: 'Outfit'; font-size: 2.4rem; font-weight: 900; text-align: center; 
+      margin-bottom: 50px; letter-spacing: -1.2px; 
+      background: linear-gradient(90deg, #1d1d1f, #0071e3); 
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+    }
+
+    .input-group { position: relative; margin-bottom: 28px; }
+    .input-group input { 
+      width: 100%; padding: 24px 28px; border-radius: 28px; 
+      border: 1.5px solid rgba(0,0,0,0.12); background: rgba(255,255,255,0.85); 
+      font-size: 1.1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.08); outline: none; 
+    }
     .input-group input:focus { 
       border-color: var(--accent); 
       box-shadow: 0 0 0 4px rgba(0,113,227,0.15); 
       transform: translateY(-2px); 
-    }      
-    
-    .btn-submit { 
-      width: 100%; 
-      padding: 26px; 
-      border-radius: 9999px; 
-      border: none; 
-      background: linear-gradient(90deg, var(--text), #111); 
-      color: #fff; 
-      font-weight: 800; 
-      font-size: 1.15rem; 
-      cursor: pointer; 
-      box-shadow: 0 15px 40px rgba(0,0,0,0.25); 
-      position: relative; 
-      overflow: hidden; 
-    }      
-    .btn-submit:hover { 
-      transform: translateY(-4px) scale(1.03); 
-      box-shadow: 0 25px 60px rgba(0,0,0,0.35); 
-    }      
-    .btn-submit::after { 
-      content: ''; 
-      position: absolute; 
-      top: -50%; left: -50%; 
-      width: 40%; height: 300%; 
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent); 
-      transform: skewX(-25deg); 
-      animation: btnShine 4s infinite; 
-    }      
-    @keyframes btnShine { 0% { transform: translateX(-150%) skewX(-25deg); } 100% { transform: translateX(400%) skewX(-25deg); } }      
-  
-    /* --- APPLE STYLE SCROLL REVEAL --- */      
-    .reveal { opacity: 0; transform: translateY(80px); transition: all 1.4s cubic-bezier(0.4, 0, 0.2, 1); }      
-    .reveal.active { opacity: 1; transform: translateY(0); }      
-  
-    @media (max-width: 1024px) {       
-      .feature-card { grid-template-columns: 1fr; padding: 60px; text-align: center; }       
-      .feature-icon-pane { height: 280px; }      
-      .hero-container, .glass-card { padding: 100px 30px; }      
     }
 
-  </style>      
-</head>      
-<body>        
-  <div id="sidebar">      
-    <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>      
-    <ul class="sidebar-menu">      
-      <li onclick="switchView('home')">HOME</li>      
-      <li>NCERT BOOK</li>      
-      <li>JEE / NEET</li>      
-      <li>CUET / NDA</li>      
-      <li>BOARD PYQ</li>      
-    </ul>      
-    <div class="social-links-home" style="font-size: 22px; border-top: 1px solid var(--border); padding-top: 30px; margin-top: auto;">      
-      <a href="#" class="insta"><i class="fab fa-instagram"></i></a>      
-      <a href="#" class="yt"><i class="fab fa-youtube"></i></a>      
-      <a href="#" class="li"><i class="fab fa-linkedin"></i></a>      
-    </div>      
-  </div>        
+    @media (max-width: 1024px) { 
+      .feature-card { grid-template-columns: 1fr; padding: 60px; text-align: center; } 
+      .feature-icon-pane { height: 280px; }
+      .hero-container, .glass-card { padding: 100px 30px; }
+    }
+  </style>
+</head>
+<body>
 
-  <header>      
-    <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>      
-    <div class="logo" onclick="switchView('home')">      
-      <div class="logo-mark"></div>      
-      <h1>NEXUS STUDY</h1>      
-    </div>      
-    <div class="header-actions">      
-      <div class="login-nav" onclick="switchView('student')">Student Login</div>      
-      <div class="login-nav" onclick="switchView('teacher')">Tutor Login</div>      
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
+    <ul class="sidebar-menu">
+      <li onclick="switchView('home')">HOME</li>
+      <li>NCERT BOOK</li>
+      <li>JEE / NEET</li>
+      <li>CUET / NDA</li>
+      <li>BOARD PYQ</li>
+    </ul>
+    <div class="social-links-home" style="font-size: 22px; border-top: 1px solid var(--border); padding-top: 30px; margin-top: auto;">
+      <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="li"><i class="fab fa-linkedin"></i></a>
     </div>
-  </header>        
+  </div>
 
-  <main id="home-v" class="view-section active-view">      
-    <div class="floating-text-bg">      
-      <div class="float-word" style="top: 15%;">PRECISION • EXCELLENCE • RANKERS</div>      
-    </div>      
-    <div class="hero-container reveal active">      
-      <div class="hero-bg-image"></div>      
-      <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>      
-      <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Welcome to world-class academic rigour where every student's potential is realized through conceptual clarity and expert mentorship.</p>      
-      <button class="btn-submit" style="width:auto; padding:24px 60px; background:var(--accent);" onclick="switchView('student')">Enroll Elite Batch</button>      
-    </div>      
-      
-    <div class="feature-grid">      
-      <div class="feature-card reveal">      
-        <div class="feature-icon-pane">      
-          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=95&w=900" alt="Expert Faculty">      
-        </div>      
-        <div class="feature-content">      
-          <h3>Expert Faculty</h3>      
-          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Mentorship by masters with global track records. Our tutors are not just teachers, they are architects of ranks, guiding you through the toughest concepts with surgical precision.</p>      
-        </div>      
-      </div>      
-  
-      <div class="feature-card reveal">      
-        <div class="feature-icon-pane">      
-          <img src="https://images.unsplash.com/photo-1454165200801-081b6c4c6c3d?auto=format&fit=crop&q=95&w=900" alt="Premium Notes">      
-        </div>      
-        <div class="feature-content">      
-          <h3>Premium Notes</h3>      
-          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Curated smart notes designed for deep conceptual depth. We don't just provide information; we structure it for competitive mastery, ensuring every formula and theory is rank-optimized.</p>      
-        </div>      
-      </div>      
-  
-      <div class="feature-card reveal">      
-        <div class="feature-icon-pane">      
-          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=95&w=900" alt="Classroom Friendly">      
-        </div>      
-        <div class="feature-content">      
-          <h3>Classroom Friendly</h3>      
-          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">A 100% student-centric interactive environment. Our digital ecosystem bridges the gap between effort and rank, making complex learning intuitive and result-oriented.</p>      
-        </div>      
-      </div>      
-    </div>      
-  
-    <section class="ceo-home-section reveal">      
-      <p style="font-size: 1.45rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. Our goal is not just limited to rote learning, but to create a digital nexus where every student can achieve their full potential. We transform your effort into ranks through conceptual clarity and personalized mentorship. This is my promise."</p>      
-      <div class="ceo-info">      
-        <h3>Dr. Lalit Kumar</h3>      
-        <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>      
-      </div>      
-      <div class="social-links-home">      
-        <a href="#" class="insta"><i class="fab fa-instagram"></i></a>      
-        <a href="#" class="yt"><i class="fab fa-youtube"></i></a>      
-        <a href="#" class="li"><i class="fab fa-linkedin"></i></a>      
-      </div>      
-    </section>      
-  
+  <!-- Header -->
+  <header>
+    <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>
+    <div class="logo" onclick="switchView('home')">
+      <div class="logo-mark"></div>
+      <h1>NEXUS STUDY</h1>
+    </div>
+    <div class="header-actions">
+      <div class="login-nav" onclick="switchView('student')">Student Login</div>
+      <div class="login-nav" onclick="switchView('teacher')">Tutor Login</div>
+    </div>
+  </header>
+
+  <!-- Home View -->
+  <main id="home-v" class="view-section active-view">
+    <div class="floating-text-bg">
+      <div class="float-word" style="top: 15%;">PRECISION • EXCELLENCE • RANKERS</div>
+    </div>
+
+    <div class="hero-container reveal active">
+      <div class="hero-bg-image"></div>
+      <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>
+      <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Welcome to world-class academic rigour where every student's potential is realized through conceptual clarity and expert mentorship.</p>
+      <button class="btn-3d" onclick="switchView('student')">Enroll Elite Batch</button>
+    </div>
+
+    <!-- Updated Feature Images -->
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=95&w=900" alt="Expert Faculty">
+        </div>
+        <div class="feature-content">
+          <h3>Expert Faculty</h3>
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Mentorship by masters with global track records. Our tutors are not just teachers, they are architects of ranks, guiding you through the toughest concepts with surgical precision.</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=95&w=900" alt="Premium Notes">
+        </div>
+        <div class="feature-content">
+          <h3>Premium Notes</h3>
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Curated smart notes designed for deep conceptual depth. We don't just provide information; we structure it for competitive mastery, ensuring every formula and theory is rank-optimized.</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&q=95&w=900" alt="Classroom Friendly">
+        </div>
+        <div class="feature-content">
+          <h3>Classroom Friendly</h3>
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">A 100% student-centric interactive environment. Our digital ecosystem bridges the gap between effort and rank, making complex learning intuitive and result-oriented.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="ceo-home-section reveal">
+      <p style="font-size: 1.45rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. Our goal is not just limited to rote learning, but to create a digital nexus where every student can achieve their full potential. We transform your effort into ranks through conceptual clarity and personalized mentorship. This is my promise."</p>
+      <div class="ceo-info">
+        <h3>Dr. Lalit Kumar</h3>
+        <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>
+      </div>
+      <div class="social-links-home">
+        <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="li"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </section>
+
     <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
+  </main>
 
-  </main>        
-
-  <!-- ==================== ULTRA PREMIUM 3D STUDENT LOGIN ==================== -->
-  <main id="student-v" class="view-section">      
-    <div class="glass-card">      
-      <h2>Student Login</h2>      
+  <!-- Student Login -->
+  <main id="student-v" class="view-section">
+    <div class="glass-card">
+      <h2>Student Login</h2>
       <div class="input-group">
         <input type="text" placeholder="Username / Email">
       </div>
@@ -326,13 +396,13 @@
         <input type="password" placeholder="Password">
       </div>
       <button class="btn-submit">Access Elite Portal</button>
-    </div>      
-  </main>        
+    </div>
+  </main>
 
-  <!-- ==================== ULTRA PREMIUM 3D TUTOR LOGIN ==================== -->
-  <main id="teacher-v" class="view-section">      
-    <div class="glass-card">      
-      <h2>Tutor Access</h2>      
+  <!-- Tutor Login -->
+  <main id="teacher-v" class="view-section">
+    <div class="glass-card">
+      <h2>Tutor Access</h2>
       <div class="input-group">
         <input type="text" placeholder="Faculty ID">
       </div>
@@ -340,39 +410,66 @@
         <input type="password" placeholder="Password">
       </div>
       <button class="btn-submit">Faculty Login</button>
-    </div>      
-  </main>        
+    </div>
+  </main>
 
-  <div class="ticker-bar">      
-    <div class="ticker-track">      
-      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star"></i> 5.0</div>      
-      <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star"></i> 5.0</div>      
-      <div class="ticker-item"><b>Rohan (NDA):</b> Future of Coaching <i class="fas fa-star"></i> 5.0</div>      
-      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star"></i> 5.0</div>      
-    </div>      
-  </div>        
+  <!-- Ticker -->
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star"></i> 5.0</div>
+      <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star"></i> 5.0</div>
+      <div class="ticker-item"><b>Rohan (NDA):</b> Future of Coaching <i class="fas fa-star"></i> 5.0</div>
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star"></i> 5.0</div>
+    </div>
+  </div>
 
-  <script>      
-    function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }      
-    function switchView(id) {      
-      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));      
-      document.getElementById(id + '-v').classList.add('active-view');      
-      window.scrollTo(0,0);      
-      if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();      
-    }      
-      
-    window.addEventListener('scroll', reveal);      
-    function reveal() {      
-      var reveals = document.querySelectorAll('.reveal');      
-      for (var i = 0; i < reveals.length; i++) {      
-        var windowHeight = window.innerHeight;      
-        var elementTop = reveals[i].getBoundingClientRect().top;      
-        var elementVisible = 160;      
-        if (elementTop < windowHeight - elementVisible) {      
-          reveals[i].classList.add('active');      
-        }      
-      }      
-    }      
-  </script>      
-</body>      
+  <!-- Apple Style Scroll Indicator -->
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="line" id="line1"></div>
+    <div class="line" id="line2"></div>
+    <div class="line" id="line3"></div>
+  </div>
+
+  <script>
+    function toggleMenu() { 
+      document.getElementById('sidebar').classList.toggle('open'); 
+    }
+
+    function switchView(id) {
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
+      document.getElementById(id + '-v').classList.add('active-view');
+      window.scrollTo(0,0);
+      if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();
+    }
+
+    // Scroll Reveal
+    window.addEventListener('scroll', () => {
+      var reveals = document.querySelectorAll('.reveal');
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 160;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
+      }
+
+      // Apple Style Scroll Indicator
+      const indicator = document.getElementById('scrollIndicator');
+      if (window.scrollY > 300) {
+        indicator.classList.add('show');
+      } else {
+        indicator.classList.remove('show');
+      }
+    });
+
+    // Simple scroll indicator animation
+    setInterval(() => {
+      const lines = document.querySelectorAll('.line');
+      lines.forEach((line, index) => {
+        line.classList.toggle('active', Math.random() > 0.5);
+      });
+    }, 1800);
+  </script>
+</body>
 </html>
