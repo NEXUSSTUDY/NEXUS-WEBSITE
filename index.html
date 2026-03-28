@@ -1,208 +1,288 @@
-<!-- SAME CODE, ONLY NECESSARY UPGRADES ADDED -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NEXUS STUDY | Elite Learning Hub</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
-
-<style>
-
-:root {
-  --white:#fff;
-  --text:#1d1d1f;
-  --accent:#0071e3;
-  --glass: rgba(255,255,255,0.6);
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Plus Jakarta Sans',sans-serif;
-}
-
-body{
-  background:#fff;
-  overflow-x:hidden;
-}
-
-/* ===== CURSOR GLOW ===== */
-.cursor{
-  position:fixed;
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  background: radial-gradient(circle, rgba(0,113,227,0.25), transparent 70%);
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  z-index:0;
-}
-
-/* ===== HEADER GLASS ===== */
-header{
-  height:85px;
-  backdrop-filter:blur(25px);
-  background:var(--glass);
-  display:flex;
-  align-items:center;
-  padding:0 6%;
-  position:fixed;
-  width:100%;
-  z-index:1000;
-}
-
-/* ===== HERO UPGRADE ===== */
-.hero-container{
-  text-align:center;
-  max-width:1000px;
-  margin:120px auto;
-  padding:120px 50px;
-  border-radius:40px;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero-bg-image{
-  position:absolute;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  background:
-    linear-gradient(120deg, rgba(0,113,227,0.25), rgba(0,0,0,0.5)),
-    url('https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&q=80&w=1600');
-  background-size:cover;
-  z-index:-1;
-  animation:zoom 18s infinite alternate;
-}
-
-@keyframes zoom{
-  0%{transform:scale(1);}
-  100%{transform:scale(1.1);}
-}
-
-.hero-h2{
-  font-family:'Outfit';
-  font-size:4rem;
-  font-weight:900;
-}
-.hero-h2 span{color:var(--accent);}
-
-.hero-p{
-  margin-top:20px;
-  opacity:0.7;
-  font-size:1.1rem;
-}
-
-/* ===== 3D CARDS ===== */
-.feature-card{
-  background:var(--glass);
-  backdrop-filter:blur(20px);
-  padding:50px;
-  border-radius:30px;
-  margin:40px auto;
-  max-width:900px;
-  transform-style:preserve-3d;
-  transition:0.4s;
-}
-.feature-card:hover{
-  transform:rotateX(6deg) rotateY(6deg) scale(1.02);
-}
-
-/* ===== MAGNETIC BUTTON ===== */
-.btn-submit{
-  padding:18px 40px;
-  border-radius:50px;
-  background:var(--accent);
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-/* ===== SCROLL REVEAL ===== */
-.reveal{
-  opacity:0;
-  transform:translateY(80px);
-  transition:1s;
-}
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="cursor" id="cursor"></div>
-
-<header>
-  <h1>NEXUS STUDY</h1>
-</header>
-
-<main>
-
-<div class="hero-container reveal active">
-  <div class="hero-bg-image"></div>
-
-  <h2 class="hero-h2">
-    India's Most <br>
-    <span>Elite Rankers Ecosystem</span>
-  </h2>
-
-  <p class="hero-p">
-    Nexus Study is a high-performance academic system engineered for IIT & AIIMS ranks through precision learning and elite mentorship.
-  </p>
-
-  <button class="btn-submit" id="magneticBtn">Enter Elite Program</button>
-</div>
-
-<div class="feature-card reveal">Expert Faculty</div>
-<div class="feature-card reveal">Premium Notes</div>
-<div class="feature-card reveal">Classroom Friendly</div>
-
-</main>
-
-<script>
-
-/* CURSOR */
-const cursor = document.getElementById("cursor");
-document.addEventListener("mousemove", e=>{
-  cursor.style.top = e.clientY+"px";
-  cursor.style.left = e.clientX+"px";
-});
-
-/* MAGNETIC BUTTON */
-const btn = document.getElementById("magneticBtn");
-
-btn.addEventListener("mousemove", e=>{
-  const rect = btn.getBoundingClientRect();
-  const x = e.clientX - rect.left - rect.width/2;
-  const y = e.clientY - rect.top - rect.height/2;
-  btn.style.transform = `translate(${x*0.2}px, ${y*0.2}px)`;
-});
-
-btn.addEventListener("mouseleave", ()=>{
-  btn.style.transform="translate(0,0)";
-});
-
-/* SCROLL */
-window.addEventListener("scroll", ()=>{
-  document.querySelectorAll(".reveal").forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-100){
-      el.classList.add("active");
+<!DOCTYPE html>      
+<html lang="en">      
+<head>      
+  <meta charset="UTF-8">      
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">        
+  <title>NEXUS STUDY | Elite Learning Hub</title>      
+  <meta name="description" content="NEXUS STUDY - Bharat's elite digital ecosystem for JEE, NEET and Competitive Foundations. Precision learning under the direction of Dr. Lalit Kumar.">      
+  <meta name="robots" content="index, follow">      
+  <link rel="canonical" href="https://www.nexusstudy.global/">        
+  <script type="application/ld+json">      
+  {      
+    "@context": "https://schema.org",      
+    "@type": "EducationalOrganization",      
+    "name": "NEXUS STUDY",      
+    "url": "https://www.nexusstudy.global/",      
+    "logo": "https://www.nexusstudy.global/logo.png",      
+    "description": "Elite digital ecosystem for JEE, NEET and Competitive Foundations.",      
+    "founder": {      
+      "@type": "Person",      
+      "name": "Dr. Lalit Kumar",      
+      "jobTitle": "CEO & Director",      
+      "honorificSuffix": "Ph.D, M.Sc, B.Ed"      
+    }      
+  }      
+  </script>        
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">      
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">      
+  <style>      
+    :root {      
+      --white: #ffffff;      
+      --apple-gray: #f5f5f7;      
+      --text: #1d1d1f;      
+      --accent: #0071e3;      
+      --border: rgba(0,0,0,0.06);      
+    }      
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }      
+    body { background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }      
+  
+    /* --- PREMIUM HEADER --- */      
+    header {      
+      height: 85px; background: rgba(255, 255, 255, 0.85); backdrop-filter: saturate(180%) blur(25px);      
+      display: flex; align-items: center; padding: 0 6%;      
+      position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);      
+    }      
+    .menu-btn { font-size: 20px; cursor: pointer; padding: 10px; z-index: 2001; }      
+    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 15px; align-items: center; gap: 10px; }      
+    .logo h1 { font-family: 'Outfit'; font-size: 22px; font-weight: 900; letter-spacing: -1.2px; color: var(--text); }      
+    .logo-mark { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; position: relative; }      
+    .logo-mark::after { content: 'N'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 18px; }      
+  
+    /* TOP LOGIN ACTIONS */      
+    .header-actions { display: flex; gap: 20px; }      
+    .login-nav {       
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 12px;       
+      text-transform: uppercase; cursor: pointer; letter-spacing: 1px; opacity: 0.6;      
+    }      
+    .login-nav:hover { opacity: 1; color: var(--accent); }      
+  
+    /* --- SIDEBAR --- */      
+    #sidebar {      
+      position: fixed; top: 0; left: -350px; width: 320px; height: 100%;      
+      background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(30px);      
+      z-index: 2000; padding: 60px 40px; box-shadow: 20px 0 60px rgba(0,0,0,0.05);      
+      display: flex; flex-direction: column;      
+    }      
+    #sidebar.open { left: 0; }      
+    .sidebar-menu { list-style: none; flex: 1; margin-top: 40px; }      
+    .sidebar-menu li { margin-bottom: 22px; font-family: 'Outfit'; font-size: 1.2rem; font-weight: 700; cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 10px; }      
+    .sidebar-menu li:hover { color: var(--accent); padding-left: 8px; }      
+  
+    /* --- FLOATING TEXT ANIMATION --- */      
+    .floating-text-bg {      
+      position: absolute; width: 100%; height: 100%; top: 0; left: 0;      
+      z-index: -1; pointer-events: none; overflow: hidden;      
+    }      
+    .float-word {      
+      position: absolute; font-family: 'Outfit'; font-weight: 900; font-size: 8vw;      
+      color: rgba(0, 113, 227, 0.03); white-space: nowrap; animation: moveText 25s linear infinite;      
+    }      
+    @keyframes moveText { from { transform: translateX(100%); } to { transform: translateX(-100%); } }      
+  
+    /* --- VIEW SECTIONS --- */      
+    .view-section { display: none; padding: 140px 8% 100px; min-height: 100vh; animation: fadeIn 0.8s ease; position: relative; }      
+    .active-view { display: block; }      
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }      
+  
+    /* --- HERO with Dynamic Background --- */      
+    .hero-container {      
+      text-align: center; max-width: 1000px; margin: 0 auto 100px;      
+      padding: 100px 50px; border-radius: 40px; position: relative; overflow: hidden;      
+      box-shadow: 0 40px 80px rgba(0,0,0,0.06); border: 1px solid var(--border);      
+    }      
+    .hero-bg-image {      
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;      
+      background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1600') no-repeat center center;      
+      background-size: cover; z-index: -1; opacity: 0.15;      
+    }      
+    .hero-h2 { font-family: 'Outfit'; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 0.95; font-weight: 900; letter-spacing: -3px; margin-bottom: 30px; position: relative; }      
+    .hero-h2 span { color: var(--accent); }      
+    .hero-p { opacity: 0.5; max-width: 700px; font-size: 1.1rem; line-height: 1.6; margin: 0 auto 40px; position: relative; }      
+    .hero-container .btn-submit { position: relative; }      
+  
+    /* --- FEATURE CARDS --- */      
+    .feature-grid { display: flex; flex-direction: column; gap: 50px; max-width: 1000px; margin: 80px auto; }      
+    .feature-card {       
+      background: var(--apple-gray); padding: 60px; border-radius: 40px; border: 1px solid var(--border);       
+      display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: center;      
+      transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);      
+    }      
+    .feature-card:hover { transform: translateY(-10px) scale(1.02); background: #fff; box-shadow: 0 40px 80px rgba(0,0,0,0.08); }      
+    .feature-icon-pane { height: 100%; width: 100%; border-radius: 30px; overflow: hidden; }      
+    .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }      
+    .feature-content h3 { font-family: 'Outfit'; font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -1px; }      
+  
+    /* --- CEO SECTION --- */      
+    .ceo-home-section { margin-top: 50px; padding: 80px 10%; background: var(--apple-gray); color: var(--text); border-radius: 50px; text-align: center; border: 1px solid var(--border); }      
+    .ceo-info h3 { font-family: 'Outfit'; font-size: 1.8rem; font-weight: 900; color: var(--accent); margin-top: 20px; }      
+  
+    /* SOCIALS */      
+    .social-links-home { display: flex; justify-content: center; gap: 30px; margin-top: 40px; font-size: 30px; }      
+    .social-links-home .insta { color: #E4405F; }      
+    .social-links-home .yt { color: #FF0000; }      
+    .social-links-home .li { color: #0077B5; }      
+  
+    /* --- INFINITE TICKER --- */      
+    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 900; overflow: hidden; }      
+    .ticker-track { display: flex; animation: scrollTicker 30s linear infinite; width: max-content; }      
+    .ticker-item { width: 350px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }      
+    .ticker-item i { color: #facc15; }      
+    @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }      
+  
+    /* FORMS */      
+    .glass-card { background: var(--apple-gray); border-radius: 40px; padding: 50px; border: 1px solid var(--border); max-width: 500px; margin: 0 auto; }      
+    input, select { width: 100%; padding: 20px; border-radius: 18px; border: 1px solid var(--border); margin-bottom: 20px; outline: none; }      
+    .btn-submit { width: 100%; padding: 22px; border-radius: 50px; border: none; background: var(--text); color: #fff; font-weight: 800; cursor: pointer; }      
+  
+    /* --- APPLE STYLE SCROLL ANIMATION --- */      
+    .reveal { opacity: 0; transform: translateY(80px); transition: 1.5s cubic-bezier(0.2, 0.8, 0.2, 1); }      
+    .reveal.active { opacity: 1; transform: translateY(0); }      
+  
+    @media (max-width: 1024px) {       
+      .feature-card { grid-template-columns: 1fr; padding: 40px; text-align: center; }       
+      .feature-icon-pane { height: 200px; }      
     }
-  });
-});
 
-</script>
+  </style>      
+</head>      
+<body>        
+  <div id="sidebar">      
+    <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>      
+    <ul class="sidebar-menu">      
+      <li onclick="switchView('home')">HOME</li>      
+      <li>NCERT BOOK</li>      
+      <li>JEE / NEET</li>      
+      <li>CUET / NDA</li>      
+      <li>BOARD PYQ</li>      
+    </ul>      
+    <div class="social-links-home" style="font-size: 20px; border-top: 1px solid var(--border); padding-top: 20px; margin-top: auto;">      
+      <a href="#" class="insta"><i class="fab fa-instagram"></i></a>      
+      <a href="#" class="yt"><i class="fab fa-youtube"></i></a>      
+      <a href="#" class="li"><i class="fab fa-linkedin"></i></a>      
+    </div>      
+  </div>        
 
-</body>
+  <header>      
+    <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>      
+    <div class="logo" onclick="switchView('home')">      
+      <div class="logo-mark"></div>      
+      <h1>NEXUS STUDY</h1>      
+    </div>      
+    <div class="header-actions">      
+      <div class="login-nav" onclick="switchView('student')">Student Login</div>      
+      <div class="login-nav" onclick="switchView('teacher')">Tutor Login</div>      
+    </div>
+  </header>        
+
+  <main id="home-v" class="view-section active-view">      
+    <div class="floating-text-bg">      
+      <div class="float-word" style="top: 15%;">PRECISION • EXCELLENCE • RANKERS</div>      
+    </div>      
+    <div class="hero-container reveal active">      
+      <div class="hero-bg-image"></div>      
+      <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>      
+      <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Welcome to world-class academic rigour where every student's potential is realized through conceptual clarity and expert mentorship.</p>      
+      <button class="btn-submit" style="width:auto; padding:18px 40px; background:var(--accent);" onclick="switchView('student')">Enroll Elite Batch</button>      
+    </div>      
+      
+    <div class="feature-grid">      
+      <div class="feature-card reveal">      
+        <div class="feature-icon-pane">      
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600" alt="Expert Faculty">      
+        </div>      
+        <div class="feature-content">      
+          <h3>Expert Faculty</h3>      
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Mentorship by masters with global track records. Our tutors are not just teachers, they are architects of ranks, guiding you through the toughest concepts with surgical precision.</p>      
+        </div>      
+      </div>      
+  
+      <div class="feature-card reveal">      
+        <div class="feature-icon-pane">      
+          <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=600" alt="Premium Notes">      
+        </div>      
+        <div class="feature-content">      
+          <h3>Premium Notes</h3>      
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Curated smart notes designed for deep conceptual depth. We don't just provide information; we structure it for competitive mastery, ensuring every formula and theory is rank-optimized.</p>      
+        </div>      
+      </div>      
+  
+      <div class="feature-card reveal">      
+        <div class="feature-icon-pane">      
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=600" alt="Classroom Friendly">      
+        </div>      
+        <div class="feature-content">      
+          <h3>Classroom Friendly</h3>      
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">A 100% student-centric interactive environment. Our digital ecosystem bridges the gap between effort and rank, making complex learning intuitive and result-oriented.</p>      
+        </div>      
+      </div>      
+    </div>      
+  
+    <section class="ceo-home-section reveal">      
+      <p style="font-size: 1.4rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. Our goal is not just limited to rote learning, but to create a digital nexus where every student can achieve their full potential. We transform your effort into ranks through conceptual clarity and personalized mentorship. This is my promise."</p>      
+      <div class="ceo-info">      
+        <h3>Dr. Lalit Kumar</h3>      
+        <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>      
+      </div>      
+      <div class="social-links-home">      
+        <a href="#" class="insta"><i class="fab fa-instagram"></i></a>      
+        <a href="#" class="yt"><i class="fab fa-youtube"></i></a>      
+        <a href="#" class="li"><i class="fab fa-linkedin"></i></a>      
+      </div>      
+    </section>      
+  
+    <footer style="padding: 40px; text-align: center; opacity: 0.3; font-size: 11px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
+
+  </main>        
+
+  <main id="student-v" class="view-section">      
+    <div class="glass-card">      
+      <h2 style="font-family:'Outfit'; margin-bottom:30px; font-weight:900;">Student Login</h2>      
+      <input type="text" placeholder="Username / Email" style="width:100%; padding:18px; border-radius:15px; border:1.5px solid var(--border); margin-bottom:15px; outline:none;">      
+      <input type="password" placeholder="Password" style="width:100%; padding:18px; border-radius:15px; border:1.5px solid var(--border); margin-bottom:20px; outline:none;">      
+      <button style="width:100%; padding:20px; border-radius:50px; border:none; background:var(--text); color:#fff; font-weight:800; cursor:pointer;">Access Portal</button>      
+    </div>      
+  </main>        
+
+  <main id="teacher-v" class="view-section">      
+    <div class="glass-card">      
+      <h2 style="font-family:'Outfit'; margin-bottom:30px; font-weight:900;">Tutor Access</h2>      
+      <input type="text" placeholder="Faculty ID" style="width:100%; padding:18px; border-radius:15px; border:1.5px solid var(--border); margin-bottom:15px; outline:none;">      
+      <input type="password" placeholder="Password" style="width:100%; padding:18px; border-radius:15px; border:1.5px solid var(--border); margin-bottom:20px; outline:none;">      
+      <button style="width:100%; padding:20px; border-radius:50px; border:none; background:#000; color:#fff; font-weight:800; cursor:pointer;">Faculty Login</button>      
+    </div>      
+  </main>        
+
+  <div class="ticker-bar">      
+    <div class="ticker-track">      
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star"></i> 5.0</div>      
+      <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star"></i> 5.0</div>      
+      <div class="ticker-item"><b>Rohan (NDA):</b> Future of Coaching <i class="fas fa-star"></i> 5.0</div>      
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star"></i> 5.0</div>      
+    </div>      
+  </div>        
+
+  <script>      
+    function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }      
+    function switchView(id) {      
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));      
+      document.getElementById(id + '-v').classList.add('active-view');      
+      window.scrollTo(0,0);      
+      if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();      
+    }      
+      
+    /* --- APPLE STYLE SCROLL REVEAL SCRIPT --- */      
+    window.addEventListener('scroll', reveal);      
+    function reveal() {      
+      var reveals = document.querySelectorAll('.reveal');      
+      for (var i = 0; i < reveals.length; i++) {      
+        var windowHeight = window.innerHeight;      
+        var elementTop = reveals[i].getBoundingClientRect().top;      
+        var elementVisible = 150; // Trigger point      
+        if (elementTop < windowHeight - elementVisible) {      
+          reveals[i].classList.add('active');      
+        }      
+      }      
+    }      
+  </script>      
+</body>      
 </html>
