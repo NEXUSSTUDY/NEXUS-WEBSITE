@@ -4,6 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>NEXUS STUDY | Elite Learning Hub</title>
+  <meta name="description" content="NEXUS STUDY - Bharat's elite digital ecosystem for JEE, NEET and Competitive Foundations. Precision learning under the direction of Dr. Lalit Kumar.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.nexusstudy.global/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "NEXUS STUDY",
+    "url": "https://www.nexusstudy.global/",
+    "logo": "https://www.nexusstudy.global/logo.png",
+    "description": "Elite digital ecosystem for JEE, NEET and Competitive Foundations.",
+    "founder": {
+      "@type": "Person",
+      "name": "Dr. Lalit Kumar",
+      "jobTitle": "CEO & Director",
+      "honorificSuffix": "Ph.D, M.Sc, B.Ed"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
   
@@ -14,217 +35,347 @@
       --text: #1d1d1f;
       --accent: #0071e3;
       --border: rgba(0,0,0,0.08);
+      --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.06);
       --shadow-deep: 0 40px 100px rgba(0, 0, 0, 0.15);
-      --instagram: #E1306C;
-      --youtube: #FF0000;
-      --linkedin: #0A66C2;
+      --glass: rgba(255, 255, 255, 0.78);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-    body { background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
 
-    .reveal-scroll { opacity: 0; transform: translateY(50px) scale(0.95); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-    .reveal-scroll.visible { opacity: 1; transform: translateY(0) scale(1); }
+    body { 
+      background: var(--white); 
+      color: var(--text); 
+      overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased; 
+    }
 
-    /* HEADER */
-    header { height: 72px; background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(200%) blur(60px); display: flex; align-items: center; padding: 0 5%; position: fixed; width: 100%; top: 0; z-index: 10000; border-bottom: 1px solid var(--border); }
-    .logo { flex: 1; display: flex; align-items: center; gap: 14px; cursor: pointer; }
-    .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; }
+    /* Header & Sidebar (unchanged) */
+    header {
+      height: 72px; background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(200%) blur(60px);
+      display: flex; align-items: center; padding: 0 5%; position: fixed; width: 100%; top: 0; z-index: 10000; 
+      border-bottom: 1px solid var(--border);
+    }
+    .menu-btn { font-size: 26px; cursor: pointer; padding: 10px; z-index: 2001; }
+    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 14px; }
+    .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; color: var(--text); }
     .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, #0071e3, #0051b3); border-radius: 12px; position: relative; box-shadow: 0 6px 20px rgba(0,113,227,0.4); }
     .logo-mark::after { content: 'N'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; }
 
-    /* 3D LOGIN BUTTON */
-    .btn-login-3d {
-      background: linear-gradient(145deg, #111, #333); color: white;
-      padding: 10px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; text-transform: uppercase;
-      border: none; cursor: pointer; box-shadow: 0 4px 0 #000; transform: translateY(0);
-    }
-    .btn-login-3d:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #000; }
-    .btn-login-3d:active { transform: translateY(2px); box-shadow: 0 0 0 #000; }
+    .header-actions { display: flex; gap: 32px; align-items: center; }
+    .login-nav { text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px; text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8; }
+    .login-nav:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }
 
-    /* PORTAL MENU */
-    #portalMenu {
-      position: fixed; top: 80px; right: 5%; background: #fff; border-radius: 20px;
-      padding: 15px; display: none; flex-direction: column; gap: 8px;
-      box-shadow: var(--shadow-deep); z-index: 10001; border: 1px solid var(--border);
-    }
-    .portal-item { padding: 12px 20px; border-radius: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 10px; }
-    .portal-item:hover { background: var(--accent); color: white; }
+    #sidebar { position: fixed; top: 0; left: -380px; width: 360px; height: 100%; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px); z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15); display: flex; flex-direction: column; }
+    #sidebar.open { left: 0; }
+    .sidebar-menu { list-style: none; flex: 1; margin-top: 60px; }
+    .sidebar-menu li { margin-bottom: 28px; font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+    .sidebar-menu li:hover { color: var(--accent); padding-left: 14px; }
 
-    /* HERO */
-    .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; }
-    .active-view { display: block; }
-    .hero-container { text-align: center; padding: 160px 70px; border-radius: 60px; background: var(--apple-gray); position: relative; overflow: hidden; margin-bottom: 120px; border: 1px solid var(--border); }
-    .hero-bg-image { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000') no-repeat center; background-size: cover; opacity: 0.12; z-index: -1; }
-    .hero-h2 { font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); font-weight: 900; line-height: 0.9; margin-bottom: 36px; }
+    /* Apple-style Scroll Indicator */
+    .scroll-indicator {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px; z-index: 9999; opacity: 0; transition: opacity 0.6s ease;
+    }
+    .scroll-indicator.show { opacity: 1; }
+    .line { width: 28px; height: 3px; background: rgba(0, 113, 227, 0.3); border-radius: 999px; transition: all 0.4s ease; }
+    .line.active { background: var(--accent); width: 42px; box-shadow: 0 0 8px rgba(0,113,227,0.6); }
+
+    /* Slow Elegant Scroll Reveal (Apple Style) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero */
+    .hero-container {
+      text-align: center; max-width: 1180px; margin: 0 auto 120px;
+      padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-deep); border: 1px solid var(--border);
+    }
+    .hero-bg-image {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=95&w=2400') no-repeat center center;
+      background-size: cover; z-index: -1; opacity: 0.09;
+    }
+    .hero-h2 { font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.9; font-weight: 900; letter-spacing: -4.5px; margin-bottom: 36px; }
     .hero-h2 span { color: var(--accent); }
+    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }
 
-    /* 3D HERO BUTTON */
-    .btn-3d-main {
-      padding: 24px 60px; border-radius: 9999px; background: linear-gradient(145deg, #0071e3, #0051b3);
-      color: white; font-weight: 800; font-size: 1.18rem; border: none; cursor: pointer;
-      box-shadow: 0 8px 0 #00448a; transform: translateY(-4px);
+    /* 3D Button */
+    .btn-3d {
+      position: relative; font-size: 1.18rem; padding: 24px 60px; border-radius: 9999px;
+      background: linear-gradient(145deg, #0071e3, #0051b3); color: white; font-weight: 800;
+      border: none; box-shadow: 0 10px 30px rgba(0,113,227,0.4), inset 0 -6px 12px rgba(0,0,0,0.2), inset 0 6px 12px rgba(255,255,255,0.3);
+      overflow: hidden; cursor: pointer;
     }
-    .btn-3d-main:hover { transform: translateY(-6px); box-shadow: 0 10px 0 #00448a; }
-    .btn-3d-main:active { transform: translateY(2px); box-shadow: 0 2px 0 #00448a; }
+    .btn-3d:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 20px 50px rgba(0,113,227,0.5); }
 
-    /* FEATURES */
-    .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }
-    .feature-card { background: var(--apple-gray); padding: 80px; border-radius: 52px; display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center; box-shadow: var(--shadow-light); border: 1px solid var(--border); }
+    /* Shine Button for Login */
+    .btn-shine {
+      position: relative; overflow: hidden;
+    }
+    .btn-shine::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -100%;
+      width: 40%; height: 300%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+      transform: skewX(-25deg);
+      animation: shineSlide 4s infinite;
+    }
+    @keyframes shineSlide {
+      0% { transform: translateX(-150%) skewX(-25deg); }
+      20% { transform: translateX(300%) skewX(-25deg); }
+      100% { transform: translateX(300%) skewX(-25deg); }
+    }
+
+    /* Feature Cards - New Online Study Images */
+    .feature-grid { display: flex; flex-direction: column; gap: 80px; max-width: 1180px; margin: 100px auto; }
+    .feature-card { 
+      background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center;
+      box-shadow: var(--shadow-light);
+    }
+    .feature-card:hover { transform: translateY(-12px); background: #fff; box-shadow: var(--shadow-deep); }
     .feature-icon-pane { height: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
     .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }
-    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; }
+    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }
+    .feature-content p { opacity: 0.67; font-size: 1.18rem; line-height: 1.75; }
 
-    /* CEO SECTION */
-    .ceo-home-section { padding: 100px 10%; background: var(--apple-gray); border-radius: 52px; text-align: center; border: 1px solid var(--border); }
-    .social-links-home { display: flex; justify-content: center; gap: 30px; margin-top: 52px; }
-    .social-btn { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; text-decoration: none; }
-    .s-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-    .s-yt { background: var(--youtube); }
-    .s-li { background: var(--linkedin); }
-
-    /* --- PW STYLE REVIEWS --- */
-    .review-section { padding: 100px 0; background: #fff; overflow: hidden; }
-    .review-track { display: flex; gap: 25px; width: max-content; animation: scrollReviews 40s linear infinite; }
-    .review-card { 
-      background: var(--apple-gray); padding: 30px; border-radius: 24px; width: 380px; 
-      border: 1px solid var(--border); display: flex; gap: 20px; align-items: center;
+    /* Glass Card Login */
+    .glass-card { 
+      background: var(--glass); border-radius: 52px; padding: 70px 60px; 
+      border: 1px solid rgba(255,255,255,0.6); max-width: 540px; margin: 120px auto; 
+      box-shadow: 0 40px 120px rgba(0,0,0,0.25), inset 0 0 60px rgba(255,255,255,0.6); 
+      backdrop-filter: blur(40px); position: relative; overflow: hidden; 
     }
-    .review-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
-    .review-info h5 { font-family: 'Outfit'; font-weight: 900; font-size: 16px; }
-    .stars { color: #facc15; font-size: 12px; margin: 5px 0; }
-    .review-text { font-size: 13px; opacity: 0.7; font-weight: 600; line-height: 1.4; }
-    @keyframes scrollReviews { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .glass-card h2 { 
+      font-family: 'Outfit'; font-size: 2.4rem; font-weight: 900; text-align: center; 
+      margin-bottom: 50px; letter-spacing: -1.2px; 
+      background: linear-gradient(90deg, #1d1d1f, #0071e3); 
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+    }
 
-    /* SIDEBAR */
-    #sidebar { position: fixed; top: 0; left: -380px; width: 360px; height: 100%; background: #fff; z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.1); }
-    #sidebar.open { left: 0; }
-    .sidebar-menu li { margin-bottom: 20px; font-family: 'Outfit'; font-weight: 800; cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 10px; list-style: none; }
+    .input-group { position: relative; margin-bottom: 28px; }
+    .input-group input { 
+      width: 100%; padding: 24px 28px; border-radius: 28px; 
+      border: 1.5px solid rgba(0,0,0,0.12); background: rgba(255,255,255,0.85); 
+      font-size: 1.1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.08); outline: none; 
+    }
+    .input-group input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0,113,227,0.15); transform: translateY(-2px); }
+
+    .btn-submit {
+      width: 100%; padding: 26px; border-radius: 9999px; border: none;
+      background: linear-gradient(90deg, var(--text), #111); color: #fff;
+      font-weight: 800; font-size: 1.15rem; cursor: pointer; box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+    .btn-submit:hover { transform: translateY(-4px) scale(1.03); }
+
+    /* Social Links */
+    .social-links-home { display: flex; justify-content: center; gap: 40px; margin-top: 52px; font-size: 34px; }
+    .insta { color: #E1306C; }
+    .yt { color: #FF0000; }
+    .li { color: #0A66C2; }
+    .social-links-home a:hover { transform: scale(1.25) rotate(8deg); }
+
+    /* Ticker */
+    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; }
+    .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }
+    .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .ticker-item i { color: #facc15; }
+    @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    @media (max-width: 1024px) { 
+      .feature-card { grid-template-columns: 1fr; padding: 60px; text-align: center; } 
+      .feature-icon-pane { height: 300px; }
+    }
   </style>
 </head>
 <body>
 
-  <div id="portalMenu">
-    <div class="portal-item" onclick="switchView('student')"><i class="fas fa-user-graduate"></i> Student Login</div>
-    <div class="portal-item" onclick="switchView('teacher')"><i class="fas fa-chalkboard-teacher"></i> Tutor Login</div>
-  </div>
-
+  <!-- Sidebar (same) -->
   <div id="sidebar">
     <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
     <ul class="sidebar-menu">
       <li onclick="switchView('home')">HOME</li>
-      <li>NCERT BOOKS</li><li>JEE PREP</li><li>NEET PREP</li><li>CUET</li><li>NDA</li><li>BOARD PYQ</li>
+      <li>NCERT BOOK</li>
+      <li>JEE / NEET</li>
+      <li>CUET / NDA</li>
+      <li>BOARD PYQ</li>
     </ul>
-    <div class="social-links-home" style="margin-top:auto; padding-bottom:20px; gap:15px;">
-      <a href="#" class="social-btn s-ig" style="width:45px; height:45px; font-size:20px;"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="social-btn s-yt" style="width:45px; height:45px; font-size:20px;"><i class="fab fa-youtube"></i></a>
+    <div class="social-links-home" style="font-size: 22px; border-top: 1px solid var(--border); padding-top: 30px; margin-top: auto;">
+      <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="li"><i class="fab fa-linkedin"></i></a>
     </div>
   </div>
 
+  <!-- Header -->
   <header>
     <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>
-    <div class="logo" onclick="switchView('home')"><div class="logo-mark"></div><h1>NEXUS STUDY</h1></div>
+    <div class="logo" onclick="switchView('home')">
+      <div class="logo-mark"></div>
+      <h1>NEXUS STUDY</h1>
+    </div>
     <div class="header-actions">
-      <button class="btn-login-3d" onclick="togglePortal()">Login / Register</button>
+      <div class="login-nav" onclick="switchView('student')">Student Login</div>
+      <div class="login-nav" onclick="switchView('teacher')">Tutor Login</div>
     </div>
   </header>
 
+  <!-- Home View -->
   <main id="home-v" class="view-section active-view">
-    <div class="hero-container reveal-scroll">
+    <div class="floating-text-bg">
+      <div class="float-word" style="top: 15%;">PRECISION • EXCELLENCE • RANKERS</div>
+    </div>
+
+    <div class="hero-container reveal">
       <div class="hero-bg-image"></div>
       <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>
-      <p style="opacity:0.6; margin-bottom:50px; font-size:1.3rem; font-weight:600;">Bharat's premier digital nexus for Competitive Foundations.</p>
-      <button class="btn-3d-main" onclick="switchView('student')">Enroll Elite Batch</button>
+      <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Welcome to world-class academic rigour where every student's potential is realized through conceptual clarity and expert mentorship.</p>
+      <button class="btn-3d" onclick="switchView('student')">Enroll Elite Batch</button>
     </div>
 
     <div class="feature-grid">
-      <div class="feature-card reveal-scroll">
-        <div class="feature-icon-pane"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"></div>
-        <div class="feature-content"><h3>Expert Faculty</h3><p>Mentorship by masters with surgical precision. Architects of top ranks.</p></div>
+      <!-- New Online Study Images -->
+      <div class="feature-card reveal">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=95&w=900" alt="Expert Faculty">
+        </div>
+        <div class="feature-content">
+          <h3>Expert Faculty</h3>
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Mentorship by masters with global track records. Our tutors are not just teachers, they are architects of ranks, guiding you through the toughest concepts with surgical precision.</p>
+        </div>
       </div>
-      <div class="feature-card reveal-scroll">
-        <div class="feature-icon-pane"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000"></div>
-        <div class="feature-content"><h3>Premium Notes</h3><p>Handcrafted concise notes for deep conceptual mastery.</p></div>
-      </div>
-      <div class="feature-card reveal-scroll">
-        <div class="feature-icon-pane"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000"></div>
-        <div class="feature-content"><h3>Classroom Friendly</h3><p>A 100% student-centric interactive digital environment.</p></div>
-      </div>
-      <div class="feature-card reveal-scroll">
-        <div class="feature-icon-pane"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000"></div>
-        <div class="feature-content"><h3>Elite & Affordable</h3><p>Democratizing elite education for every serious aspirant in Bharat.</p></div>
-      </div>
-    </div>
 
-    <div class="review-section">
-      <div class="review-track">
-        <div class="review-card">
-          <img src="https://i.pravatar.cc/150?u=1" class="review-img">
-          <div class="review-info"><h5>Aryan (IIT Delhi)</h5><div class="stars">★★★★★</div><p class="review-text">"The physics concepts are now crystal clear. Best platform!"</p></div>
+      <div class="feature-card reveal">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=95&w=900" alt="Premium Notes">
         </div>
-        <div class="review-card">
-          <img src="https://i.pravatar.cc/150?u=2" class="review-img">
-          <div class="review-info"><h5>Sneha (AIIMS)</h5><div class="stars">★★★★★</div><p class="review-text">"Biology notes are gold. Highly recommended for NEET."</p></div>
+        <div class="feature-content">
+          <h3>Premium Notes</h3>
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">Curated smart notes designed for deep conceptual depth. We don't just provide information; we structure it for competitive mastery, ensuring every formula and theory is rank-optimized.</p>
         </div>
-        <div class="review-card">
-          <img src="https://i.pravatar.cc/150?u=3" class="review-img">
-          <div class="review-info"><h5>Rohan (NDA)</h5><div class="stars">★★★★★</div><p class="review-text">"Precise and to the point. Helped me crack my exam."</p></div>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&q=95&w=900" alt="Classroom Friendly">
         </div>
-        <div class="review-card">
-          <img src="https://i.pravatar.cc/150?u=1" class="review-img">
-          <div class="review-info"><h5>Aryan (IIT Delhi)</h5><div class="stars">★★★★★</div><p class="review-text">"The physics concepts are now crystal clear. Best platform!"</p></div>
+        <div class="feature-content">
+          <h3>Classroom Friendly</h3>
+          <p style="opacity:0.6; font-size:1.1rem; line-height:1.6;">A 100% student-centric interactive environment. Our digital ecosystem bridges the gap between effort and rank, making complex learning intuitive and result-oriented.</p>
         </div>
       </div>
     </div>
 
-    <section class="ceo-home-section reveal-scroll">
-      <p style="font-size: 1.45rem; font-style: italic;">"Education at Nexus Study is a journey towards world-class excellence."</p>
-      <div style="margin-top:32px;"><h3>Dr. Lalit Kumar</h3><span>CEO & Director | Ph.D, M.Sc, B.Ed</span></div>
+    <section class="ceo-home-section reveal">
+      <p style="font-size: 1.45rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. Our goal is not just limited to rote learning, but to create a digital nexus where every student can achieve their full potential. We transform your effort into ranks through conceptual clarity and personalized mentorship. This is my promise."</p>
+      <div class="ceo-info">
+        <h3>Dr. Lalit Kumar</h3>
+        <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>
+      </div>
       <div class="social-links-home">
-        <a href="#" class="social-btn s-ig"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-btn s-yt"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="social-btn s-li"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="li"><i class="fab fa-linkedin"></i></a>
       </div>
     </section>
+
+    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
   </main>
 
+  <!-- Student Login with Shine -->
   <main id="student-v" class="view-section">
-    <div style="max-width:400px; margin:0 auto; background:var(--apple-gray); padding:50px; border-radius:30px; text-align:center;">
+    <div class="glass-card">
       <h2>Student Login</h2>
-      <input type="text" placeholder="Username" style="width:100%; padding:15px; margin:15px 0; border-radius:10px; border:1px solid #ddd;">
-      <button style="width:100%; padding:15px; background:#111; color:#fff; border-radius:10px; cursor:pointer; font-weight:800;">Sign In</button>
+      <div class="input-group">
+        <input type="text" placeholder="Username / Email">
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password">
+      </div>
+      <button class="btn-submit btn-shine">Access Elite Portal</button>
     </div>
   </main>
 
+  <!-- Tutor Login with Shine -->
   <main id="teacher-v" class="view-section">
-    <div style="max-width:400px; margin:0 auto; background:var(--apple-gray); padding:50px; border-radius:30px; text-align:center;">
+    <div class="glass-card">
       <h2>Tutor Access</h2>
-      <input type="text" placeholder="Faculty ID" style="width:100%; padding:15px; margin:15px 0; border-radius:10px; border:1px solid #ddd;">
-      <button style="width:100%; padding:15px; background:#111; color:#fff; border-radius:10px; cursor:pointer; font-weight:800;">Login</button>
+      <div class="input-group">
+        <input type="text" placeholder="Faculty ID">
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password">
+      </div>
+      <button class="btn-submit btn-shine">Faculty Login</button>
     </div>
   </main>
+
+  <!-- Ticker -->
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star"></i> 5.0</div>
+      <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star"></i> 5.0</div>
+      <div class="ticker-item"><b>Rohan (NDA):</b> Future of Coaching <i class="fas fa-star"></i> 5.0</div>
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star"></i> 5.0</div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="line" id="line1"></div>
+    <div class="line" id="line2"></div>
+    <div class="line" id="line3"></div>
+  </div>
 
   <script>
-    function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
-    function togglePortal() { 
-      const menu = document.getElementById('portalMenu');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex'; 
+    function toggleMenu() { 
+      document.getElementById('sidebar').classList.toggle('open'); 
     }
+
     function switchView(id) {
-      document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active-view'));
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
       document.getElementById(id + '-v').classList.add('active-view');
-      document.getElementById('portalMenu').style.display = 'none';
+      window.scrollTo(0, 0);
       if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();
-      window.scrollTo(0,0);
-      triggerScrollReveal();
     }
-    function triggerScrollReveal() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal-scroll').forEach(el => observer.observe(el));
+
+    // Smooth Apple-like Scroll Reveal
+    function reveal() {
+      var reveals = document.querySelectorAll('.reveal');
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        if (elementTop < windowHeight - 120) {
+          reveals[i].classList.add('active');
+        }
+      }
+
+      // Scroll Indicator
+      const indicator = document.getElementById('scrollIndicator');
+      if (window.scrollY > 400) {
+        indicator.classList.add('show');
+      } else {
+        indicator.classList.remove('show');
+      }
     }
-    document.addEventListener('DOMContentLoaded', triggerScrollReveal);
+
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    // Subtle line animation
+    setInterval(() => {
+      document.querySelectorAll('.line').forEach(line => {
+        line.classList.toggle('active');
+      });
+    }, 2000);
   </script>
 </body>
 </html>
