@@ -4,7 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>NEXUS STUDY | Elite Learning Hub</title>
+  <meta name="description" content="NEXUS STUDY - Bharat's elite digital ecosystem for JEE, NEET and Competitive Foundations. Precision learning under the direction of Dr. Lalit Kumar.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.nexusstudy.global/">
   
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "NEXUS STUDY",
+    "url": "https://www.nexusstudy.global/",
+    "logo": "https://www.nexusstudy.global/logo.png",
+    "description": "Elite digital ecosystem for JEE, NEET and Competitive Foundations.",
+    "founder": {
+      "@type": "Person",
+      "name": "Dr. Lalit Kumar",
+      "jobTitle": "CEO & Director",
+      "honorificSuffix": "Ph.D, M.Sc, B.Ed"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
   
@@ -15,96 +35,192 @@
       --text: #1d1d1f;
       --accent: #0071e3;
       --border: rgba(0,0,0,0.08);
+      --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.06);
       --shadow-deep: 0 40px 100px rgba(0, 0, 0, 0.15);
+      --glass: rgba(255, 255, 255, 0.75);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); }
 
-    body { background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-
-    /* --- APPLE SCROLL REVEAL (FADED TO SHOW) --- */
-    .reveal-text {
-      opacity: 0.1;
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
-      will-change: opacity, transform;
+    body { 
+      background: var(--white); 
+      color: var(--text); 
+      overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased; 
     }
-    .reveal-text.active {
+
+    /* --- APPLE SCROLL ANIMATION CLASS --- */
+    .reveal-scroll {
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .reveal-scroll.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     /* --- HEADER --- */
     header {
-      height: 72px; background: rgba(255, 255, 255, 0.8); backdrop-filter: saturate(180%) blur(20px);
-      display: flex; align-items: center; padding: 0 5%; position: fixed; width: 100%; top: 0; z-index: 10000; border-bottom: 1px solid var(--border);
+      height: 72px; 
+      background: rgba(255, 255, 255, 0.94); 
+      backdrop-filter: saturate(200%) blur(60px);
+      display: flex; 
+      align-items: center; 
+      padding: 0 5%; 
+      position: fixed; 
+      width: 100%; 
+      top: 0; 
+      z-index: 10000; 
+      border-bottom: 1px solid var(--border);
     }
 
-    .logo { flex: 1; display: flex; align-items: center; gap: 14px; cursor: pointer; }
-    .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, #0071e3, #0051b3); border-radius: 12px; position: relative; box-shadow: 0 8px 20px rgba(0,113,227,0.3); transform: perspective(500px) rotateY(-10deg); }
-    .logo-mark::after { content: 'N'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-weight: 900; font-size: 22px; }
+    .menu-btn { font-size: 26px; cursor: pointer; padding: 10px; z-index: 2001; }
+    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 14px; }
+    .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; color: var(--text); }
+    .logo-mark { 
+      width: 42px; height: 42px; 
+      background: linear-gradient(135deg, #0071e3, #0051b3); 
+      border-radius: 12px; 
+      position: relative; 
+      box-shadow: 0 6px 20px rgba(0,113,227,0.4); 
+    }
+    .logo-mark::after { 
+      content: 'N'; 
+      position: absolute; top: 50%; left: 50%; 
+      transform: translate(-50%, -50%); 
+      color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; 
+    }
+
+    .header-actions { display: flex; gap: 32px; align-items: center; }
+    .login-nav { 
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px; 
+      text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8; 
+    }
+    .login-nav:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }
 
     /* --- SIDEBAR --- */
     #sidebar {
       position: fixed; top: 0; left: -380px; width: 360px; height: 100%;
-      background: rgba(255, 255, 255, 0.98); z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.1);
-      display: flex; flex-direction: column; transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px);
+      z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15);
+      display: flex; flex-direction: column;
     }
     #sidebar.open { left: 0; }
-    .sidebar-menu { list-style: none; flex: 1; margin-top: 40px; }
-    .sidebar-menu li { margin-bottom: 25px; font-size: 1.3rem; font-weight: 800; cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    .sidebar-menu { list-style: none; flex: 1; margin-top: 60px; }
+    .sidebar-menu li { 
+      margin-bottom: 28px; font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; 
+      cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); 
+      padding-bottom: 14px; 
+    }
+    .sidebar-menu li:hover { color: var(--accent); padding-left: 14px; }
 
-    /* --- HERO & 3D ELEMENTS --- */
-    .view-section { display: none; padding: 120px 6%; min-height: 100vh; }
+    /* --- SCROLL INDICATOR --- */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .scroll-indicator.show { opacity: 1; }
+    .line {
+      width: 28px;
+      height: 3px;
+      background: rgba(0, 113, 227, 0.3);
+      border-radius: 999px;
+      transition: all 0.4s ease;
+    }
+    .line.active {
+      background: var(--accent);
+      width: 42px;
+      box-shadow: 0 0 8px rgba(0, 113, 227, 0.6);
+    }
+
+    /* --- VIEW SECTIONS --- */
+    .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; position: relative; }
     .active-view { display: block; }
 
+    /* --- HERO --- */
     .hero-container {
-      text-align: center; max-width: 1100px; margin: 0 auto 100px; padding: 140px 50px;
-      border-radius: 50px; position: relative; overflow: hidden; background: var(--apple-gray);
-      box-shadow: var(--shadow-deep); transform: perspective(1000px) rotateX(2deg);
+      text-align: center; max-width: 1180px; margin: 0 auto 120px;
+      padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-deep); border: 1px solid var(--border);
     }
-    .hero-h2 { font-family: 'Outfit'; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 900; letter-spacing: -3px; line-height: 0.95; margin-bottom: 30px; }
+    .hero-bg-image {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000') no-repeat center center;
+      background-size: cover; z-index: -1; opacity: 0.12;
+    }
+    .hero-h2 { 
+      font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.9; 
+      font-weight: 900; letter-spacing: -4.5px; margin-bottom: 36px; position: relative; 
+    }
     .hero-h2 span { color: var(--accent); }
+    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }
 
+    /* --- BUTTONS --- */
     .btn-3d {
-      padding: 22px 55px; border-radius: 40px; background: #0071e3; color: white; font-weight: 800; border: none;
-      box-shadow: 0 15px 35px rgba(0,113,227,0.3), inset 0 -4px 0 rgba(0,0,0,0.2); cursor: pointer; font-size: 1.1rem;
+      position: relative; font-size: 1.18rem; padding: 24px 60px; border-radius: 9999px;
+      background: linear-gradient(145deg, #0071e3, #0051b3); color: white; font-weight: 800; border: none;
+      box-shadow: 0 10px 30px rgba(0,113,227,0.4), inset 0 -6px 12px rgba(0,0,0,0.2); cursor: pointer;
     }
-    .btn-3d:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 25px 50px rgba(0,113,227,0.4); }
+    .btn-3d:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 20px 50px rgba(0,113,227,0.5); }
 
-    /* --- FEATURE CARDS (3D) --- */
-    .feature-grid { display: flex; flex-direction: column; gap: 60px; max-width: 1100px; margin: 80px auto; }
+    .btn-submit {
+      width: 100%; padding: 26px; border-radius: 9999px; border: none;
+      background: linear-gradient(90deg, var(--text), #111); color: #fff;
+      font-weight: 800; font-size: 1.15rem; cursor: pointer; box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    /* --- FEATURE CARDS --- */
+    .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }
     .feature-card { 
-      background: #fff; padding: 60px; border-radius: 45px; border: 1px solid var(--border);
-      display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+      background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center;
+      box-shadow: var(--shadow-light);
     }
-    .feature-card:hover { transform: perspective(1000px) rotateY(-2deg) translateY(-10px); }
-    .feature-icon-pane { border-radius: 30px; overflow: hidden; height: 320px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+    .feature-card:hover { transform: translateY(-10px); background: #fff; box-shadow: var(--shadow-deep); }
+    .feature-icon-pane { height: 100%; width: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
     .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }
+    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }
+    .feature-content p { opacity: 0.67; font-size: 1.18rem; line-height: 1.75; }
 
-    /* --- SOCIAL MEDIA (Original Colors) --- */
-    .social-links { display: flex; justify-content: center; gap: 35px; margin-top: 40px; }
-    .social-links a { font-size: 32px; transition: 0.3s; }
-    .social-links a:hover { transform: scale(1.2) rotate(5deg); }
+    /* --- CEO SECTION --- */
+    .ceo-home-section { 
+      margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); 
+      color: var(--text); border-radius: 52px; text-align: center; border: 1px solid var(--border);
+    }
+    .ceo-info h3 { font-family: 'Outfit'; font-size: 2.1rem; font-weight: 900; color: var(--accent); margin-top: 32px; }
+
+    /* --- SOCIALS --- */
+    .social-links-home { display: flex; justify-content: center; gap: 40px; margin-top: 52px; font-size: 34px; }
     .insta { color: #E1306C; } .yt { color: #FF0000; } .li { color: #0A66C2; }
 
-    .ceo-section { margin-top: 80px; padding: 80px 10%; background: var(--apple-gray); border-radius: 50px; text-align: center; }
-
     /* --- TICKER --- */
-    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 15px 0; z-index: 9000; }
-    .ticker-track { display: flex; animation: scrollTicker 30s linear infinite; width: max-content; }
-    .ticker-item { width: 350px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; }
+    .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }
+    .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    @keyframes scrollTicker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .glass-card { 
+      background: var(--glass); border-radius: 52px; padding: 70px 60px; 
+      border: 1px solid rgba(255,255,255,0.6); max-width: 540px; margin: 80px auto; 
+      box-shadow: 0 40px 120px rgba(0,0,0,0.25); backdrop-filter: blur(40px); 
+    }
+    .input-group input { width: 100%; padding: 24px 28px; border-radius: 28px; border: 1.5px solid rgba(0,0,0,0.12); margin-bottom: 28px; }
 
-    @media (max-width: 1024px) { .feature-card { grid-template-columns: 1fr; padding: 30px; } .feature-icon-pane { height: 250px; } }
+    @media (max-width: 1024px) { .feature-card { grid-template-columns: 1fr; padding: 40px; } .feature-icon-pane { height: 250px; } }
   </style>
 </head>
 <body>
 
   <div id="sidebar">
-    <div class="menu-btn" style="position:absolute; top:30px; right:30px; font-size: 24px; cursor:pointer;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
+    <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
     <ul class="sidebar-menu">
       <li onclick="switchView('home')">HOME</li>
       <li>NCERT BOOK</li>
@@ -112,119 +228,147 @@
       <li>CUET / NDA</li>
       <li>BOARD PYQ</li>
     </ul>
-    <div class="social-links" style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); justify-content: space-around;">
-      <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
-      <a href="#" class="li"><i class="fab fa-linkedin"></i></a>
-    </div>
   </div>
 
   <header>
-    <div style="font-size: 24px; cursor: pointer; margin-right: 20px;" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>
+    <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>
     <div class="logo" onclick="switchView('home')">
       <div class="logo-mark"></div>
-      <h1 style="font-family:'Outfit'; font-size: 24px; font-weight: 900;">NEXUS STUDY</h1>
+      <h1>NEXUS STUDY</h1>
     </div>
-    <div style="display:flex; gap:20px; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:1px;">
-      <span onclick="switchView('student')" style="cursor:pointer">Student</span>
-      <span onclick="switchView('teacher')" style="cursor:pointer">Tutor</span>
+    <div class="header-actions">
+      <div class="login-nav" onclick="switchView('student')">Student Login</div>
+      <div class="login-nav" onclick="switchView('teacher')">Tutor Login</div>
     </div>
   </header>
 
   <main id="home-v" class="view-section active-view">
-    <div class="hero-container reveal-text">
-      <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks.</span></h2>
-      <p style="opacity:0.6; font-size:1.2rem; margin-bottom:40px;">Bharat's elite digital ecosystem for JEE & NEET.</p>
-      <button class="btn-3d">Enroll Elite Batch</button>
+    <div class="hero-container reveal-scroll">
+      <div class="hero-bg-image"></div>
+      <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>
+      <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Precision meets excellence.</p>
+      <button class="btn-3d" onclick="switchView('student')">Enroll Elite Batch</button>
     </div>
 
     <div class="feature-grid">
-      <div class="feature-card reveal-text">
+      <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1524178232457-3bb2449b382a?auto=format&fit=crop&q=80&w=1000" alt="Faculty">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000" alt="Faculty">
         </div>
         <div class="feature-content">
-          <h3 style="font-size:2.5rem; margin-bottom:20px; font-family:'Outfit';">Expert Faculty</h3>
-          <p style="opacity:0.6; line-height:1.6;">Architecture of ranks, guided by masters with global track records.</p>
+          <h3>Expert Faculty</h3>
+          <p>Mentorship by masters with global track records. Our tutors are architects of ranks, guiding you with surgical precision.</p>
         </div>
       </div>
 
-      <div class="feature-card reveal-text">
+      <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=1000" alt="Study">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000" alt="Notes">
         </div>
         <div class="feature-content">
-          <h3 style="font-size:2.5rem; margin-bottom:20px; font-family:'Outfit';">Premium Notes</h3>
-          <p style="opacity:0.6; line-height:1.6;">Rank-optimized structure for deep conceptual depth.</p>
+          <h3>Premium Notes</h3>
+          <p>Curated smart notes designed for deep conceptual depth. We structure information for competitive mastery.</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal-scroll">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000" alt="Environment">
+        </div>
+        <div class="feature-content">
+          <h3>Classroom Friendly</h3>
+          <p>A 100% student-centric interactive environment. Making complex learning intuitive and result-oriented.</p>
         </div>
       </div>
     </div>
 
-    <section class="ceo-section reveal-text">
-      <p style="font-size: 1.5rem; font-style: italic; font-weight: 600;">"We transform effort into ranks through clarity."</p>
-      <div style="margin-top:30px;">
-        <h3 style="color:var(--accent); font-size:1.8rem; font-family:'Outfit';">Dr. Lalit Kumar</h3>
-        <span style="font-weight:700; opacity:0.5;">CEO & Director</span>
-      </div>
-      <div class="social-links">
-        <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="li"><i class="fab fa-linkedin"></i></a>
+    <section class="ceo-home-section reveal-scroll">
+      <p style="font-size: 1.45rem; font-style: italic; opacity: 0.9;">"Education at Nexus Study is a journey towards world-class excellence. We transform effort into ranks through conceptual clarity."</p>
+      <div class="ceo-info">
+        <h3>Dr. Lalit Kumar</h3>
+        <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>
       </div>
     </section>
 
-    <footer style="padding: 60px; text-align: center; opacity: 0.3; font-size: 10px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
+    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
   </main>
 
   <main id="student-v" class="view-section">
-    <div style="text-align:center; padding-top:100px;">
-      <h2 class="reveal-text">Student Login Portal</h2>
+    <div class="glass-card reveal-scroll">
+      <h2>Student Login</h2>
+      <div class="input-group"><input type="text" placeholder="Username / Email"></div>
+      <div class="input-group"><input type="password" placeholder="Password"></div>
+      <button class="btn-submit">Access Elite Portal</button>
     </div>
   </main>
+
   <main id="teacher-v" class="view-section">
-    <div style="text-align:center; padding-top:100px;">
-      <h2 class="reveal-text">Tutor Access Portal</h2>
+    <div class="glass-card reveal-scroll">
+      <h2>Tutor Access</h2>
+      <div class="input-group"><input type="text" placeholder="Faculty ID"></div>
+      <div class="input-group"><input type="password" placeholder="Password"></div>
+      <button class="btn-submit">Faculty Login</button>
     </div>
   </main>
 
   <div class="ticker-bar">
     <div class="ticker-track">
-      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Rank 122 <i class="fas fa-star" style="color:#facc15"></i></div>
-      <div class="ticker-item"><b>Sneha (AIIMS):</b> Precision Learning <i class="fas fa-star" style="color:#facc15"></i></div>
-      <div class="ticker-item"><b>Rohan (NDA):</b> Conceptual Mastery <i class="fas fa-star" style="color:#facc15"></i></div>
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
+      <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
+      <div class="ticker-item"><b>Rohan (NDA):</b> Future of Coaching <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
     </div>
+  </div>
+
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="line"></div><div class="line"></div><div class="line"></div>
   </div>
 
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
-
+    
     function switchView(id) {
-      document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active-view'));
+      document.querySelectorAll('.view-section').forEach(s => {
+        s.classList.remove('active-view');
+        // Reset animation for non-active views
+        s.querySelectorAll('.reveal-scroll').forEach(el => el.classList.remove('visible'));
+      });
       document.getElementById(id + '-v').classList.add('active-view');
       window.scrollTo(0,0);
       if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();
-      handleScroll(); // Reset reveal on switch
+      triggerScrollReveal(); // Trigger for the new view
     }
 
-    // --- APPLE STYLE SCROLL LOGIC ---
-    function handleScroll() {
-      const reveals = document.querySelectorAll('.reveal-text');
-      const windowHeight = window.innerHeight;
+    // --- APPLE STYLE SCROLL REVEAL LOGIC ---
+    function triggerScrollReveal() {
+      const observerOptions = {
+        threshold: 0.15 // 15% element visible hone par trigger hoga
+      };
 
-      reveals.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 150; // Trigger distance
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
 
-        if (elementTop < windowHeight - elementVisible && elementTop > -100) {
-          el.classList.add('active');
-        } else {
-          el.classList.remove('active'); // Fade out when scrolled past (Apple Style)
-        }
+      document.querySelectorAll('.reveal-scroll').forEach(el => observer.observe(el));
+    }
+
+    window.addEventListener('scroll', () => {
+      const indicator = document.getElementById('scrollIndicator');
+      window.scrollY > 300 ? indicator.classList.add('show') : indicator.classList.remove('show');
+    });
+
+    // Initial Trigger
+    document.addEventListener('DOMContentLoaded', triggerScrollReveal);
+
+    // Simple scroll indicator animation
+    setInterval(() => {
+      document.querySelectorAll('.line').forEach(line => {
+        line.classList.toggle('active', Math.random() > 0.5);
       });
-    }
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('load', handleScroll);
+    }, 1000);
   </script>
 </body>
 </html>
