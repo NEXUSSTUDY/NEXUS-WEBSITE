@@ -125,7 +125,7 @@
                   -8px -8px 20px rgba(255,255,255,0.9);
     }
 
-    /* --- SCROLL INDICATOR 3 LINES - ANIMATED TRANSPARENT EFFECT (No 3D) --- */
+    /* --- SCROLL INDICATOR 3 LINES - 3D LOOK WITH ANIMATION --- */
     .scroll-indicator {
       position: fixed;
       bottom: 30px;
@@ -144,16 +144,21 @@
       height: 6px;
       background: linear-gradient(145deg, #0071e3, #0051b3);
       border-radius: 999px;
-      transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
-      opacity: 0.85;
-      box-shadow: 0 4px 12px rgba(0,113,227,0.35);
+      transition: all 0.4s ease;
+      box-shadow: 
+        0 6px 14px rgba(0,113,227,0.5),
+        inset 0 3px 6px rgba(255,255,255,0.5),
+        inset 0 -3px 6px rgba(0,0,0,0.35);
+      transform: perspective(300px) rotateX(15deg);
     }
     .line.active {
       background: linear-gradient(145deg, #0071e3, #00aaff);
       width: 42px;
-      opacity: 1;
-      box-shadow: 0 6px 18px rgba(0,113,227,0.55);
-      transform: scale(1.12);
+      box-shadow: 
+        0 10px 25px rgba(0,113,227,0.7),
+        inset 0 4px 8px rgba(255,255,255,0.7),
+        inset 0 -4px 8px rgba(0,0,0,0.4);
+      transform: perspective(300px) rotateX(25deg) scale(1.1);
     }
 
     /* --- VIEW SECTIONS --- */
@@ -246,15 +251,15 @@
       transform: translateX(-50%) translateY(120%);
       width: 92%;
       max-width: 420px;
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(60px);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(40px);
       border-radius: 28px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
       padding: 28px 32px;
       z-index: 99999;
       opacity: 0;
       visibility: hidden;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.6);
       transition: all 0.65s cubic-bezier(0.32, 0.72, 0, 1);
     }
     #scrollPopup.show {
@@ -360,7 +365,7 @@
         </div>
       </div>
 
-      <!-- Affordable Excellence with new image -->
+      <!-- Affordable Excellence -->
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000" alt="Affordable Excellence">
@@ -466,30 +471,33 @@
 
     document.addEventListener('DOMContentLoaded', triggerScrollReveal);
 
-    // Simple scroll indicator animation (smooth & transparent feel)
+    // Simple scroll indicator animation
     setInterval(() => {
       document.querySelectorAll('.line').forEach(line => {
         line.classList.toggle('active', Math.random() > 0.5);
       });
     }, 1000);
 
-    // SMOOTH ANIMATED POP-UP (no 3D on lines)
+    // ANIMATED LINES WITH TRANSPARENT EFFECT (3D effect removed)
     function triggerPremiumLineAnim() {
       const lines = document.querySelectorAll('.line');
       
+      // Smooth animated transparent glow effect (no 3D rotate/scale)
       lines.forEach((line, i) => {
-        line.style.transition = 'all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1)';
-        line.style.opacity = '1';
-        line.style.transform = 'scale(1.15)';
-        line.style.boxShadow = '0 8px 20px rgba(0,113,227,0.45)';
+        line.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        line.style.background = 'linear-gradient(145deg, rgba(0,113,227,0.9), rgba(0,170,255,0.7))';
+        line.style.boxShadow = '0 8px 25px rgba(0,113,227,0.75), 0 0 20px rgba(255,255,255,0.6)';
+        line.style.opacity = '0.95';
+        line.style.width = (32 + i * 6) + 'px';
       });
 
       setTimeout(() => {
         lines.forEach(line => {
-          line.style.transition = 'all 0.7s cubic-bezier(0.4, 0.0, 0.2, 1)';
-          line.style.transform = 'scale(1)';
-          line.style.boxShadow = '0 4px 12px rgba(0,113,227,0.35)';
-          line.style.opacity = '0.85';
+          line.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+          line.style.background = 'linear-gradient(145deg, #0071e3, #0051b3)';
+          line.style.boxShadow = '0 6px 14px rgba(0,113,227,0.5), inset 0 3px 6px rgba(255,255,255,0.5), inset 0 -3px 6px rgba(0,0,0,0.35)';
+          line.style.opacity = '1';
+          line.style.width = '28px';
         });
         
         // Show smooth pop-up bar
@@ -500,7 +508,7 @@
           left: 0,
           behavior: 'smooth'
         });
-      }, 800);
+      }, 850);
     }
 
     function closePopup() {
