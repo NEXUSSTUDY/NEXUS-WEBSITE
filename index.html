@@ -469,16 +469,33 @@
       });
     }, 1000);
 
-    // SIMPLE POP-UP ON CLICK (3D effect removed)
+    // SIMPLE NORMAL ANIMATION ON CLICK (3D effect completely removed)
     function triggerPremiumLineAnim() {
-      // Show simple pop-up smoothly
-      document.getElementById('scrollPopup').classList.add('show');
+      const lines = document.querySelectorAll('.line');
       
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
+      // Normal simple animation (no 3D, no perspective, no rotateX)
+      lines.forEach((line, i) => {
+        line.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        line.style.transform = 'scale(1.15)';
+        line.style.boxShadow = '0 8px 20px rgba(0,113,227,0.5)';
       });
+
+      setTimeout(() => {
+        lines.forEach(line => {
+          line.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+          line.style.transform = 'scale(1)';
+          line.style.boxShadow = '0 4px 10px rgba(0,113,227,0.4)';
+        });
+        
+        // Show simple pop-up
+        document.getElementById('scrollPopup').classList.add('show');
+        
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+      }, 600);
     }
 
     function closePopup() {
