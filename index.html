@@ -125,7 +125,7 @@
                   -8px -8px 20px rgba(255,255,255,0.9);
     }
 
-    /* --- SCROLL INDICATOR 3 LINES - 3D LOOK WITH ANIMATION --- */
+    /* --- SCROLL INDICATOR 3 LINES - ANIMATED TRANSPARENT EFFECT (No 3D) --- */
     .scroll-indicator {
       position: fixed;
       bottom: 30px;
@@ -144,21 +144,16 @@
       height: 6px;
       background: linear-gradient(145deg, #0071e3, #0051b3);
       border-radius: 999px;
-      transition: all 0.4s ease;
-      box-shadow: 
-        0 6px 14px rgba(0,113,227,0.5),
-        inset 0 3px 6px rgba(255,255,255,0.5),
-        inset 0 -3px 6px rgba(0,0,0,0.35);
-      transform: perspective(300px) rotateX(15deg);
+      transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+      opacity: 0.85;
+      box-shadow: 0 4px 12px rgba(0,113,227,0.35);
     }
     .line.active {
       background: linear-gradient(145deg, #0071e3, #00aaff);
       width: 42px;
-      box-shadow: 
-        0 10px 25px rgba(0,113,227,0.7),
-        inset 0 4px 8px rgba(255,255,255,0.7),
-        inset 0 -4px 8px rgba(0,0,0,0.4);
-      transform: perspective(300px) rotateX(25deg) scale(1.1);
+      opacity: 1;
+      box-shadow: 0 6px 18px rgba(0,113,227,0.55);
+      transform: scale(1.12);
     }
 
     /* --- VIEW SECTIONS --- */
@@ -365,7 +360,7 @@
         </div>
       </div>
 
-      <!-- Pocket Friendly replaced with professional classic line -->
+      <!-- Affordable Excellence with new image -->
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000" alt="Affordable Excellence">
@@ -426,7 +421,7 @@
     <div class="line"></div><div class="line"></div><div class="line"></div>
   </div>
 
-  <!-- SMOOTH POP-UP BAR (does not cover full page, appears like elegant bottom bar) -->
+  <!-- SMOOTH POP-UP BAR -->
   <div id="scrollPopup">
     <div class="close-btn" onclick="closePopup()">✕</div>
     <h3>Welcome to Nexus Study</h3>
@@ -471,31 +466,33 @@
 
     document.addEventListener('DOMContentLoaded', triggerScrollReveal);
 
-    // Simple scroll indicator animation
+    // Simple scroll indicator animation (smooth & transparent feel)
     setInterval(() => {
       document.querySelectorAll('.line').forEach(line => {
         line.classList.toggle('active', Math.random() > 0.5);
       });
     }, 1000);
 
-    // ULTRA SMOOTH 3D ANIMATION + OPEN POP-UP BAR
+    // SMOOTH ANIMATED POP-UP (no 3D on lines)
     function triggerPremiumLineAnim() {
       const lines = document.querySelectorAll('.line');
       
       lines.forEach((line, i) => {
-        line.style.transition = 'all 0.75s cubic-bezier(0.32, 0.72, 0, 1)';
-        line.style.transform = `perspective(650px) rotateX(${32 + i * 14}deg) translateY(-8px) scale(1.18)`;
-        line.style.boxShadow = '0 28px 48px rgba(0,113,227,0.85), inset 0 10px 18px rgba(255,255,255,0.85), inset 0 -9px 16px rgba(0,0,0,0.45)';
+        line.style.transition = 'all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1)';
+        line.style.opacity = '1';
+        line.style.transform = 'scale(1.15)';
+        line.style.boxShadow = '0 8px 20px rgba(0,113,227,0.45)';
       });
 
       setTimeout(() => {
         lines.forEach(line => {
-          line.style.transition = 'all 0.85s cubic-bezier(0.23, 1, 0.32, 1)';
-          line.style.transform = 'perspective(300px) rotateX(15deg)';
-          line.style.boxShadow = '0 6px 14px rgba(0,113,227,0.5), inset 0 3px 6px rgba(255,255,255,0.5), inset 0 -3px 6px rgba(0,0,0,0.35)';
+          line.style.transition = 'all 0.7s cubic-bezier(0.4, 0.0, 0.2, 1)';
+          line.style.transform = 'scale(1)';
+          line.style.boxShadow = '0 4px 12px rgba(0,113,227,0.35)';
+          line.style.opacity = '0.85';
         });
         
-        // Show smooth pop-up bar (like elegant bottom sheet, does not cover full screen)
+        // Show smooth pop-up bar
         document.getElementById('scrollPopup').classList.add('show');
         
         window.scrollTo({
@@ -503,7 +500,7 @@
           left: 0,
           behavior: 'smooth'
         });
-      }, 920);
+      }, 800);
     }
 
     function closePopup() {
