@@ -38,131 +38,196 @@
       --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.06);
       --shadow-deep: 0 40px 100px rgba(0, 0, 0, 0.15);
       --glass: rgba(255, 255, 255, 0.75);
-      --instagram: #E1306C;
-      --youtube: #FF0000;
-      --linkedin: #0A66C2;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); }
 
-    body { background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body { 
+      background: var(--white); 
+      color: var(--text); 
+      overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased; 
+    }
 
-    .reveal-scroll { opacity: 0; transform: translateY(50px) scale(0.95); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-    .reveal-scroll.visible { opacity: 1; transform: translateY(0) scale(1); }
+    /* --- APPLE SCROLL ANIMATION CLASS --- */
+    .reveal-scroll {
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .reveal-scroll.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
 
-    header { height: 72px; background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(200%) blur(60px); display: flex; align-items: center; padding: 0 5%; position: fixed; width: 100%; top: 0; z-index: 10000; border-bottom: 1px solid var(--border); }
+    /* --- HEADER --- */
+    header {
+      height: 72px; 
+      background: rgba(255, 255, 255, 0.94); 
+      backdrop-filter: saturate(200%) blur(60px);
+      display: flex; 
+      align-items: center; 
+      padding: 0 5%; 
+      position: fixed; 
+      width: 100%; 
+      top: 0; 
+      z-index: 10000; 
+      border-bottom: 1px solid var(--border);
+    }
+
     .menu-btn { font-size: 26px; cursor: pointer; padding: 10px; z-index: 2001; }
     .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 14px; }
     .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; color: var(--text); }
-    .logo-mark { width: 42px; height: 42px; background: linear-gradient(135deg, #0071e3, #0051b3); border-radius: 12px; position: relative; box-shadow: 0 6px 20px rgba(0,113,227,0.4); }
-    .logo-mark::after { content: 'N'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; }
+    .logo-mark { 
+      width: 42px; height: 42px; 
+      background: linear-gradient(135deg, #0071e3, #0051b3); 
+      border-radius: 12px; 
+      position: relative; 
+      box-shadow: 0 6px 20px rgba(0,113,227,0.4); 
+    }
+    .logo-mark::after { 
+      content: 'N'; 
+      position: absolute; top: 50%; left: 50%; 
+      transform: translate(-50%, -50%); 
+      color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; 
+    }
 
     .header-actions { display: flex; gap: 32px; align-items: center; }
-    .login-nav { text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px; text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8; }
+    .login-nav { 
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px; 
+      text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8; 
+    }
     .login-nav:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }
 
-    #sidebar { position: fixed; top: 0; left: -380px; width: 360px; height: 100%; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px); z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15); display: flex; flex-direction: column; }
+    /* --- SIDEBAR --- */
+    #sidebar {
+      position: fixed; top: 0; left: -380px; width: 360px; height: 100%;
+      background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px);
+      z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15);
+      display: flex; flex-direction: column;
+    }
     #sidebar.open { left: 0; }
-    .sidebar-menu { list-style: none; flex: 1; margin-top: 40px; overflow-y: auto; }
-    .sidebar-menu li { margin-bottom: 20px; font-family: 'Outfit'; font-size: 1.2rem; font-weight: 800; cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
-    .sidebar-menu li:hover { color: var(--accent); padding-left: 10px; border-bottom-color: var(--accent); }
-    .sidebar-menu li::after { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 1rem; opacity: 0.3; }
-
-    /* --- NEW ENROLL MODAL (40% Width) --- */
-    .modal-overlay { 
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-      background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); 
-      z-index: 30000; display: none; align-items: center; justify-content: center; 
+    .sidebar-menu { list-style: none; flex: 1; margin-top: 60px; }
+    .sidebar-menu li { 
+      margin-bottom: 28px; font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; 
+      cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); 
+      padding-bottom: 14px; 
     }
-    .enroll-modal { 
-      width: 40%; height: 60vh; background: #fff; border-radius: 40px; 
-      display: flex; overflow: hidden; box-shadow: var(--shadow-deep); 
-      position: relative; animation: modalSlide 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    @keyframes modalSlide { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .sidebar-menu li:hover { color: var(--accent); padding-left: 14px; }
 
-    .modal-graphics { 
-      width: 6%; background: linear-gradient(180deg, #0071e3, #8a2be2, #00c6ff); 
-      display: flex; flex-direction: column; align-items: center; justify-content: space-around;
-      padding: 20px 0; color: rgba(255,255,255,0.4); font-size: 18px;
+    /* --- SCROLL INDICATOR --- */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
-    .modal-content-form { width: 94%; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-    .modal-content-form h2 { font-family: 'Outfit'; font-size: 2rem; font-weight: 900; margin-bottom: 10px; }
-    .modal-content-form p { opacity: 0.6; margin-bottom: 40px; font-weight: 600; }
-    .close-modal { position: absolute; top: 30px; right: 40px; font-size: 24px; cursor: pointer; opacity: 0.4; }
-    .close-modal:hover { opacity: 1; color: red; }
-
-    /* --- SCROLL INDICATOR 3D --- */
-    .scroll-indicator { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 9999; opacity: 0; transition: opacity 0.5s ease; }
     .scroll-indicator.show { opacity: 1; }
-    .line { width: 45px; height: 6px; background: #e0e0e0; border-radius: 10px; position: relative; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1); overflow: hidden; }
-    .line::before { content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: lineFlow 2s infinite cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 15px var(--accent); }
-    .line:nth-child(2)::before { animation-delay: 0.3s; } .line:nth-child(3)::before { animation-delay: 0.6s; }
-    @keyframes lineFlow { 0% { left: -100%; } 50% { left: 100%; } 100% { left: 100%; } }
+    .line {
+      width: 28px;
+      height: 3px;
+      background: rgba(0, 113, 227, 0.3);
+      border-radius: 999px;
+      transition: all 0.4s ease;
+    }
+    .line.active {
+      background: var(--accent);
+      width: 42px;
+      box-shadow: 0 0 8px rgba(0, 113, 227, 0.6);
+    }
 
-    /* --- REUSABLE COMPONENTS --- */
+    /* --- VIEW SECTIONS --- */
     .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; position: relative; }
     .active-view { display: block; }
-    .btn-3d { position: relative; font-size: 1.18rem; padding: 24px 60px; border-radius: 9999px; background: linear-gradient(145deg, #0071e3, #0051b3); color: white; font-weight: 800; border: none; box-shadow: 0 10px 30px rgba(0,113,227,0.4), inset 0 -6px 12px rgba(0,0,0,0.2); cursor: pointer; }
+
+    /* --- HERO --- */
+    .hero-container {
+      text-align: center; max-width: 1180px; margin: 0 auto 120px;
+      padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-deep); border: 1px solid var(--border);
+    }
+    .hero-bg-image {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000') no-repeat center center;
+      background-size: cover; z-index: -1; opacity: 0.12;
+    }
+    .hero-h2 { 
+      font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.9; 
+      font-weight: 900; letter-spacing: -4.5px; margin-bottom: 36px; position: relative; 
+    }
+    .hero-h2 span { color: var(--accent); }
+    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }
+
+    /* --- BUTTONS --- */
+    .btn-3d {
+      position: relative; font-size: 1.18rem; padding: 24px 60px; border-radius: 9999px;
+      background: linear-gradient(145deg, #0071e3, #0051b3); color: white; font-weight: 800; border: none;
+      box-shadow: 0 10px 30px rgba(0,113,227,0.4), inset 0 -6px 12px rgba(0,0,0,0.2); cursor: pointer;
+    }
     .btn-3d:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 20px 50px rgba(0,113,227,0.5); }
-    .input-group input { width: 100%; padding: 24px 28px; border-radius: 28px; border: 1.5px solid rgba(0,0,0,0.12); margin-bottom: 20px; font-size: 1rem; outline: none; }
-    .input-group input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(0,113,227,0.1); }
-    .btn-submit { width: 100%; padding: 26px; border-radius: 9999px; border: none; background: linear-gradient(90deg, var(--text), #111); color: #fff; font-weight: 800; font-size: 1.15rem; cursor: pointer; }
 
-    /* Social Buttons */
-    .social-links-home { display: flex; justify-content: center; gap: 30px; margin-top: 52px; }
-    .social-btn { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; text-decoration: none; transition: all 0.3s ease; }
-    .s-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-    .s-yt { background: var(--youtube); }
-    .s-li { background: var(--linkedin); }
+    .btn-submit {
+      width: 100%; padding: 26px; border-radius: 9999px; border: none;
+      background: linear-gradient(90deg, var(--text), #111); color: #fff;
+      font-weight: 800; font-size: 1.15rem; cursor: pointer; box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
 
-    @media (max-width: 1024px) { .enroll-modal { width: 90%; height: auto; } .modal-graphics { width: 12%; } }
+    /* --- FEATURE CARDS --- */
+    .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }
+    .feature-card { 
+      background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center;
+      box-shadow: var(--shadow-light);
+    }
+    .feature-card:hover { transform: translateY(-10px); background: #fff; box-shadow: var(--shadow-deep); }
+    .feature-icon-pane { height: 100%; width: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
+    .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }
+    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }
+    .feature-content p { opacity: 0.67; font-size: 1.18rem; line-height: 1.75; }
+
+    /* --- CEO SECTION --- */
+    .ceo-home-section { 
+      margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); 
+      color: var(--text); border-radius: 52px; text-align: center; border: 1px solid var(--border);
+    }
+    .ceo-info h3 { font-family: 'Outfit'; font-size: 2.1rem; font-weight: 900; color: var(--accent); margin-top: 32px; }
+
+    /* --- SOCIALS --- */
+    .social-links-home { display: flex; justify-content: center; gap: 40px; margin-top: 52px; font-size: 34px; }
+    .insta { color: #E1306C; } .yt { color: #FF0000; } .li { color: #0A66C2; }
+
+    /* --- TICKER --- */
+    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; }
+    .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }
+    .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .glass-card { 
+      background: var(--glass); border-radius: 52px; padding: 70px 60px; 
+      border: 1px solid rgba(255,255,255,0.6); max-width: 540px; margin: 80px auto; 
+      box-shadow: 0 40px 120px rgba(0,0,0,0.25); backdrop-filter: blur(40px); 
+    }
+    .input-group input { width: 100%; padding: 24px 28px; border-radius: 28px; border: 1.5px solid rgba(0,0,0,0.12); margin-bottom: 28px; }
+
+    @media (max-width: 1024px) { .feature-card { grid-template-columns: 1fr; padding: 40px; } .feature-icon-pane { height: 250px; } }
   </style>
 </head>
 <body>
-
-  <div class="modal-overlay" id="enrollModal">
-    <div class="enroll-modal">
-      <div class="modal-graphics">
-        <i class="fas fa-graduation-cap"></i>
-        <i class="fas fa-microscope"></i>
-        <i class="fas fa-atom"></i>
-        <i class="fas fa-book-open"></i>
-      </div>
-      <div class="modal-content-form">
-        <div class="close-modal" onclick="closeEnroll()"><i class="fas fa-times"></i></div>
-        <h2>Start Your Journey</h2>
-        <p>Login or Sign up to access Elite Batch resources.</p>
-        <div class="input-group">
-          <input type="tel" placeholder="Enter Your Phone Number" maxlength="10">
-        </div>
-        <div class="input-group">
-          <input type="password" placeholder="Password (for existing users)">
-        </div>
-        <button class="btn-submit">Send OTP / Login</button>
-        <div style="margin-top: 25px; text-align: center; font-size: 13px; opacity: 0.5;">
-          By continuing, you agree to Nexus Study Terms & Privacy.
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id="sidebar">
     <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
     <ul class="sidebar-menu">
       <li onclick="switchView('home')">HOME</li>
-      <li>NCERT BOOKS</li>
-      <li>JEE PREP</li>
-      <li>NEET PREP</li>
-      <li>CUET</li>
-      <li>NDA</li>
+      <li>NCERT BOOK</li>
+      <li>JEE / NEET</li>
+      <li>CUET / NDA</li>
       <li>BOARD PYQ</li>
     </ul>
-    <div class="social-links-home" style="margin-top: auto; padding-bottom: 20px; gap: 15px;">
-      <a href="#" class="social-btn s-ig" style="width:45px; height:45px; font-size: 20px;"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="social-btn s-yt" style="width:45px; height:45px; font-size: 20px;"><i class="fab fa-youtube"></i></a>
-      <a href="#" class="social-btn s-li" style="width:45px; height:45px; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
-    </div>
   </div>
 
   <header>
@@ -182,7 +247,7 @@
       <div class="hero-bg-image"></div>
       <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>
       <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Precision meets excellence.</p>
-      <button class="btn-3d" onclick="openEnroll()">Enroll Elite Batch</button>
+      <button class="btn-3d" onclick="switchView('student')">Enroll Elite Batch</button>
     </div>
 
     <div class="feature-grid">
@@ -195,6 +260,26 @@
           <p>Mentorship by masters with global track records. Our tutors are architects of ranks, guiding you with surgical precision.</p>
         </div>
       </div>
+
+      <div class="feature-card reveal-scroll">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000" alt="Notes">
+        </div>
+        <div class="feature-content">
+          <h3>Premium Notes</h3>
+          <p>Curated smart notes designed for deep conceptual depth. We structure information for competitive mastery.</p>
+        </div>
+      </div>
+
+      <div class="feature-card reveal-scroll">
+        <div class="feature-icon-pane">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000" alt="Environment">
+        </div>
+        <div class="feature-content">
+          <h3>Classroom Friendly</h3>
+          <p>A 100% student-centric interactive environment. Making complex learning intuitive and result-oriented.</p>
+        </div>
+      </div>
     </div>
 
     <section class="ceo-home-section reveal-scroll">
@@ -203,14 +288,9 @@
         <h3>Dr. Lalit Kumar</h3>
         <span>CEO & Director | Ph.D, M.Sc, B.Ed</span>
       </div>
-      <div class="social-links-home">
-        <a href="#" class="social-btn s-ig" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-btn s-yt" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="social-btn s-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
     </section>
 
-    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px; margin-bottom: 60px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
+    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
   </main>
 
   <main id="student-v" class="view-section">
@@ -231,6 +311,14 @@
     </div>
   </main>
 
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
+      <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
+      <div class="ticker-item"><b>Rohan (NDA):</b> Future of Coaching <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
+    </div>
+  </div>
+
   <div class="scroll-indicator" id="scrollIndicator">
     <div class="line"></div><div class="line"></div><div class="line"></div>
   </div>
@@ -238,41 +326,53 @@
   <script>
     function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
     
-    function openEnroll() { document.getElementById('enrollModal').style.display = 'flex'; }
-    function closeEnroll() { document.getElementById('enrollModal').style.display = 'none'; }
-
-    // Close on background click
-    window.onclick = function(event) {
-      let modal = document.getElementById('enrollModal');
-      if (event.target == modal) closeEnroll();
-    }
-
     function switchView(id) {
       document.querySelectorAll('.view-section').forEach(s => {
         s.classList.remove('active-view');
+        // Reset animation for non-active views
         s.querySelectorAll('.reveal-scroll').forEach(el => el.classList.remove('visible'));
       });
       document.getElementById(id + '-v').classList.add('active-view');
       window.scrollTo(0,0);
       if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();
-      triggerScrollReveal();
+      triggerScrollReveal(); // Trigger for the new view
     }
 
+    // --- APPLE STYLE SCROLL REVEAL LOGIC ---
     function triggerScrollReveal() {
+      const observerOptions = {
+        threshold: 0.15 // 15% element visible hone par trigger hoga
+      };
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
-      }, { threshold: 0.15 });
+      }, observerOptions);
+
       document.querySelectorAll('.reveal-scroll').forEach(el => observer.observe(el));
     }
 
     window.addEventListener('scroll', () => {
       const indicator = document.getElementById('scrollIndicator');
-      window.scrollY > 150 ? indicator.classList.add('show') : indicator.classList.remove('show');
+      window.scrollY > 300 ? indicator.classList.add('show') : indicator.classList.remove('show');
     });
 
+    // Initial Trigger
     document.addEventListener('DOMContentLoaded', triggerScrollReveal);
+
+    // Simple scroll indicator animation
+    setInterval(() => {
+      document.querySelectorAll('.line').forEach(line => {
+        line.classList.toggle('active', Math.random() > 0.5);
+      });
+    }, 1000);
   </script>
 </body>
 </html>
+
+Is code me 3 lines ko 3d look do with animation,  aur isme home, NCERT BOOKS , JEE, NEET, CUET, NDA, BOARDS PYQ, sbse alg alg likho, niche social media link instagram,  youtube, LinkedIn actual color and design k saath rkho.
+
+Inme se kuchh miss mt krna and aur koi change mt krna
