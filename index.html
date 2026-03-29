@@ -175,7 +175,7 @@
     .hero-h2 span { color: var(--accent); }
     .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }
 
-    /* --- BUTTONS --- */
+    /* --- BUTTONS - ALL ULTRA PREMIUM 3D --- */
     .btn-3d {
       position: relative; font-size: 1.18rem; padding: 24px 60px; border-radius: 9999px;
       background: linear-gradient(145deg, #0071e3, #0051b3); color: white; font-weight: 800; border: none;
@@ -185,9 +185,11 @@
 
     .btn-submit {
       width: 100%; padding: 26px; border-radius: 9999px; border: none;
-      background: linear-gradient(90deg, var(--text), #111); color: #fff;
-      font-weight: 800; font-size: 1.15rem; cursor: pointer; box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      background: linear-gradient(145deg, #0071e3, #0051b3); color: #fff;
+      font-weight: 800; font-size: 1.15rem; cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,113,227,0.4), inset 0 -6px 12px rgba(0,0,0,0.2);
     }
+    .btn-submit:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 20px 50px rgba(0,113,227,0.5); }
 
     /* --- FEATURE CARDS --- */
     .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }
@@ -228,14 +230,7 @@
     .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
     @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    .glass-card { 
-      background: var(--glass); border-radius: 52px; padding: 70px 60px; 
-      border: 1px solid rgba(255,255,255,0.6); max-width: 540px; margin: 80px auto; 
-      box-shadow: 0 40px 120px rgba(0,0,0,0.25); backdrop-filter: blur(40px); 
-    }
-    .input-group input { width: 100%; padding: 24px 28px; border-radius: 28px; border: 1.5px solid rgba(0,0,0,0.12); margin-bottom: 28px; }
-
-    /* --- SIMPLE POP-UP BAR --- */
+    /* --- SIMPLE POP-UP BAR - BETTER VIEW --- */
     #scrollPopup {
       position: fixed;
       bottom: 80px;
@@ -281,7 +276,58 @@
     }
     #scrollPopup .close-btn:hover { opacity: 1; }
 
-    @media (max-width: 1024px) { .feature-card { grid-template-columns: 1fr; padding: 40px; } .feature-icon-pane { height: 250px; } }
+    /* --- SPLIT LOGIN PAGES (40% form + 60% graphic) --- */
+    .login-split {
+      display: flex;
+      gap: 60px;
+      max-width: 1180px;
+      margin: 140px auto;
+      align-items: center;
+    }
+    .form-side {
+      flex: 0 0 40%;
+      background: var(--glass);
+      border-radius: 52px;
+      padding: 70px 60px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.25);
+      backdrop-filter: blur(40px);
+    }
+    .graphic-side {
+      flex: 0 0 60%;
+      position: relative;
+      border-radius: 52px;
+      overflow: hidden;
+      box-shadow: var(--shadow-deep);
+      height: 520px;
+    }
+    .graphic-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .graphic-side::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,113,227,0.25), transparent);
+    }
+    .graphic-overlay {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      color: white;
+      font-family: 'Outfit';
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    @media (max-width: 1024px) { 
+      .feature-card { grid-template-columns: 1fr; padding: 40px; } 
+      .feature-icon-pane { height: 250px; } 
+      .login-split { flex-direction: column; gap: 40px; }
+      .form-side, .graphic-side { flex: 1 1 auto; }
+    }
   </style>
 </head>
 <body>
@@ -387,20 +433,38 @@
   </main>
 
   <main id="student-v" class="view-section">
-    <div class="glass-card reveal-scroll">
-      <h2>Student Login</h2>
-      <div class="input-group"><input type="text" placeholder="Username / Email"></div>
-      <div class="input-group"><input type="password" placeholder="Password"></div>
-      <button class="btn-submit">Access Elite Portal</button>
+    <div class="login-split reveal-scroll">
+      <!-- 40% FORM -->
+      <div class="form-side">
+        <h2>Student Login</h2>
+        <div class="input-group"><input type="text" placeholder="Username / Email"></div>
+        <div class="input-group"><input type="password" placeholder="Password"></div>
+        <button class="btn-submit">Access Elite Portal</button>
+      </div>
+      
+      <!-- 60% GRAPHIC -->
+      <div class="graphic-side">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000" alt="Student Learning">
+        <div class="graphic-overlay">Your Journey to<br>Top Ranks Starts Here</div>
+      </div>
     </div>
   </main>
 
   <main id="teacher-v" class="view-section">
-    <div class="glass-card reveal-scroll">
-      <h2>Tutor Access</h2>
-      <div class="input-group"><input type="text" placeholder="Faculty ID"></div>
-      <div class="input-group"><input type="password" placeholder="Password"></div>
-      <button class="btn-submit">Faculty Login</button>
+    <div class="login-split reveal-scroll">
+      <!-- 40% FORM -->
+      <div class="form-side">
+        <h2>Tutor Access</h2>
+        <div class="input-group"><input type="text" placeholder="Faculty ID"></div>
+        <div class="input-group"><input type="password" placeholder="Password"></div>
+        <button class="btn-submit">Faculty Login</button>
+      </div>
+      
+      <!-- 60% GRAPHIC -->
+      <div class="graphic-side">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000" alt="Expert Faculty">
+        <div class="graphic-overlay">Shape Future<br>Rankers</div>
+      </div>
     </div>
   </main>
 
@@ -417,11 +481,11 @@
     <div class="line"></div><div class="line"></div><div class="line"></div>
   </div>
 
-  <!-- SIMPLE POP-UP BAR -->
+  <!-- BETTER POP-UP VIEW -->
   <div id="scrollPopup">
     <div class="close-btn" onclick="closePopup()">✕</div>
-    <h3>Welcome to Nexus Study</h3>
-    <p>Discover precision learning for JEE, NEET &amp; competitive exams. Join the elite batch and turn your efforts into top ranks.</p>
+    <h3>Student Voices</h3>
+    <p><b>Aryan (IIT Delhi):</b> Best Experience ⭐ 5.0<br><b>Sneha (AIIMS):</b> Amazing Clarity ⭐ 5.0<br><b>Rohan (NDA):</b> Future of Coaching ⭐ 5.0</p>
   </div>
 
   <script>
@@ -469,25 +533,23 @@
       });
     }, 1000);
 
-    // SIMPLE NORMAL ANIMATION ON CLICK (3D effect completely removed)
+    // ANIMATION TIMING ADJUSTED - SIMPLE & SMOOTH (no 3D)
     function triggerPremiumLineAnim() {
       const lines = document.querySelectorAll('.line');
       
-      // Normal simple animation (no 3D, no perspective, no rotateX)
-      lines.forEach((line, i) => {
-        line.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+      lines.forEach((line) => {
+        line.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
         line.style.transform = 'scale(1.15)';
         line.style.boxShadow = '0 8px 20px rgba(0,113,227,0.5)';
       });
 
       setTimeout(() => {
         lines.forEach(line => {
-          line.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+          line.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
           line.style.transform = 'scale(1)';
           line.style.boxShadow = '0 4px 10px rgba(0,113,227,0.4)';
         });
         
-        // Show simple pop-up
         document.getElementById('scrollPopup').classList.add('show');
         
         window.scrollTo({
@@ -495,7 +557,7 @@
           left: 0,
           behavior: 'smooth'
         });
-      }, 600);
+      }, 550);
     }
 
     function closePopup() {
