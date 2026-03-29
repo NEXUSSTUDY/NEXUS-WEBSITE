@@ -52,12 +52,12 @@
     /* --- APPLE SCROLL ANIMATION CLASS --- */
     .reveal-scroll {
       opacity: 0;
-      transform: translateY(50px) scale(0.95);
-      transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transform: translateY(80px) scale(0.92) rotateX(4deg);
+      transition: all 1.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
     .reveal-scroll.visible {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0) scale(1) rotateX(0deg);
     }
 
     /* --- HEADER --- */
@@ -126,14 +126,14 @@
                   -8px -8px 20px rgba(255,255,255,0.9);
     }
 
-    /* --- SCROLL INDICATOR --- */
+    /* --- SCROLL INDICATOR 3 LINES - 3D LOOK WITH ANIMATION --- */
     .scroll-indicator {
       position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 8px;
+      gap: 6px;
       z-index: 9999;
       opacity: 0;
       transition: opacity 0.4s ease;
@@ -145,34 +145,13 @@
       height: 6px;
       background: linear-gradient(145deg, #0071e3, #0051b3);
       border-radius: 999px;
-      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+      transition: all 0.4s ease;
       /* 3D extruded look */
       box-shadow: 
         0 6px 14px rgba(0,113,227,0.5),
         inset 0 3px 6px rgba(255,255,255,0.5),
         inset 0 -3px 6px rgba(0,0,0,0.35);
-      transform: perspective(400px) rotateX(15deg);
-      cursor: pointer;
-    }
-    .line:hover {
-      /* Premium 3D hover effect with Apple-style depth */
-      transform: perspective(400px) rotateX(38deg) scale(1.18);
-      box-shadow: 
-        0 18px 35px rgba(0,113,227,0.75),
-        0 0 25px rgba(0,170,255,0.6),
-        inset 0 6px 12px rgba(255,255,255,0.85),
-        inset 0 -6px 12px rgba(0,0,0,0.45);
-      animation: premium3DHover 0.75s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-    }
-    .line:active {
-      /* Click animation - extra premium pop */
-      transform: perspective(400px) rotateX(52deg) scale(1.05);
-      box-shadow: 
-        0 25px 45px rgba(0,113,227,0.9),
-        0 0 35px rgba(0,170,255,0.85),
-        inset 0 8px 16px rgba(255,255,255,1),
-        inset 0 -8px 16px rgba(0,0,0,0.6);
-      animation: premium3DClick 0.4s ease-out;
+      transform: perspective(300px) rotateX(15deg);
     }
     .line.active {
       background: linear-gradient(145deg, #0071e3, #00aaff);
@@ -181,20 +160,7 @@
         0 10px 25px rgba(0,113,227,0.7),
         inset 0 4px 8px rgba(255,255,255,0.7),
         inset 0 -4px 8px rgba(0,0,0,0.4);
-      transform: perspective(400px) rotateX(25deg) scale(1.1);
-    }
-
-    @keyframes premium3DHover {
-      0%   { transform: perspective(400px) rotateX(15deg) scale(1); }
-      40%  { transform: perspective(400px) rotateX(48deg) scale(1.25); }
-      70%  { transform: perspective(400px) rotateX(32deg) scale(1.12); }
-      100% { transform: perspective(400px) rotateX(38deg) scale(1.18); }
-    }
-
-    @keyframes premium3DClick {
-      0%   { transform: perspective(400px) rotateX(15deg) scale(1); }
-      50%  { transform: perspective(400px) rotateX(55deg) scale(0.95); }
-      100% { transform: perspective(400px) rotateX(52deg) scale(1.05); }
+      transform: perspective(300px) rotateX(25deg) scale(1.1);
     }
 
     /* --- VIEW SECTIONS --- */
@@ -270,12 +236,7 @@
     }
     .input-group input { width: 100%; padding: 24px 28px; border-radius: 28px; border: 1.5px solid rgba(0,0,0,0.12); margin-bottom: 28px; }
 
-    @media (max-width: 1024px) { 
-      .feature-card { grid-template-columns: 1fr; padding: 40px; } 
-      .feature-icon-pane { height: 250px; }
-      .scroll-indicator { bottom: 20px; gap: 6px; }
-      .line { height: 5px; width: 24px; }
-    }
+    @media (max-width: 1024px) { .feature-card { grid-template-columns: 1fr; padding: 40px; } .feature-icon-pane { height: 250px; } }
   </style>
 </head>
 <body>
@@ -360,7 +321,14 @@
       </div>
     </section>
 
-    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">&copy; 2026 NEXUS STUDY GLOBAL | Greater Noida, Uttar Pradesh</footer>
+    <!-- SOCIAL MEDIA LINKS - HOME (actual colors & design) -->
+    <div class="social-links-home reveal-scroll">
+      <a href="#" target="_blank" class="insta" style="text-decoration: none;"><i class="fab fa-instagram"></i></a>
+      <a href="#" target="_blank" class="yt" style="text-decoration: none;"><i class="fab fa-youtube"></i></a>
+      <a href="#" target="_blank" class="li" style="text-decoration: none;"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">Greater Noida, Uttar Pradesh • © 2026 NEXUS STUDY GLOBAL</footer>
   </main>
 
   <main id="student-v" class="view-section">
@@ -389,7 +357,7 @@
     </div>
   </div>
 
-  <div class="scroll-indicator" id="scrollIndicator">
+  <div class="scroll-indicator" id="scrollIndicator" onclick="triggerPremiumLineAnim()">
     <div class="line"></div><div class="line"></div><div class="line"></div>
   </div>
 
@@ -431,20 +399,7 @@
     });
 
     // Initial Trigger
-    document.addEventListener('DOMContentLoaded', () => {
-      triggerScrollReveal();
-      
-      // Premium 3D click + hover already handled in CSS
-      // Making each line clickable (scroll to top with smooth Apple-style feel)
-      document.querySelectorAll('.line').forEach(line => {
-        line.addEventListener('click', () => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        });
-      });
-    });
+    document.addEventListener('DOMContentLoaded', triggerScrollReveal);
 
     // Simple scroll indicator animation
     setInterval(() => {
@@ -452,6 +407,30 @@
         line.classList.toggle('active', Math.random() > 0.5);
       });
     }, 1000);
+
+    // ULTRA PREMIUM 3D ANIMATION ON CLICKING THE 3 LINES
+    function triggerPremiumLineAnim() {
+      const lines = document.querySelectorAll('.line');
+      lines.forEach((line, i) => {
+        line.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        line.style.transform = `perspective(500px) rotateX(${28 + i * 12}deg) scale(1.32)`;
+        line.style.boxShadow = '0 25px 45px rgba(0,113,227,0.85), inset 0 10px 16px rgba(255,255,255,0.75), inset 0 -8px 14px rgba(0,0,0,0.4)';
+      });
+
+      setTimeout(() => {
+        lines.forEach(line => {
+          line.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+          line.style.transform = 'perspective(300px) rotateX(15deg)';
+          line.style.boxShadow = '0 6px 14px rgba(0,113,227,0.5), inset 0 3px 6px rgba(255,255,255,0.5), inset 0 -3px 6px rgba(0,0,0,0.35)';
+        });
+        // Smooth scroll to top (Apple international feel)
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+      }, 1100);
+    }
   </script>
 </body>
 </html>
