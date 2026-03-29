@@ -49,7 +49,6 @@
       -webkit-font-smoothing: antialiased; 
     }
 
-    /* --- APPLE SCROLL ANIMATION CLASS --- */
     .reveal-scroll {
       opacity: 0;
       transform: translateY(80px) scale(0.92) rotateX(4deg);
@@ -92,14 +91,73 @@
       color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; 
     }
 
-    .header-actions { display: flex; gap: 32px; align-items: center; }
-    .login-nav { 
-      text-decoration: none; color: var(--text); font-weight: 700; font-size: 13.5px; 
-      text-transform: uppercase; cursor: pointer; letter-spacing: 1.3px; opacity: 0.8; 
+    .header-actions { 
+      display: flex; 
+      align-items: center; 
+      position: relative;
     }
-    .login-nav:hover { opacity: 1; color: var(--accent); transform: translateY(-1px); }
 
-    /* --- SIDEBAR --- */
+    /* Sign In Button */
+    .sign-in-btn {
+      padding: 11px 28px;
+      background: linear-gradient(145deg, #0071e3, #0051b3);
+      color: white;
+      border: none;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 13.8px;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,113,227,0.35);
+    }
+    .sign-in-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,113,227,0.45);
+    }
+
+    /* Dropdown */
+    .sign-in-dropdown {
+      position: absolute;
+      top: 68px;
+      right: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(60px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      width: 240px;
+      padding: 10px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      z-index: 10001;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sign-in-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      padding: 16px 24px;
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dropdown-item:hover {
+      background: #f8f9fa;
+      color: var(--accent);
+    }
+
+    /* Rest of styles (unchanged) */
     #sidebar {
       position: fixed; top: 0; left: -380px; width: 360px; height: 100%;
       background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px);
@@ -111,53 +169,24 @@
     .sidebar-menu li { 
       margin-bottom: 28px; font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; 
       cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); 
-      padding-bottom: 14px; 
-      box-shadow: 8px 8px 20px rgba(0,0,0,0.18), 
-                  -6px -6px 15px rgba(255,255,255,0.7);
-      border-radius: 14px;
-      padding: 14px 20px 14px 20px;
+      padding: 14px 20px; border-radius: 14px;
+      box-shadow: 8px 8px 20px rgba(0,0,0,0.18), -6px -6px 15px rgba(255,255,255,0.7);
     }
     .sidebar-menu li:hover { 
       color: var(--accent); 
       padding-left: 24px; 
       transform: translateY(-4px) scale(1.04) rotateX(8deg);
-      box-shadow: 15px 20px 35px rgba(0,113,227,0.45), 
-                  -8px -8px 20px rgba(255,255,255,0.9);
+      box-shadow: 15px 20px 35px rgba(0,113,227,0.45), -8px -8px 20px rgba(255,255,255,0.9);
     }
 
-    /* --- SCROLL INDICATOR 3 LINES --- */
-    .scroll-indicator {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 6px;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      cursor: pointer;
-    }
+    .scroll-indicator { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 9999; opacity: 0; transition: opacity 0.4s ease; cursor: pointer; }
     .scroll-indicator.show { opacity: 1; }
-    .line {
-      width: 28px;
-      height: 6px;
-      background: linear-gradient(145deg, #0071e3, #0051b3);
-      border-radius: 999px;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 10px rgba(0,113,227,0.4);
-    }
-    .line.active {
-      background: linear-gradient(145deg, #0071e3, #00aaff);
-      width: 42px;
-      box-shadow: 0 6px 16px rgba(0,113,227,0.6);
-    }
+    .line { width: 28px; height: 6px; background: linear-gradient(145deg, #0071e3, #0051b3); border-radius: 999px; transition: all 0.4s ease; box-shadow: 0 4px 10px rgba(0,113,227,0.4); }
+    .line.active { background: linear-gradient(145deg, #0071e3, #00aaff); width: 42px; box-shadow: 0 6px 16px rgba(0,113,227,0.6); }
 
-    /* --- VIEW SECTIONS --- */
     .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; position: relative; }
     .active-view { display: block; }
 
-    /* --- HERO --- */
     .hero-container {
       text-align: center; max-width: 1180px; margin: 0 auto 120px;
       padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden;
@@ -175,7 +204,6 @@
     .hero-h2 span { color: var(--accent); }
     .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }
 
-    /* --- BUTTONS - ALL ULTRA PREMIUM 3D --- */
     .btn-3d {
       position: relative; font-size: 1.18rem; padding: 24px 60px; border-radius: 9999px;
       background: linear-gradient(145deg, #0071e3, #0051b3); color: white; font-weight: 800; border: none;
@@ -191,7 +219,6 @@
     }
     .btn-submit:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 20px 50px rgba(0,113,227,0.5); }
 
-    /* --- FEATURE CARDS --- */
     .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }
     .feature-card { 
       background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border);
@@ -204,14 +231,12 @@
     .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }
     .feature-content p { opacity: 0.67; font-size: 1.18rem; line-height: 1.75; }
 
-    /* --- CEO SECTION --- */
     .ceo-home-section { 
       margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); 
       color: var(--text); border-radius: 52px; text-align: center; border: 1px solid var(--border);
     }
     .ceo-info h3 { font-family: 'Outfit'; font-size: 2.1rem; font-weight: 900; color: var(--accent); margin-top: 32px; }
 
-    /* --- SOCIALS --- */
     .social-links-home { 
       display: flex; 
       justify-content: center; 
@@ -224,59 +249,11 @@
     .yt { color: #FF0000; } 
     .li { color: #0A66C2; }
 
-    /* --- TICKER --- */
     .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; }
     .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }
     .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
     @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    /* --- SIMPLE POP-UP BAR - BETTER VIEW --- */
-    #scrollPopup {
-      position: fixed;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%) translateY(120%);
-      width: 92%;
-      max-width: 420px;
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(60px);
-      border-radius: 28px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-      padding: 28px 32px;
-      z-index: 99999;
-      opacity: 0;
-      visibility: hidden;
-      border: 1px solid var(--border);
-      transition: all 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-    #scrollPopup.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-    #scrollPopup h3 {
-      font-family: 'Outfit';
-      font-size: 1.45rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      color: var(--accent);
-    }
-    #scrollPopup p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      opacity: 0.78;
-    }
-    #scrollPopup .close-btn {
-      position: absolute;
-      top: 18px;
-      right: 22px;
-      font-size: 24px;
-      cursor: pointer;
-      opacity: 0.6;
-    }
-    #scrollPopup .close-btn:hover { opacity: 1; }
-
-    /* --- SPLIT LOGIN PAGES (40% form + 60% graphic) --- */
     .login-split {
       display: flex;
       gap: 60px;
@@ -300,11 +277,7 @@
       box-shadow: var(--shadow-deep);
       height: 520px;
     }
-    .graphic-side img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .graphic-side img { width: 100%; height: 100%; object-fit: cover; }
     .graphic-side::after {
       content: '';
       position: absolute;
@@ -344,7 +317,6 @@
       <li>BOARDS PYQ</li>
     </ul>
     
-    <!-- SOCIAL MEDIA LINKS in Sidebar -->
     <div style="margin-top: auto; padding-top: 60px; display: flex; justify-content: center; gap: 35px; font-size: 32px;">
       <a href="#" target="_blank" class="insta" style="text-decoration: none;"><i class="fab fa-instagram"></i></a>
       <a href="#" target="_blank" class="yt" style="text-decoration: none;"><i class="fab fa-youtube"></i></a>
@@ -358,9 +330,19 @@
       <div class="logo-mark"></div>
       <h1>NEXUS STUDY</h1>
     </div>
+    
     <div class="header-actions">
-      <div class="login-nav" onclick="switchView('student')">Student Login</div>
-      <div class="login-nav" onclick="switchView('teacher')">Tutor Login</div>
+      <button class="sign-in-btn" onclick="toggleSignInDropdown()">Sign In</button>
+      
+      <!-- Sign In Dropdown -->
+      <div id="signInDropdown" class="sign-in-dropdown">
+        <div class="dropdown-item" onclick="switchView('student'); toggleSignInDropdown();">
+          <i class="fas fa-user-graduate"></i> Student Login
+        </div>
+        <div class="dropdown-item" onclick="switchView('teacher'); toggleSignInDropdown();">
+          <i class="fas fa-chalkboard-teacher"></i> Tutor Login
+        </div>
+      </div>
     </div>
   </header>
 
@@ -422,7 +404,6 @@
       </div>
     </section>
 
-    <!-- SOCIAL MEDIA LINKS - HOME -->
     <div class="social-links-home reveal-scroll">
       <a href="#" target="_blank" class="insta" style="text-decoration: none;"><i class="fab fa-instagram"></i></a>
       <a href="#" target="_blank" class="yt" style="text-decoration: none;"><i class="fab fa-youtube"></i></a>
@@ -434,15 +415,12 @@
 
   <main id="student-v" class="view-section">
     <div class="login-split reveal-scroll">
-      <!-- 40% FORM -->
       <div class="form-side">
         <h2>Student Login</h2>
         <div class="input-group"><input type="text" placeholder="Username / Email"></div>
         <div class="input-group"><input type="password" placeholder="Password"></div>
         <button class="btn-submit">Access Elite Portal</button>
       </div>
-      
-      <!-- 60% GRAPHIC -->
       <div class="graphic-side">
         <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000" alt="Student Learning">
         <div class="graphic-overlay">Your Journey to<br>Top Ranks Starts Here</div>
@@ -452,15 +430,12 @@
 
   <main id="teacher-v" class="view-section">
     <div class="login-split reveal-scroll">
-      <!-- 40% FORM -->
       <div class="form-side">
         <h2>Tutor Access</h2>
         <div class="input-group"><input type="text" placeholder="Faculty ID"></div>
         <div class="input-group"><input type="password" placeholder="Password"></div>
         <button class="btn-submit">Faculty Login</button>
       </div>
-      
-      <!-- 60% GRAPHIC -->
       <div class="graphic-side">
         <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000" alt="Expert Faculty">
         <div class="graphic-overlay">Shape Future<br>Rankers</div>
@@ -476,12 +451,10 @@
     </div>
   </div>
 
-  <!-- Scroll Indicator -->
   <div class="scroll-indicator" id="scrollIndicator" onclick="triggerPremiumLineAnim()">
     <div class="line"></div><div class="line"></div><div class="line"></div>
   </div>
 
-  <!-- BETTER POP-UP VIEW -->
   <div id="scrollPopup">
     <div class="close-btn" onclick="closePopup()">✕</div>
     <h3>Student Voices</h3>
@@ -489,7 +462,9 @@
   </div>
 
   <script>
-    function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
+    function toggleMenu() { 
+      document.getElementById('sidebar').classList.toggle('open'); 
+    }
     
     function switchView(id) {
       document.querySelectorAll('.view-section').forEach(s => {
@@ -502,12 +477,23 @@
       triggerScrollReveal();
     }
 
-    // --- APPLE STYLE SCROLL REVEAL LOGIC ---
-    function triggerScrollReveal() {
-      const observerOptions = {
-        threshold: 0.15
-      };
+    // Toggle Sign In Dropdown
+    function toggleSignInDropdown() {
+      const dropdown = document.getElementById('signInDropdown');
+      dropdown.classList.toggle('show');
+    }
 
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('signInDropdown');
+      const btn = document.querySelector('.sign-in-btn');
+      if (!e.target.closest('.header-actions')) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    function triggerScrollReveal() {
+      const observerOptions = { threshold: 0.15 };
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -515,7 +501,6 @@
           }
         });
       }, observerOptions);
-
       document.querySelectorAll('.reveal-scroll').forEach(el => observer.observe(el));
     }
 
@@ -526,17 +511,14 @@
 
     document.addEventListener('DOMContentLoaded', triggerScrollReveal);
 
-    // Simple scroll indicator animation
     setInterval(() => {
       document.querySelectorAll('.line').forEach(line => {
         line.classList.toggle('active', Math.random() > 0.5);
       });
     }, 1000);
 
-    // ANIMATION TIMING ADJUSTED - SIMPLE & SMOOTH (no 3D)
     function triggerPremiumLineAnim() {
       const lines = document.querySelectorAll('.line');
-      
       lines.forEach((line) => {
         line.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
         line.style.transform = 'scale(1.15)';
@@ -549,14 +531,8 @@
           line.style.transform = 'scale(1)';
           line.style.boxShadow = '0 4px 10px rgba(0,113,227,0.4)';
         });
-        
         document.getElementById('scrollPopup').classList.add('show');
-        
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
       }, 550);
     }
 
