@@ -126,17 +126,18 @@
                   -8px -8px 20px rgba(255,255,255,0.9);
     }
 
-    /* --- SCROLL INDICATOR 3 LINES - 3D LOOK WITH ANIMATION --- */
+    /* --- SCROLL INDICATOR --- */
     .scroll-indicator {
       position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 6px;
+      gap: 8px;
       z-index: 9999;
       opacity: 0;
       transition: opacity 0.4s ease;
+      cursor: pointer;
     }
     .scroll-indicator.show { opacity: 1; }
     .line {
@@ -144,13 +145,34 @@
       height: 6px;
       background: linear-gradient(145deg, #0071e3, #0051b3);
       border-radius: 999px;
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
       /* 3D extruded look */
       box-shadow: 
         0 6px 14px rgba(0,113,227,0.5),
         inset 0 3px 6px rgba(255,255,255,0.5),
         inset 0 -3px 6px rgba(0,0,0,0.35);
-      transform: perspective(300px) rotateX(15deg);
+      transform: perspective(400px) rotateX(15deg);
+      cursor: pointer;
+    }
+    .line:hover {
+      /* Premium 3D hover effect with Apple-style depth */
+      transform: perspective(400px) rotateX(38deg) scale(1.18);
+      box-shadow: 
+        0 18px 35px rgba(0,113,227,0.75),
+        0 0 25px rgba(0,170,255,0.6),
+        inset 0 6px 12px rgba(255,255,255,0.85),
+        inset 0 -6px 12px rgba(0,0,0,0.45);
+      animation: premium3DHover 0.75s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    }
+    .line:active {
+      /* Click animation - extra premium pop */
+      transform: perspective(400px) rotateX(52deg) scale(1.05);
+      box-shadow: 
+        0 25px 45px rgba(0,113,227,0.9),
+        0 0 35px rgba(0,170,255,0.85),
+        inset 0 8px 16px rgba(255,255,255,1),
+        inset 0 -8px 16px rgba(0,0,0,0.6);
+      animation: premium3DClick 0.4s ease-out;
     }
     .line.active {
       background: linear-gradient(145deg, #0071e3, #00aaff);
@@ -159,7 +181,20 @@
         0 10px 25px rgba(0,113,227,0.7),
         inset 0 4px 8px rgba(255,255,255,0.7),
         inset 0 -4px 8px rgba(0,0,0,0.4);
-      transform: perspective(300px) rotateX(25deg) scale(1.1);
+      transform: perspective(400px) rotateX(25deg) scale(1.1);
+    }
+
+    @keyframes premium3DHover {
+      0%   { transform: perspective(400px) rotateX(15deg) scale(1); }
+      40%  { transform: perspective(400px) rotateX(48deg) scale(1.25); }
+      70%  { transform: perspective(400px) rotateX(32deg) scale(1.12); }
+      100% { transform: perspective(400px) rotateX(38deg) scale(1.18); }
+    }
+
+    @keyframes premium3DClick {
+      0%   { transform: perspective(400px) rotateX(15deg) scale(1); }
+      50%  { transform: perspective(400px) rotateX(55deg) scale(0.95); }
+      100% { transform: perspective(400px) rotateX(52deg) scale(1.05); }
     }
 
     /* --- VIEW SECTIONS --- */
@@ -235,7 +270,12 @@
     }
     .input-group input { width: 100%; padding: 24px 28px; border-radius: 28px; border: 1.5px solid rgba(0,0,0,0.12); margin-bottom: 28px; }
 
-    @media (max-width: 1024px) { .feature-card { grid-template-columns: 1fr; padding: 40px; } .feature-icon-pane { height: 250px; } }
+    @media (max-width: 1024px) { 
+      .feature-card { grid-template-columns: 1fr; padding: 40px; } 
+      .feature-icon-pane { height: 250px; }
+      .scroll-indicator { bottom: 20px; gap: 6px; }
+      .line { height: 5px; width: 24px; }
+    }
   </style>
 </head>
 <body>
@@ -320,7 +360,7 @@
       </div>
     </section>
 
-    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">&copy; 2026 NEXUS STUDY GLOBAL</footer>
+    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">&copy; 2026 NEXUS STUDY GLOBAL | Greater Noida, Uttar Pradesh</footer>
   </main>
 
   <main id="student-v" class="view-section">
@@ -391,7 +431,20 @@
     });
 
     // Initial Trigger
-    document.addEventListener('DOMContentLoaded', triggerScrollReveal);
+    document.addEventListener('DOMContentLoaded', () => {
+      triggerScrollReveal();
+      
+      // Premium 3D click + hover already handled in CSS
+      // Making each line clickable (scroll to top with smooth Apple-style feel)
+      document.querySelectorAll('.line').forEach(line => {
+        line.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
 
     // Simple scroll indicator animation
     setInterval(() => {
