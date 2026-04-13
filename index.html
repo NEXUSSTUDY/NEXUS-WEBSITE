@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>NEXUS STUDY | Elite Learning Hub</title>
   <meta name="description" content="NEXUS STUDY - Bharat's elite digital ecosystem for JEE, NEET and Competitive Foundations. Precision learning under the direction of Dr. Lalit Kumar.">
   <meta name="robots" content="index, follow">
@@ -40,7 +40,13 @@
       --glass: rgba(255, 255, 255, 0.75);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
+      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1); 
+    }
 
     body { 
       background: var(--white); 
@@ -74,11 +80,31 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .menu-btn { font-size: 26px; cursor: pointer; padding: 10px; z-index: 2001; }
-    .logo { flex: 1; display: flex; justify-content: flex-start; cursor: pointer; margin-left: 10px; align-items: center; gap: 14px; }
-    .logo h1 { font-family: 'Outfit'; font-size: 26px; font-weight: 900; letter-spacing: -2px; color: var(--text); }
+    .menu-btn { 
+      font-size: 26px; 
+      cursor: pointer; 
+      padding: 10px; 
+      z-index: 2001; 
+    }
+    .logo { 
+      flex: 1; 
+      display: flex; 
+      justify-content: flex-start; 
+      cursor: pointer; 
+      margin-left: 10px; 
+      align-items: center; 
+      gap: 14px; 
+    }
+    .logo h1 { 
+      font-family: 'Outfit'; 
+      font-size: 26px; 
+      font-weight: 900; 
+      letter-spacing: -2px; 
+      color: var(--text); 
+    }
     .logo-mark { 
-      width: 42px; height: 42px; 
+      width: 42px; 
+      height: 42px; 
       background: linear-gradient(135deg, #0071e3, #0051b3); 
       border-radius: 12px; 
       position: relative; 
@@ -86,9 +112,14 @@
     }
     .logo-mark::after { 
       content: 'N'; 
-      position: absolute; top: 50%; left: 50%; 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
       transform: translate(-50%, -50%); 
-      color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 22px; 
+      color: #fff; 
+      font-family: 'Outfit'; 
+      font-weight: 900; 
+      font-size: 22px; 
     }
 
     .header-actions { 
@@ -97,7 +128,6 @@
       position: relative;
     }
 
-    /* Sign In Button */
     .sign-in-btn {
       padding: 11px 28px;
       background: linear-gradient(145deg, #0071e3, #0051b3);
@@ -157,19 +187,38 @@
       color: var(--accent);
     }
 
-    /* Rest of styles (unchanged) */
+    /* Sidebar */
     #sidebar {
-      position: fixed; top: 0; left: -380px; width: 360px; height: 100%;
-      background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(60px);
-      z-index: 20000; padding: 80px 45px; box-shadow: 40px 0 100px rgba(0,0,0,0.15);
-      display: flex; flex-direction: column;
+      position: fixed; 
+      top: 0; 
+      left: -380px; 
+      width: 360px; 
+      height: 100%;
+      background: rgba(255, 255, 255, 0.97); 
+      backdrop-filter: blur(60px);
+      z-index: 20000; 
+      padding: 80px 45px; 
+      box-shadow: 40px 0 100px rgba(0,0,0,0.15);
+      display: flex; 
+      flex-direction: column; 
     }
     #sidebar.open { left: 0; }
-    .sidebar-menu { list-style: none; flex: 1; margin-top: 60px; }
+
+    .sidebar-menu { 
+      list-style: none; 
+      flex: 1; 
+      margin-top: 60px; 
+    }
     .sidebar-menu li { 
-      margin-bottom: 28px; font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; 
-      cursor: pointer; color: var(--text); border-bottom: 1px solid var(--border); 
-      padding: 14px 20px; border-radius: 14px;
+      margin-bottom: 28px; 
+      font-family: 'Outfit'; 
+      font-size: 1.4rem; 
+      font-weight: 800; 
+      cursor: pointer; 
+      color: var(--text); 
+      border-bottom: 1px solid var(--border); 
+      padding: 14px 20px; 
+      border-radius: 14px;
       box-shadow: 8px 8px 20px rgba(0,0,0,0.18), -6px -6px 15px rgba(255,255,255,0.7);
     }
     .sidebar-menu li:hover { 
@@ -179,63 +228,166 @@
       box-shadow: 15px 20px 35px rgba(0,113,227,0.45), -8px -8px 20px rgba(255,255,255,0.9);
     }
 
-    .scroll-indicator { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 9999; opacity: 0; transition: opacity 0.4s ease; cursor: pointer; }
+    /* Scroll Indicator */
+    .scroll-indicator { 
+      position: fixed; 
+      bottom: 30px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      display: flex; 
+      gap: 6px; 
+      z-index: 9999; 
+      opacity: 0; 
+      transition: opacity 0.4s ease; 
+      cursor: pointer; 
+    }
     .scroll-indicator.show { opacity: 1; }
-    .line { width: 28px; height: 6px; background: linear-gradient(145deg, #0071e3, #0051b3); border-radius: 999px; transition: all 0.4s ease; box-shadow: 0 4px 10px rgba(0,113,227,0.4); }
-    .line.active { background: linear-gradient(145deg, #0071e3, #00aaff); width: 42px; box-shadow: 0 6px 16px rgba(0,113,227,0.6); }
+    .line { 
+      width: 28px; 
+      height: 6px; 
+      background: linear-gradient(145deg, #0071e3, #0051b3); 
+      border-radius: 999px; 
+      transition: all 0.4s ease; 
+      box-shadow: 0 4px 10px rgba(0,113,227,0.4); 
+    }
+    .line.active { 
+      background: linear-gradient(145deg, #0071e3, #00aaff); 
+      width: 42px; 
+      box-shadow: 0 6px 16px rgba(0,113,227,0.6); 
+    }
 
-    .view-section { display: none; padding: 140px 6% 140px; min-height: 100vh; position: relative; }
+    .view-section { 
+      display: none; 
+      padding: 140px 6% 140px; 
+      min-height: 100vh; 
+      position: relative; 
+    }
     .active-view { display: block; }
 
+    /* Hero Section */
     .hero-container {
-      text-align: center; max-width: 1180px; margin: 0 auto 120px;
-      padding: 160px 70px 140px; border-radius: 60px; position: relative; overflow: hidden;
-      box-shadow: var(--shadow-deep); border: 1px solid var(--border);
+      text-align: center; 
+      max-width: 1180px; 
+      margin: 0 auto 120px;
+      padding: 160px 70px 140px; 
+      border-radius: 60px; 
+      position: relative; 
+      overflow: hidden;
+      box-shadow: var(--shadow-deep); 
+      border: 1px solid var(--border);
     }
     .hero-bg-image {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
       background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000') no-repeat center center;
-      background-size: cover; z-index: -1; opacity: 0.12;
+      background-size: cover; 
+      z-index: -1; 
+      opacity: 0.12;
     }
     .hero-h2 { 
-      font-family: 'Outfit'; font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.9; 
-      font-weight: 900; letter-spacing: -4.5px; margin-bottom: 36px; position: relative; 
+      font-family: 'Outfit'; 
+      font-size: clamp(3.2rem, 9vw, 6.2rem); 
+      line-height: 0.9; 
+      font-weight: 900; 
+      letter-spacing: -4.5px; 
+      margin-bottom: 36px; 
+      position: relative; 
     }
     .hero-h2 span { color: var(--accent); }
-    .hero-p { opacity: 0.68; max-width: 740px; font-size: 1.28rem; line-height: 1.7; margin: 0 auto 52px; }
+    .hero-p { 
+      opacity: 0.68; 
+      max-width: 740px; 
+      font-size: 1.28rem; 
+      line-height: 1.7; 
+      margin: 0 auto 52px; 
+    }
 
     .btn-3d {
-      position: relative; font-size: 1.18rem; padding: 24px 60px; border-radius: 9999px;
-      background: linear-gradient(145deg, #0071e3, #0051b3); color: white; font-weight: 800; border: none;
-      box-shadow: 0 10px 30px rgba(0,113,227,0.4), inset 0 -6px 12px rgba(0,0,0,0.2); cursor: pointer;
+      position: relative; 
+      font-size: 1.18rem; 
+      padding: 24px 60px; 
+      border-radius: 9999px;
+      background: linear-gradient(145deg, #0071e3, #0051b3); 
+      color: white; 
+      font-weight: 800; 
+      border: none;
+      box-shadow: 0 10px 30px rgba(0,113,227,0.4), inset 0 -6px 12px rgba(0,0,0,0.2); 
+      cursor: pointer;
     }
-    .btn-3d:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 20px 50px rgba(0,113,227,0.5); }
-
-    .btn-submit {
-      width: 100%; padding: 26px; border-radius: 9999px; border: none;
-      background: linear-gradient(145deg, #0071e3, #0051b3); color: #fff;
-      font-weight: 800; font-size: 1.15rem; cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0,113,227,0.4), inset 0 -6px 12px rgba(0,0,0,0.2);
+    .btn-3d:hover { 
+      transform: translateY(-6px) scale(1.04); 
+      box-shadow: 0 20px 50px rgba(0,113,227,0.5); 
     }
-    .btn-submit:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 20px 50px rgba(0,113,227,0.5); }
 
-    .feature-grid { display: flex; flex-direction: column; gap: 70px; max-width: 1180px; margin: 100px auto; }
+    /* Feature Cards */
+    .feature-grid { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 70px; 
+      max-width: 1180px; 
+      margin: 100px auto; 
+    }
     .feature-card { 
-      background: var(--apple-gray); padding: 80px; border-radius: 52px; border: 1px solid var(--border);
-      display: grid; grid-template-columns: 1fr 1.7fr; gap: 60px; align-items: center;
+      background: var(--apple-gray); 
+      padding: 80px; 
+      border-radius: 52px; 
+      border: 1px solid var(--border);
+      display: grid; 
+      grid-template-columns: 1fr 1.7fr; 
+      gap: 60px; 
+      align-items: center;
       box-shadow: var(--shadow-light);
     }
-    .feature-card:hover { transform: translateY(-10px); background: #fff; box-shadow: var(--shadow-deep); }
-    .feature-icon-pane { height: 100%; width: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
-    .feature-icon-pane img { width: 100%; height: 100%; object-fit: cover; }
-    .feature-content h3 { font-family: 'Outfit'; font-size: 2.8rem; font-weight: 900; margin-bottom: 28px; letter-spacing: -1.6px; }
-    .feature-content p { opacity: 0.67; font-size: 1.18rem; line-height: 1.75; }
-
-    .ceo-home-section { 
-      margin-top: 70px; padding: 100px 10%; background: var(--apple-gray); 
-      color: var(--text); border-radius: 52px; text-align: center; border: 1px solid var(--border);
+    .feature-card:hover { 
+      transform: translateY(-10px); 
+      background: #fff; 
+      box-shadow: var(--shadow-deep); 
     }
-    .ceo-info h3 { font-family: 'Outfit'; font-size: 2.1rem; font-weight: 900; color: var(--accent); margin-top: 32px; }
+    .feature-icon-pane { 
+      height: 100%; 
+      width: 100%; 
+      border-radius: 40px; 
+      overflow: hidden; 
+      box-shadow: 0 25px 60px rgba(0,0,0,0.12); 
+    }
+    .feature-icon-pane img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+    .feature-content h3 { 
+      font-family: 'Outfit'; 
+      font-size: 2.8rem; 
+      font-weight: 900; 
+      margin-bottom: 28px; 
+      letter-spacing: -1.6px; 
+    }
+    .feature-content p { 
+      opacity: 0.67; 
+      font-size: 1.18rem; 
+      line-height: 1.75; 
+    }
+
+    /* CEO Section */
+    .ceo-home-section { 
+      margin-top: 70px; 
+      padding: 100px 10%; 
+      background: var(--apple-gray); 
+      color: var(--text); 
+      border-radius: 52px; 
+      text-align: center; 
+      border: 1px solid var(--border);
+    }
+    .ceo-info h3 { 
+      font-family: 'Outfit'; 
+      font-size: 2.1rem; 
+      font-weight: 900; 
+      color: var(--accent); 
+      margin-top: 32px; 
+    }
 
     .social-links-home { 
       display: flex; 
@@ -249,64 +401,215 @@
     .yt { color: #FF0000; } 
     .li { color: #0A66C2; }
 
-    .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--border); padding: 18px 0; z-index: 9000; overflow: hidden; }
-    .ticker-track { display: flex; animation: scrollTicker 38s linear infinite; width: max-content; }
-    .ticker-item { width: 400px; font-size: 13.8px; font-weight: 700; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-    @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    /* Ticker */
+    .ticker-bar { 
+      position: fixed; 
+      bottom: 0; 
+      width: 100%; 
+      background: #fff; 
+      border-top: 1px solid var(--border); 
+      padding: 18px 0; 
+      z-index: 9000; 
+      overflow: hidden; 
+    }
+    .ticker-track { 
+      display: flex; 
+      animation: scrollTicker 38s linear infinite; 
+      width: max-content; 
+    }
+    .ticker-item { 
+      width: 400px; 
+      font-size: 13.8px; 
+      font-weight: 700; 
+      display: flex; 
+      align-items: center; 
+      gap: 14px; 
+      flex-shrink: 0; 
+    }
+    @keyframes scrollTicker { 
+      0% { transform: translateX(0); } 
+      100% { transform: translateX(-50%); } 
+    }
 
+    /* ==================== ULTRA PREMIUM LOGIN SECTION ==================== */
     .login-split {
       display: flex;
       gap: 60px;
       max-width: 1180px;
-      margin: 140px auto;
+      margin: 120px auto;
       align-items: center;
+      padding: 0 5%;
     }
+
     .form-side {
-      flex: 0 0 40%;
-      background: var(--glass);
-      border-radius: 52px;
-      padding: 70px 60px;
-      box-shadow: 0 40px 120px rgba(0,0,0,0.25);
+      flex: 0 0 42%;
+      background: rgba(255, 255, 255, 0.78);
       backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border-radius: 52px;
+      padding: 80px 68px;
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.22),
+                  inset 0 2px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.6);
     }
+
+    .form-side h2 {
+      font-family: 'Outfit';
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 52px;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 18px 24px 8px 24px;
+      border: 1.5px solid rgba(0, 0, 0, 0.12);
+      border-radius: 20px;
+      font-size: 1.05rem;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-2px);
+    }
+
+    .input-group label {
+      position: absolute;
+      left: 24px;
+      top: 18px;
+      font-size: 1.05rem;
+      color: #666;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 500;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+      top: 8px;
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 22px;
+      border-radius: 9999px;
+      border: none;
+      background: linear-gradient(145deg, #0071e3, #0051b3);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.18rem;
+      letter-spacing: 0.6px;
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(0, 113, 227, 0.35),
+                  inset 0 -4px 12px rgba(255,255,255,0.25);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 20px 50px rgba(0, 113, 227, 0.5);
+    }
+
     .graphic-side {
-      flex: 0 0 60%;
+      flex: 0 0 58%;
       position: relative;
       border-radius: 52px;
       overflow: hidden;
       box-shadow: var(--shadow-deep);
-      height: 520px;
-    }
-    .graphic-side img { width: 100%; height: 100%; object-fit: cover; }
-    .graphic-side::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,113,227,0.25), transparent);
-    }
-    .graphic-overlay {
-      position: absolute;
-      bottom: 40px;
-      left: 40px;
-      color: white;
-      font-family: 'Outfit';
-      font-size: 1.8rem;
-      font-weight: 900;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      height: 560px;
     }
 
+    .graphic-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .graphic-side:hover img {
+      transform: scale(1.04);
+    }
+
+    .graphic-overlay {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+      color: white;
+      font-family: 'Outfit';
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      text-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px; 
+      text-align: center; 
+      opacity: 0.35; 
+      font-size: 12px;
+    }
+
+    /* ==================== RESPONSIVE ==================== */
     @media (max-width: 1024px) { 
-      .feature-card { grid-template-columns: 1fr; padding: 40px; } 
+      .feature-card { 
+        grid-template-columns: 1fr; 
+        padding: 40px; 
+      } 
       .feature-icon-pane { height: 250px; } 
-      .login-split { flex-direction: column; gap: 40px; }
-      .form-side, .graphic-side { flex: 1 1 auto; }
+      .login-split { 
+        flex-direction: column; 
+        gap: 50px; 
+      }
+      .form-side, .graphic-side { 
+        flex: 1 1 auto; 
+        width: 100%; 
+      }
+      .form-side {
+        padding: 60px 40px;
+      }
+      .graphic-side {
+        height: 420px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .form-side {
+        padding: 50px 30px;
+      }
+      .input-group input {
+        padding: 16px 20px 6px 20px;
+        font-size: 1.1rem;
+      }
+      .hero-container {
+        padding: 120px 30px 100px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Sidebar -->
   <div id="sidebar">
-    <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
+    <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()">
+      <i class="fas fa-times"></i>
+    </div>
     <ul class="sidebar-menu">
       <li onclick="switchView('home')">HOME</li>
       <li>NCERT BOOKS</li>
@@ -324,6 +627,7 @@
     </div>
   </div>
 
+  <!-- Header -->
   <header>
     <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>
     <div class="logo" onclick="switchView('home')">
@@ -334,7 +638,6 @@
     <div class="header-actions">
       <button class="sign-in-btn" onclick="toggleSignInDropdown()">Sign In</button>
       
-      <!-- Sign In Dropdown -->
       <div id="signInDropdown" class="sign-in-dropdown">
         <div class="dropdown-item" onclick="switchView('student'); toggleSignInDropdown();">
           <i class="fas fa-user-graduate"></i> Student Login
@@ -346,6 +649,7 @@
     </div>
   </header>
 
+  <!-- Home View -->
   <main id="home-v" class="view-section active-view">
     <div class="hero-container reveal-scroll">
       <div class="hero-bg-image"></div>
@@ -410,55 +714,85 @@
       <a href="#" target="_blank" class="li" style="text-decoration: none;"><i class="fab fa-linkedin"></i></a>
     </div>
 
-    <footer style="padding: 50px; text-align: center; opacity: 0.35; font-size: 12px;">Greater Noida, Uttar Pradesh • © 2026 NEXUS STUDY GLOBAL</footer>
+    <footer>Greater Noida, Uttar Pradesh • © 2026 NEXUS STUDY GLOBAL</footer>
   </main>
 
+  <!-- Student Login View -->
   <main id="student-v" class="view-section">
     <div class="login-split reveal-scroll">
       <div class="form-side">
         <h2>Student Login</h2>
-        <div class="input-group"><input type="text" placeholder="Username / Email"></div>
-        <div class="input-group"><input type="password" placeholder="Password"></div>
+        
+        <div class="input-group">
+          <input type="text" id="student-email" placeholder=" " required>
+          <label for="student-email">Username / Email</label>
+        </div>
+        
+        <div class="input-group">
+          <input type="password" id="student-pass" placeholder=" " required>
+          <label for="student-pass">Password</label>
+        </div>
+        
         <button class="btn-submit">Access Elite Portal</button>
+        
+        <p style="text-align:center; margin-top:28px; opacity:0.7; font-size:0.95rem;">
+          Forgot Password? <span style="color:var(--accent); cursor:pointer;">Reset Here</span>
+        </p>
       </div>
+      
       <div class="graphic-side">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000" alt="Student Learning">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=2000" alt="Student Learning">
         <div class="graphic-overlay">Your Journey to<br>Top Ranks Starts Here</div>
       </div>
     </div>
   </main>
 
+  <!-- Tutor Login View -->
   <main id="teacher-v" class="view-section">
     <div class="login-split reveal-scroll">
       <div class="form-side">
         <h2>Tutor Access</h2>
-        <div class="input-group"><input type="text" placeholder="Faculty ID"></div>
-        <div class="input-group"><input type="password" placeholder="Password"></div>
+        
+        <div class="input-group">
+          <input type="text" id="tutor-id" placeholder=" " required>
+          <label for="tutor-id">Faculty ID</label>
+        </div>
+        
+        <div class="input-group">
+          <input type="password" id="tutor-pass" placeholder=" " required>
+          <label for="tutor-pass">Password</label>
+        </div>
+        
         <button class="btn-submit">Faculty Login</button>
+        
+        <p style="text-align:center; margin-top:28px; opacity:0.7; font-size:0.95rem;">
+          Need Help? <span style="color:var(--accent); cursor:pointer;">Contact Admin</span>
+        </p>
       </div>
+      
       <div class="graphic-side">
-        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000" alt="Expert Faculty">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=2000" alt="Expert Faculty">
         <div class="graphic-overlay">Shape Future<br>Rankers</div>
       </div>
     </div>
   </main>
 
+  <!-- Ticker Bar -->
   <div class="ticker-bar">
     <div class="ticker-track">
       <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
       <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
       <div class="ticker-item"><b>Rohan (NDA):</b> Future of Coaching <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
+      <div class="ticker-item"><b>Aryan (IIT Delhi):</b> Best Experience <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
+      <div class="ticker-item"><b>Sneha (AIIMS):</b> Amazing Clarity <i class="fas fa-star" style="color:#facc15"></i> 5.0</div>
     </div>
   </div>
 
+  <!-- Scroll Indicator -->
   <div class="scroll-indicator" id="scrollIndicator" onclick="triggerPremiumLineAnim()">
-    <div class="line"></div><div class="line"></div><div class="line"></div>
-  </div>
-
-  <div id="scrollPopup">
-    <div class="close-btn" onclick="closePopup()">✕</div>
-    <h3>Student Voices</h3>
-    <p><b>Aryan (IIT Delhi):</b> Best Experience ⭐ 5.0<br><b>Sneha (AIIMS):</b> Amazing Clarity ⭐ 5.0<br><b>Rohan (NDA):</b> Future of Coaching ⭐ 5.0</p>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
   </div>
 
   <script>
@@ -477,7 +811,6 @@
       triggerScrollReveal();
     }
 
-    // Toggle Sign In Dropdown
     function toggleSignInDropdown() {
       const dropdown = document.getElementById('signInDropdown');
       dropdown.classList.toggle('show');
@@ -486,7 +819,6 @@
     // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
       const dropdown = document.getElementById('signInDropdown');
-      const btn = document.querySelector('.sign-in-btn');
       if (!e.target.closest('.header-actions')) {
         dropdown.classList.remove('show');
       }
@@ -509,8 +841,11 @@
       window.scrollY > 300 ? indicator.classList.add('show') : indicator.classList.remove('show');
     });
 
-    document.addEventListener('DOMContentLoaded', triggerScrollReveal);
+    document.addEventListener('DOMContentLoaded', () => {
+      triggerScrollReveal();
+    });
 
+    // Line animation
     setInterval(() => {
       document.querySelectorAll('.line').forEach(line => {
         line.classList.toggle('active', Math.random() > 0.5);
@@ -531,13 +866,7 @@
           line.style.transform = 'scale(1)';
           line.style.boxShadow = '0 4px 10px rgba(0,113,227,0.4)';
         });
-        document.getElementById('scrollPopup').classList.add('show');
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
       }, 550);
-    }
-
-    function closePopup() {
-      document.getElementById('scrollPopup').classList.remove('show');
     }
   </script>
 </body>
