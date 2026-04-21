@@ -227,6 +227,11 @@
       transform: translateY(-4px) scale(1.04) rotateX(8deg);
       box-shadow: 15px 20px 35px rgba(0,113,227,0.45), -8px -8px 20px rgba(255,255,255,0.9);
     }
+    .sidebar-menu li.admin-menu-item {
+      background: linear-gradient(145deg, #0071e3, #0051b3);
+      color: white;
+      box-shadow: 0 10px 30px rgba(0,113,227,0.4);
+    }
 
     /* Scroll Indicator */
     .scroll-indicator { 
@@ -558,6 +563,97 @@
       text-shadow: 0 6px 20px rgba(0,0,0,0.5);
     }
 
+    /* OTP Section Styling */
+    #otp-section {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .otp-input {
+      width: 100%;
+      padding: 18px 24px;
+      border: 1.5px solid rgba(0, 0, 0, 0.12);
+      border-radius: 20px;
+      font-size: 1.3rem;
+      letter-spacing: 8px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+    }
+
+    .otp-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+    }
+
+    /* ==================== ADMIN PANEL ==================== */
+    .admin-panel-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px;
+      background: var(--apple-gray);
+      border-radius: 52px;
+      box-shadow: var(--shadow-deep);
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 30px;
+    }
+    .admin-header h1 {
+      font-family: 'Outfit';
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+    .admin-section {
+      margin-bottom: 80px;
+    }
+    .admin-section-title {
+      font-family: 'Outfit';
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      color: var(--accent);
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .image-card {
+      background: white;
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: var(--shadow-light);
+      text-align: center;
+    }
+    .image-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+    .pdf-list {
+      max-height: 420px;
+      overflow-y: auto;
+      background: white;
+      border-radius: 28px;
+      padding: 20px;
+    }
+    .pdf-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pdf-item:last-child { border-bottom: none; }
+
     /* Footer */
     footer {
       padding: 50px; 
@@ -600,6 +696,9 @@
       .hero-container {
         padding: 120px 30px 100px;
       }
+      .admin-panel-container {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -610,7 +709,7 @@
     <div class="menu-btn" style="position:absolute; top:30px; right:30px;" onclick="toggleMenu()">
       <i class="fas fa-times"></i>
     </div>
-    <ul class="sidebar-menu">
+    <ul class="sidebar-menu" id="sidebar-menu">
       <li onclick="switchView('home')">HOME</li>
       <li>NCERT BOOKS</li>
       <li>JEE</li>
@@ -645,6 +744,9 @@
         <div class="dropdown-item" onclick="switchView('teacher'); toggleSignInDropdown();">
           <i class="fas fa-chalkboard-teacher"></i> Tutor Login
         </div>
+        <div class="dropdown-item" onclick="switchView('admin'); toggleSignInDropdown();">
+          <i class="fas fa-user-shield"></i> Admin Login
+        </div>
       </div>
     </div>
   </header>
@@ -652,7 +754,7 @@
   <!-- Home View -->
   <main id="home-v" class="view-section active-view">
     <div class="hero-container reveal-scroll">
-      <div class="hero-bg-image"></div>
+      <div id="hero-bg-image" class="hero-bg-image"></div>
       <h2 class="hero-h2">Mastering Concepts for<br><span>Top Ranks in JEE & NEET.</span></h2>
       <p class="hero-p">Bharat's premier digital nexus for JEE, NEET and Competitive Foundations. Precision meets excellence.</p>
       <button class="btn-3d" onclick="switchView('student')">Enroll Elite Batch</button>
@@ -661,7 +763,7 @@
     <div class="feature-grid">
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000" alt="Faculty">
+          <img id="feature-img-1" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000" alt="Faculty">
         </div>
         <div class="feature-content">
           <h3>Expert Faculty</h3>
@@ -671,7 +773,7 @@
 
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000" alt="Notes">
+          <img id="feature-img-2" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1000" alt="Notes">
         </div>
         <div class="feature-content">
           <h3>Premium Notes</h3>
@@ -681,7 +783,7 @@
 
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000" alt="Environment">
+          <img id="feature-img-3" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000" alt="Environment">
         </div>
         <div class="feature-content">
           <h3>Classroom Friendly</h3>
@@ -691,7 +793,7 @@
 
       <div class="feature-card reveal-scroll">
         <div class="feature-icon-pane">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000" alt="Affordable Excellence">
+          <img id="feature-img-4" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000" alt="Affordable Excellence">
         </div>
         <div class="feature-content">
           <h3>Affordable Excellence</h3>
@@ -733,7 +835,7 @@
           <label for="student-pass">Password</label>
         </div>
         
-        <button class="btn-submit">Access Elite Portal</button>
+        <button class="btn-submit" onclick="fakeLogin('student')">Access Elite Portal</button>
         
         <p style="text-align:center; margin-top:28px; opacity:0.7; font-size:0.95rem;">
           Forgot Password? <span style="color:var(--accent); cursor:pointer;">Reset Here</span>
@@ -741,7 +843,7 @@
       </div>
       
       <div class="graphic-side">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=2000" alt="Student Learning">
+        <img id="student-graphic" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=2000" alt="Student Learning">
         <div class="graphic-overlay">Your Journey to<br>Top Ranks Starts Here</div>
       </div>
     </div>
@@ -763,7 +865,7 @@
           <label for="tutor-pass">Password</label>
         </div>
         
-        <button class="btn-submit">Faculty Login</button>
+        <button class="btn-submit" onclick="fakeLogin('teacher')">Faculty Login</button>
         
         <p style="text-align:center; margin-top:28px; opacity:0.7; font-size:0.95rem;">
           Need Help? <span style="color:var(--accent); cursor:pointer;">Contact Admin</span>
@@ -771,9 +873,79 @@
       </div>
       
       <div class="graphic-side">
-        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=2000" alt="Expert Faculty">
+        <img id="teacher-graphic" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=2000" alt="Expert Faculty">
         <div class="graphic-overlay">Shape Future<br>Rankers</div>
       </div>
+    </div>
+  </main>
+
+  <!-- Admin Login View (with EmailJS OTP) -->
+  <main id="admin-v" class="view-section">
+    <div class="login-split reveal-scroll">
+      <div class="form-side">
+        <h2>Admin Login</h2>
+        
+        <!-- Step 1: Email Input -->
+        <div id="admin-email-step">
+          <div class="input-group">
+            <input type="email" id="admin-email" placeholder=" " value="thenexusstudy3@gmail.com" required>
+            <label for="admin-email">Admin Email</label>
+          </div>
+          
+          <button class="btn-submit" onclick="sendAdminOTP()">Send OTP</button>
+        </div>
+
+        <!-- Step 2: OTP Input -->
+        <div id="otp-section">
+          <div class="input-group">
+            <input type="text" id="admin-otp" class="otp-input" maxlength="6" placeholder="Enter 6-digit OTP" required>
+            <label for="admin-otp" style="top:8px; font-size:0.82rem; color:var(--accent);">OTP Code</label>
+          </div>
+          
+          <button class="btn-submit" onclick="verifyAdminOTP()">Verify OTP & Login</button>
+          
+          <p style="text-align:center; margin-top:20px; opacity:0.7; font-size:0.9rem;">
+            Didn't receive OTP? <span onclick="sendAdminOTP()" style="color:var(--accent); cursor:pointer;">Resend</span>
+          </p>
+        </div>
+        
+        <p id="admin-message" style="text-align:center; margin-top:20px; color:#d32f2f; font-size:0.95rem; display:none;"></p>
+      </div>
+      
+      <div class="graphic-side">
+        <img id="admin-graphic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=2000" alt="Admin Access">
+        <div class="graphic-overlay">Secure Admin<br>Control Panel</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ADMIN PANEL VIEW -->
+  <main id="admin-panel-v" class="view-section">
+    <div class="admin-panel-container reveal-scroll">
+      <div class="admin-header">
+        <h1>🔐 Admin Dashboard</h1>
+        <button onclick="logoutAdmin()" style="padding:14px 32px; background:#d32f2f; color:white; border:none; border-radius:9999px; font-weight:700; cursor:pointer;">Logout Admin</button>
+      </div>
+
+      <!-- Manage Images Section -->
+      <div class="admin-section">
+        <h2 class="admin-section-title">📸 Manage Website Photos</h2>
+        <div id="image-grid" class="image-grid"></div>
+      </div>
+
+      <!-- Manage PDFs Section -->
+      <div class="admin-section">
+        <h2 class="admin-section-title">📄 Manage PDF Files (NCERT / JEE / NEET / PYQ etc.)</h2>
+        <div style="margin-bottom:30px;">
+          <input type="file" id="pdf-upload-input" accept=".pdf" style="display:none;">
+          <button onclick="document.getElementById('pdf-upload-input').click()" class="btn-submit" style="width:auto; padding:18px 40px; display:inline-flex; align-items:center; gap:12px;">
+            <i class="fas fa-upload"></i> Upload New PDF from Laptop / Phone
+          </button>
+        </div>
+        <div id="pdf-list" class="pdf-list"></div>
+      </div>
+
+      <p style="text-align:center; opacity:0.6; margin-top:40px;">All changes are saved instantly in browser. Clear browser cache to reset everything.</p>
     </div>
   </main>
 
@@ -795,20 +967,311 @@
     <div class="line"></div>
   </div>
 
+  <!-- EmailJS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <script>
-    function toggleMenu() { 
-      document.getElementById('sidebar').classList.toggle('open'); 
+    // ====================== EMAILJS CONFIG ======================
+    const EMAILJS_PUBLIC_KEY = "jH5TwO1sLcWFwHHzu";
+    const EMAILJS_SERVICE_ID = "service_w0vxgvf";
+    const EMAILJS_TEMPLATE_ID = "service_w0vxgvf";
+
+    let generatedOTP = null;
+    let otpTimestamp = null;
+    const OTP_EXPIRY_MINUTES = 5;
+    let isAdminLoggedIn = false;
+
+    // ====================== EDITABLE IMAGES ======================
+    const editableImages = [
+      { id: "hero-bg-image", label: "Hero Background", isBg: true },
+      { id: "feature-img-1", label: "Expert Faculty Image", isBg: false },
+      { id: "feature-img-2", label: "Premium Notes Image", isBg: false },
+      { id: "feature-img-3", label: "Classroom Friendly Image", isBg: false },
+      { id: "feature-img-4", label: "Affordable Excellence Image", isBg: false },
+      { id: "student-graphic", label: "Student Login Graphic", isBg: false },
+      { id: "teacher-graphic", label: "Tutor Login Graphic", isBg: false },
+      { id: "admin-graphic", label: "Admin Login Graphic", isBg: false }
+    ];
+
+    // Load saved images from localStorage
+    function loadCustomImages() {
+      editableImages.forEach(item => {
+        const saved = localStorage.getItem('img_' + item.id);
+        if (saved) {
+          const el = document.getElementById(item.id);
+          if (el) {
+            if (item.isBg) {
+              el.style.backgroundImage = `url(${saved})`;
+            } else {
+              el.src = saved;
+            }
+          }
+        }
+      });
     }
-    
+
+    // Replace any image
+    function replaceImage(id, isBg) {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          const dataUrl = ev.target.result;
+          const el = document.getElementById(id);
+          if (el) {
+            if (isBg) {
+              el.style.backgroundImage = `url(${dataUrl})`;
+            } else {
+              el.src = dataUrl;
+            }
+          }
+          localStorage.setItem('img_' + id, dataUrl);
+          renderImageGrid(); // refresh admin panel
+        };
+        reader.readAsDataURL(file);
+      };
+      input.click();
+    }
+
+    // Render image grid in admin panel
+    function renderImageGrid() {
+      const container = document.getElementById('image-grid');
+      container.innerHTML = '';
+      editableImages.forEach(item => {
+        const el = document.getElementById(item.id);
+        let currentSrc = '';
+        if (el) {
+          currentSrc = item.isBg 
+            ? el.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1')
+            : el.src;
+        }
+        const card = document.createElement('div');
+        card.className = 'image-card';
+        card.innerHTML = `
+          <h4 style="margin-bottom:12px; font-weight:700;">${item.label}</h4>
+          <img src="${currentSrc || 'https://via.placeholder.com/300x180?text=No+Image'}" alt="${item.label}">
+          <button onclick="replaceImage('${item.id}', ${item.isBg})" style="margin-top:15px; width:100%; padding:14px; background:var(--accent); color:white; border:none; border-radius:9999px; font-weight:700;">
+            <i class="fas fa-image"></i> Change Photo from Device
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // ====================== PDF MANAGEMENT ======================
+    function uploadPDF() {
+      const input = document.getElementById('pdf-upload-input');
+      const file = input.files[0];
+      if (!file) return alert("Please select a PDF file");
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        let pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
+        pdfs.push({
+          id: Date.now(),
+          name: file.name,
+          size: (file.size / 1024 / 1024).toFixed(2) + " MB",
+          data: e.target.result
+        });
+        localStorage.setItem('pdfs', JSON.stringify(pdfs));
+        renderPdfList();
+        input.value = ''; // reset input
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderPdfList() {
+      const container = document.getElementById('pdf-list');
+      let pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
+      container.innerHTML = pdfs.length === 0 
+        ? `<p style="text-align:center; padding:40px; opacity:0.5;">No PDFs uploaded yet. Upload your first PDF above.</p>` 
+        : '';
+
+      pdfs.forEach(pdf => {
+        const div = document.createElement('div');
+        div.className = 'pdf-item';
+        div.innerHTML = `
+          <div>
+            <i class="fas fa-file-pdf" style="color:#d32f2f; margin-right:10px;"></i>
+            <strong>${pdf.name}</strong><br>
+            <small>${pdf.size}</small>
+          </div>
+          <div>
+            <a href="${pdf.data}" download="${pdf.name}" style="margin-right:15px; color:var(--accent);"><i class="fas fa-download"></i> Download</a>
+            <button onclick="deletePDF(${pdf.id})" style="background:#d32f2f; color:white; border:none; padding:8px 16px; border-radius:9999px; font-size:13px;">Remove</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function deletePDF(id) {
+      if (!confirm("Delete this PDF permanently?")) return;
+      let pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
+      pdfs = pdfs.filter(p => p.id !== id);
+      localStorage.setItem('pdfs', JSON.stringify(pdfs));
+      renderPdfList();
+    }
+
+    // ====================== ADMIN LOGIN ======================
+    function initEmailJS() {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+
+    function generateOTP() {
+      return Math.floor(100000 + Math.random() * 900000).toString();
+    }
+
+    async function sendAdminOTP() {
+      const emailInput = document.getElementById('admin-email');
+      const email = emailInput.value.trim();
+      const messageEl = document.getElementById('admin-message');
+
+      if (!email) {
+        messageEl.textContent = "Please enter admin email";
+        messageEl.style.display = 'block';
+        messageEl.style.color = '#d32f2f';
+        return;
+      }
+
+      if (email.toLowerCase() !== "thenexusstudy3@gmail.com") {
+        messageEl.textContent = "Access denied. Only authorized admin email allowed.";
+        messageEl.style.display = 'block';
+        messageEl.style.color = '#d32f2f';
+        return;
+      }
+
+      generatedOTP = generateOTP();
+      otpTimestamp = Date.now();
+
+      const templateParams = {
+        to_email: email,
+        passcode: generatedOTP,
+        time: OTP_EXPIRY_MINUTES + " minutes",
+        company: "NEXUS STUDY"
+      };
+
+      try {
+        messageEl.textContent = "Sending OTP...";
+        messageEl.style.display = 'block';
+        messageEl.style.color = '#0071e3';
+
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+        messageEl.textContent = "OTP sent successfully to your email!";
+        messageEl.style.color = '#2e7d32';
+
+        document.getElementById('admin-email-step').style.display = 'none';
+        document.getElementById('otp-section').style.display = 'block';
+        document.getElementById('admin-otp').focus();
+
+      } catch (error) {
+        console.error("EmailJS Error:", error);
+        messageEl.textContent = "Failed to send OTP. Please try again.";
+        messageEl.style.color = '#d32f2f';
+      }
+    }
+
+    function verifyAdminOTP() {
+      const otpInput = document.getElementById('admin-otp').value.trim();
+      const messageEl = document.getElementById('admin-message');
+
+      if (!generatedOTP || !otpTimestamp) {
+        messageEl.textContent = "Please request OTP first";
+        messageEl.style.display = 'block';
+        return;
+      }
+
+      const elapsed = (Date.now() - otpTimestamp) / 1000 / 60;
+      if (elapsed > OTP_EXPIRY_MINUTES) {
+        messageEl.textContent = "OTP has expired. Please request a new one.";
+        messageEl.style.display = 'block';
+        messageEl.style.color = '#d32f2f';
+        return;
+      }
+
+      if (otpInput === generatedOTP) {
+        messageEl.textContent = "✅ OTP Verified! Opening Admin Panel...";
+        messageEl.style.color = '#2e7d32';
+        messageEl.style.display = 'block';
+
+        isAdminLoggedIn = true;
+        localStorage.setItem('adminLoggedIn', 'true');
+
+        setTimeout(() => {
+          switchView('admin-panel');
+        }, 1200);
+      } else {
+        messageEl.textContent = "❌ Incorrect OTP. Please try again.";
+        messageEl.style.color = '#d32f2f';
+        messageEl.style.display = 'block';
+      }
+    }
+
+    // ====================== ADMIN PANEL & SIDEBAR ======================
+    function logoutAdmin() {
+      if (confirm("Logout from Admin Panel?")) {
+        isAdminLoggedIn = false;
+        localStorage.removeItem('adminLoggedIn');
+        switchView('home');
+      }
+    }
+
+    function addAdminMenuItems() {
+      const menu = document.getElementById('sidebar-menu');
+      if (menu.querySelector('.admin-menu-item')) return; // already added
+
+      const adminHTML = `
+        <li class="admin-menu-item" onclick="switchView('admin-panel'); toggleMenu();"><i class="fas fa-user-shield"></i> Admin Dashboard</li>
+        <li class="admin-menu-item" onclick="logoutAdmin(); toggleMenu();"><i class="fas fa-sign-out-alt"></i> Logout Admin</li>
+      `;
+      menu.innerHTML += adminHTML;
+    }
+
+    function toggleMenu() { 
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open'); 
+      if (sidebar.classList.contains('open') && isAdminLoggedIn) {
+        addAdminMenuItems();
+      }
+    }
+
     function switchView(id) {
       document.querySelectorAll('.view-section').forEach(s => {
         s.classList.remove('active-view');
         s.querySelectorAll('.reveal-scroll').forEach(el => el.classList.remove('visible'));
       });
-      document.getElementById(id + '-v').classList.add('active-view');
+      const target = document.getElementById(id + '-v');
+      if (target) {
+        target.classList.add('active-view');
+      } else {
+        console.warn("View not found:", id);
+        return;
+      }
       window.scrollTo(0,0);
       if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();
       triggerScrollReveal();
+
+      if (id === 'admin') {
+        resetAdminForm();
+      }
+      if (id === 'admin-panel') {
+        renderImageGrid();
+        renderPdfList();
+      }
+    }
+
+    function resetAdminForm() {
+      document.getElementById('admin-email-step').style.display = 'block';
+      document.getElementById('otp-section').style.display = 'none';
+      document.getElementById('admin-otp').value = '';
+      document.getElementById('admin-message').style.display = 'none';
+      generatedOTP = null;
+      otpTimestamp = null;
     }
 
     function toggleSignInDropdown() {
@@ -816,7 +1279,6 @@
       dropdown.classList.toggle('show');
     }
 
-    // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
       const dropdown = document.getElementById('signInDropdown');
       if (!e.target.closest('.header-actions')) {
@@ -842,15 +1304,22 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
+      initEmailJS();
       triggerScrollReveal();
-    });
+      loadCustomImages();
 
-    // Line animation
-    setInterval(() => {
-      document.querySelectorAll('.line').forEach(line => {
-        line.classList.toggle('active', Math.random() > 0.5);
-      });
-    }, 1000);
+      // Check if already logged in as admin
+      if (localStorage.getItem('adminLoggedIn') === 'true') {
+        isAdminLoggedIn = true;
+      }
+
+      // Line animation
+      setInterval(() => {
+        document.querySelectorAll('.line').forEach(line => {
+          line.classList.toggle('active', Math.random() > 0.5);
+        });
+      }, 1000);
+    });
 
     function triggerPremiumLineAnim() {
       const lines = document.querySelectorAll('.line');
@@ -859,7 +1328,6 @@
         line.style.transform = 'scale(1.15)';
         line.style.boxShadow = '0 8px 20px rgba(0,113,227,0.5)';
       });
-
       setTimeout(() => {
         lines.forEach(line => {
           line.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -867,6 +1335,12 @@
           line.style.boxShadow = '0 4px 10px rgba(0,113,227,0.4)';
         });
       }, 550);
+    }
+
+    function fakeLogin(type) {
+      alert(type === 'student' 
+        ? "Student Login Successful! (Demo)" 
+        : "Tutor Login Successful! (Demo)");
     }
   </script>
 </body>
