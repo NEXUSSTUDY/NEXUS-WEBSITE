@@ -431,7 +431,7 @@
       100% { transform: translateX(-50%); } 
     }
 
-    /* Login Section */
+    /* ==================== ULTRA PREMIUM LOGIN SECTION ==================== */
     .login-split {
       display: flex;
       gap: 60px;
@@ -558,7 +558,7 @@
       text-shadow: 0 6px 20px rgba(0,0,0,0.5);
     }
 
-    /* OTP Section */
+    /* OTP Section Styling */
     #otp-section {
       display: none;
       margin-top: 30px;
@@ -581,7 +581,7 @@
       box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
     }
 
-    /* Admin Panel */
+    /* ==================== ADMIN PANEL ==================== */
     .admin-panel-container {
       max-width: 1280px;
       margin: 0 auto;
@@ -657,7 +657,7 @@
       font-size: 12px;
     }
 
-    /* Responsive */
+    /* ==================== RESPONSIVE ==================== */
     @media (max-width: 1024px) { 
       .feature-card { 
         grid-template-columns: 1fr; 
@@ -922,13 +922,13 @@
         <button onclick="logoutAdmin()" style="padding:14px 32px; background:#d32f2f; color:white; border:none; border-radius:9999px; font-weight:700; cursor:pointer;">Logout Admin</button>
       </div>
 
-      <!-- Manage Images -->
+      <!-- Manage Images Section -->
       <div class="admin-section">
         <h2 class="admin-section-title">📸 Manage Website Photos</h2>
         <div id="image-grid" class="image-grid"></div>
       </div>
 
-      <!-- Manage PDFs -->
+      <!-- Manage PDFs Section -->
       <div class="admin-section">
         <h2 class="admin-section-title">📄 Manage PDF Files</h2>
         <div style="margin-bottom:30px;">
@@ -969,7 +969,7 @@
     // ====================== EMAILJS CONFIG ======================
     const EMAILJS_PUBLIC_KEY = "jH5TwO1sLcWFwHHzu";
     const EMAILJS_SERVICE_ID = "service_w0vxgvf";
-    const EMAILJS_TEMPLATE_ID = "service_w0vxgvf";
+    const EMAILJS_TEMPLATE_ID = "template_tt1b26p";   // Updated Template ID
 
     let generatedOTP = null;
     let otpTimestamp = null;
@@ -987,6 +987,7 @@
       { id: "admin-graphic", label: "Admin Login Graphic", isBg: false }
     ];
 
+    // Load saved images from localStorage
     function loadCustomImages() {
       editableImages.forEach(item => {
         const saved = localStorage.getItem('img_' + item.id);
@@ -1003,6 +1004,7 @@
       });
     }
 
+    // Replace any image
     function replaceImage(id, isBg) {
       const input = document.createElement('input');
       input.type = 'file';
@@ -1029,6 +1031,7 @@
       input.click();
     }
 
+    // Render image grid in admin panel
     function renderImageGrid() {
       const container = document.getElementById('image-grid');
       container.innerHTML = '';
@@ -1157,7 +1160,7 @@
 
       } catch (error) {
         console.error("EmailJS Error:", error);
-        messageEl.textContent = "Failed to send OTP. Please try again.";
+        messageEl.textContent = "Failed to send OTP. Please check your EmailJS setup or try again.";
         messageEl.style.color = '#d32f2f';
       }
     }
@@ -1204,10 +1207,7 @@
         s.classList.remove('active-view');
         s.querySelectorAll('.reveal-scroll').forEach(el => el.classList.remove('visible'));
       });
-      const target = document.getElementById(id + '-v');
-      if (target) {
-        target.classList.add('active-view');
-      }
+      document.getElementById(id + '-v').classList.add('active-view');
       window.scrollTo(0,0);
       if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();
       triggerScrollReveal();
@@ -1263,7 +1263,7 @@
       initEmailJS();
       triggerScrollReveal();
       loadCustomImages();
-      document.getElementById('admin-email').value = ''; // Blank email field
+      document.getElementById('admin-email').value = ''; // Ensure blank email field
       document.getElementById('pdf-upload-input').addEventListener('change', uploadPDF);
 
       // Line animation
